@@ -1,0 +1,30 @@
+Ngoài read, add, update và delete nhân viên còn có
+
+Tính lương, thưởng:
+  - Chấm công (giờ bắt đầu, kết thúc, thời gian giải lao ngoài phòng làm việc, …)
+  - Thống kê lương của nhân viên theo tháng, quý , năm.
+  - Tính bảng lương hàng tháng cho từng nhân viên.
+  - Chuyển khoản lương, thưởng cho nhân viên.
+        
+Thêm nhân viên
+  - Thông báo lịch phỏng vấn
+  - Thông báo kết quả phỏng vấn
+  - Quản lý các thông tin ứng viên
+    + Hồ sơ xin việc
+    + Hình thức phỏng vấn, nội dung phỏng vấn, kết quản phỏng vấn
+
+Phân công
+  - Tìm kiếm công việc phân công theo nhiều tiêu chí
+  - Tình trạng: chưa/đã phân công
+  - Trạng thái: chưa bắt đầu/đang thực hiện/hoàn tất
+  - Kết quả đc đánh giá: chưa đạt/đạt/tốt/xuất sắc
+  - Thống kê công việc đang thiếu nhân viên.
+  - Thống kê nhân viên đang rảnh
+
+Thôi việc:
+
+Buộc thôi việc:
+
+Cập nhật nhân viên
+    
+Thông báo về sinh nhật của nhân viên.
