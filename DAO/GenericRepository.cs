@@ -1,6 +1,7 @@
 ﻿using DataModel;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,7 +22,8 @@ namespace DAO
 
         public void Attach(T entity)
         {
-            _context.Set<T>().Attach(entity);
+           
+            _context.Entry(entity).State = EntityState.Modified;
         }
 
         public void Delete(T entity)

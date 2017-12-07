@@ -3,7 +3,7 @@ namespace DataModel.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class second : DbMigration
+    public partial class initial : DbMigration
     {
         public override void Up()
         {
@@ -30,12 +30,23 @@ namespace DataModel.Migrations
                     })
                 .PrimaryKey(t => t.MaTuyenXe);
             
+            CreateTable(
+                "dbo.PhongBan",
+                c => new
+                    {
+                        maPB = c.Int(nullable: false, identity: true),
+                        tenPB = c.String(maxLength: 10),
+                        moTaPB = c.String(maxLength: 10),
+                    })
+                .PrimaryKey(t => t.maPB);
+            
         }
         
         public override void Down()
         {
             DropForeignKey("dbo.ChuyenXes", "TuyenXe_MaTuyenXe", "dbo.TuyenXes");
             DropIndex("dbo.ChuyenXes", new[] { "TuyenXe_MaTuyenXe" });
+            DropTable("dbo.PhongBan");
             DropTable("dbo.TuyenXes");
             DropTable("dbo.ChuyenXes");
         }
