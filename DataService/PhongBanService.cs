@@ -15,9 +15,38 @@ namespace DataService
     {
         ILogger logger = LogManager.GetCurrentClassLogger();
         IUnitOfWork unitofWork = new GenericUnitOfWork();
+
+        public int CapNhatPhongBan(PhongBan phongBan)
+        {
+            logger.Info("Start cap nhat phong ban method");
+            int ret = 0;
+            try
+            {
+                IRepository<PhongBan> repository = unitofWork.Repository<PhongBan>();
+                repository.Attach(phongBan);
+                unitofWork.SaveChange();
+                logger.Info("Status: Success");
+            }
+            catch
+            {
+                logger.Info("Status: Fail");
+                ret = -1;
+            }
+            return ret;
+        }
+
+        public PhongBan GetPhongBan(int id)
+        {
+            IRepository<PhongBan> repository = unitofWork.Repository<PhongBan>();
+            PhongBan phongBan = new PhongBan();
+            
+            phongBan = repository.Get(x => x.maPB == id);
+            return phongBan;
+        }
+
         public int ThemPhongBan(PhongBan  phongBan)
         {
-            logger.Info("Start them phong method");
+            logger.Info("Start them phong ban method");
             int ret = 0;
             try
             {
@@ -25,6 +54,41 @@ namespace DataService
                 repository.Add(phongBan);
                 unitofWork.SaveChange();
                 logger.Info("Status: Success");
+            }
+            catch
+            {
+                logger.Info("Status: Fail");
+                ret = -1;
+            }
+            return ret;
+        }
+
+        public IList<PhongBan> XemPhongBan(PhongBan phongBan)
+        {
+            
+            IRepository<PhongBan> repository = unitofWork.Repository<PhongBan>();
+            IList<PhongBan> listPhongBan = new List<PhongBan>();
+            listPhongBan = repository.GetAll().ToList();
+            return listPhongBan;
+        }
+
+        public int XoaPhongBan(int maPB)
+        {
+            int ret = 0;
+            try
+            {
+                IRepository<PhongBan> repository = unitofWork.Repository<PhongBan>();
+                IList<PhongBan> listPhongBan = new List<PhongBan>();
+                listPhongBan = repository.GetAll().ToList();
+                for(int i = 0; i< listPhongBan.Count(); i++)
+                {
+                   if( listPhongBan[i].maPB == maPB)
+                    {
+                        repository.Delete(listPhongBan[i]);
+                        unitofWork.SaveChange();
+                        logger.Info("Status: Success");
+                    }
+                }
             }
             catch
             {

@@ -11,11 +11,11 @@ namespace DataModel.Migrations
                 "dbo.PhongBan",
                 c => new
                     {
-                        tenPB = c.String(nullable: false, maxLength: 10),
                         maPB = c.Int(nullable: false, identity: true),
+                        tenPB = c.String(maxLength: 10),
                         moTaPB = c.String(maxLength: 10),
                     })
-                .PrimaryKey(t => t.tenPB);
+                .PrimaryKey(t => t.maPB);
             
         }
         

@@ -11,13 +11,21 @@ namespace DataModel
     {
         
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
-        public int maPB { get; set; }
         [Key]
+        public int maPB { get; set; }
 
         [StringLength(10)]
         public string tenPB { get; set; }
 
         [StringLength(10)]
         public string moTaPB { get; set; }
+
+        public PhongBan(int maPB, string tenPB, string moTaPB)
+        {
+            this.maPB = maPB;
+            this.tenPB = tenPB;
+            this.moTaPB = moTaPB;
+        }
+        public PhongBan() { }
     }
 }
