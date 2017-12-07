@@ -1,0 +1,46 @@
+﻿using DataModel;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DAO
+{
+    public class GenericRepository<T> : IRepository<T> where T : class
+    {
+        private QLXeKhachContext _context;
+        public GenericRepository(QLXeKhachContext context)
+        {
+            _context = context;            
+        }
+        public void Add(T entity)
+        {
+            _context.Set<T>().Add(entity);
+        }
+
+        public void Attach(T entity)
+        {
+            _context.Set<T>().Attach(entity);
+        }
+
+        public void Delete(T entity)
+        {
+            _context.Set<T>().Remove(entity);
+        }
+
+        public T Get(Func<T, bool> predicate)
+        {
+            return _context.Set<T>().First(predicate);
+        }
+
+        public IEnumerable<T> GetAll(Func<T, bool> predicate = null)
+        {
+            if (predicate != null)
+            {
+                _context.Set<T>().Where(predicate);
+            }
+            return _context.Set<T>().AsEnumerable<T>();
+        }
+    }
+}
