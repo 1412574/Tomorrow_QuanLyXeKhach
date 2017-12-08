@@ -14,10 +14,10 @@ namespace DataModel
         [Key]
         public int maPB { get; set; }
 
-        [StringLength(10)]
+        [StringLength(50)]
         public string tenPB { get; set; }
 
-        [StringLength(10)]
+        [StringLength(100)]
         public string moTaPB { get; set; }
 
         public PhongBan(int maPB, string tenPB, string moTaPB)

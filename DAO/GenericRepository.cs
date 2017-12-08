@@ -31,9 +31,9 @@ namespace DAO
             _context.Set<T>().Remove(entity);
         }
 
-        public T Get(Func<T, bool> predicate)
+        public T GetById(object id)
         {
-            return _context.Set<T>().First(predicate);
+            return _context.Set<T>().Find(id);
         }
 
         public IEnumerable<T> GetAll(Func<T, bool> predicate = null)

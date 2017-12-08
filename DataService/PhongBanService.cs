@@ -38,10 +38,7 @@ namespace DataService
         public PhongBan GetPhongBan(int id)
         {
             IRepository<PhongBan> repository = unitofWork.Repository<PhongBan>();
-            PhongBan phongBan = new PhongBan();
-            
-            phongBan = repository.Get(x => x.maPB == id);
-            return phongBan;
+            return repository.GetById(id);
         }
 
         public int ThemPhongBan(PhongBan  phongBan)

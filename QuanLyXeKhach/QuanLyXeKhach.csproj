@@ -234,11 +234,14 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\PhongBan\Index.cshtml" />
+    <Content Include="Views\PhongBan\Home.cshtml" />
     <Content Include="Scripts\jquery-3.2.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.2.1.min.map" />
     <Content Include="Views\PhongBan\Menu.cshtml" />
     <Content Include="Views\PhongBan\Edit.cshtml" />
+    <Content Include="Views\PhongBan\Details.cshtml" />
+    <Content Include="Views\PhongBan\ThemPhongBan.cshtml" />
+    <Content Include="Views\PhongBan\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

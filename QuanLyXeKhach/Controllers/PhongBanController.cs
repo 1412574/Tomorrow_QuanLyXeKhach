@@ -23,9 +23,16 @@ namespace QuanLyXeKhach.Controllers
         // GET: PhongBan
         public ActionResult Index()
         {
-            PhongBan phongBan = new PhongBan();
-            return View(phongBan);
+            //PhongBan phongBan = new PhongBan();
+            return View();
         }
+        //
+        // GET: PhongBan
+        public ActionResult Home()
+        {
+            return View();
+        }
+        //
         public ActionResult ThemPhongBan(PhongBan phongBan)
         {
             logger.Info("Start controller....");
@@ -33,21 +40,22 @@ namespace QuanLyXeKhach.Controllers
             if (status == 0)
             {
                 logger.Info("Status: Success");
-                return Content("Them thanh cong");
+                return RedirectToAction("Menu", "PhongBan");
             }
             else
             {
                 logger.Info("Status: Fail");
-                return Content("Them that bai");
+                return Content("Thêm thất bại");
             }
+      
         }
-        //
+        //GET:
         public ActionResult Menu(PhongBan phongBan)
         {
             var listPhong = service.XemPhongBan(phongBan);
             return View(listPhong);
         }
-        //
+        //POST:
         public ActionResult XoaPhongBan(int id)
         {
             
@@ -56,16 +64,15 @@ namespace QuanLyXeKhach.Controllers
             if (status == 0)
             {
                 logger.Info("Status: Success");
-                return Content("Xóa thành công");
+                return RedirectToAction("Menu", "PhongBan");
             }
             else
             {
                 logger.Info("Status: Fail");
                 return Content("Xóa thất bại");
             }
-            //return View();
         }
-        //
+        //POST:
         public ActionResult Edit(int id)
         {
 
@@ -79,13 +86,19 @@ namespace QuanLyXeKhach.Controllers
             if (status == 0)
             {
                 logger.Info("Status: Success");
-                return Content("Cập nhật thành công");
+                return RedirectToAction("Menu", "PhongBan");
             }
             else
             {
                 logger.Info("Status: Fail");
                 return Content("Cập nhật thất bại");
             }
+        }
+        //GET:
+        public ActionResult Details(int id)
+        {
+            var modelView = service.GetPhongBan(id);
+            return View(modelView);
         }
 
     }

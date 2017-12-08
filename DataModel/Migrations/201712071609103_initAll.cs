@@ -3,7 +3,7 @@ namespace DataModel.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class initial : DbMigration
+    public partial class initAll : DbMigration
     {
         public override void Up()
         {
@@ -35,8 +35,8 @@ namespace DataModel.Migrations
                 c => new
                     {
                         maPB = c.Int(nullable: false, identity: true),
-                        tenPB = c.String(maxLength: 10),
-                        moTaPB = c.String(maxLength: 10),
+                        tenPB = c.String(maxLength: 50),
+                        moTaPB = c.String(maxLength: 100),
                     })
                 .PrimaryKey(t => t.maPB);
             
