@@ -60,7 +60,7 @@ namespace DataService
         public int XoaChuyenXe(int id)
         {
             IRepository<ChuyenXe> repository = unitofWork.Repository<ChuyenXe>();
-            repository.Delete(repository.GetByID(id));
+            repository.Delete(repository.GetById(id));
             unitofWork.SaveChange();
             return 0;
         }
@@ -68,7 +68,7 @@ namespace DataService
         public ChuyenXe LayChuyenXe (int id)
         {
             IRepository<ChuyenXe> repository = unitofWork.Repository<ChuyenXe>();
-            return repository.GetByID(id);
+            return repository.GetById(id);
         }
     }
 }

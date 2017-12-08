@@ -56,9 +56,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201712071440560_Initial.cs" />
-    <Compile Include="Migrations\201712071440560_Initial.Designer.cs">
-      <DependentUpon>201712071440560_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201712081333506_initial.cs" />
+    <Compile Include="Migrations\201712081333506_initial.Designer.cs">
+      <DependentUpon>201712081333506_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="QLXeKhachContext.cs" />
@@ -77,8 +77,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201712071440560_Initial.resx">
-      <DependentUpon>201712071440560_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712081333506_initial.resx">
+      <DependentUpon>201712081333506_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

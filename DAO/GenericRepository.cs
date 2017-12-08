@@ -31,11 +31,7 @@ namespace DAO
             _context.Set<T>().Remove(entity);
         }
 
-        public T Get(Func<T, bool> predicate)
-        {
-            return _context.Set<T>().First(predicate);
-        }
-        public virtual T GetByID(int id)
+        public T GetById(object id)
         {
             return _context.Set<T>().Find(id);
         }

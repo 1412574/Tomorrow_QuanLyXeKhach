@@ -3,7 +3,7 @@ namespace DataModel.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Initial : DbMigration
+    public partial class initAll : DbMigration
     {
         public override void Up()
         {
@@ -12,14 +12,14 @@ namespace DataModel.Migrations
                 c => new
                     {
                         MaChuyenXe = c.Int(nullable: false, identity: true),
-                        MaTuyenXe = c.Int(nullable: false),
                         TenChuyenXe = c.String(),
                         NgayGioChay = c.DateTime(nullable: false),
                         TaiXe = c.Int(nullable: false),
+                        TuyenXe_MaTuyenXe = c.Int(),
                     })
                 .PrimaryKey(t => t.MaChuyenXe)
-                .ForeignKey("dbo.TuyenXes", t => t.MaTuyenXe, cascadeDelete: true)
-                .Index(t => t.MaTuyenXe);
+                .ForeignKey("dbo.TuyenXes", t => t.TuyenXe_MaTuyenXe)
+                .Index(t => t.TuyenXe_MaTuyenXe);
             
             CreateTable(
                 "dbo.TuyenXes",
@@ -34,18 +34,18 @@ namespace DataModel.Migrations
                 "dbo.PhongBan",
                 c => new
                     {
-                        tenPB = c.String(nullable: false, maxLength: 10),
                         maPB = c.Int(nullable: false, identity: true),
-                        moTaPB = c.String(maxLength: 10),
+                        tenPB = c.String(maxLength: 50),
+                        moTaPB = c.String(maxLength: 100),
                     })
-                .PrimaryKey(t => t.tenPB);
+                .PrimaryKey(t => t.maPB);
             
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.ChuyenXes", "MaTuyenXe", "dbo.TuyenXes");
-            DropIndex("dbo.ChuyenXes", new[] { "MaTuyenXe" });
+            DropForeignKey("dbo.ChuyenXes", "TuyenXe_MaTuyenXe", "dbo.TuyenXes");
+            DropIndex("dbo.ChuyenXes", new[] { "TuyenXe_MaTuyenXe" });
             DropTable("dbo.PhongBan");
             DropTable("dbo.TuyenXes");
             DropTable("dbo.ChuyenXes");

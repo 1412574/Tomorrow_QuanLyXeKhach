@@ -1,0 +1,28 @@
+﻿@model DataModel.PhongBan
+
+<div>
+    <h4>Chi tiết phòng ban</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tenPB)
+        </dd>
+
+        <dt>
+           Mô tả
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.moTaPB)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.maPB }) |
+    @Html.ActionLink("Trở lại", "Menu")
+</p>
