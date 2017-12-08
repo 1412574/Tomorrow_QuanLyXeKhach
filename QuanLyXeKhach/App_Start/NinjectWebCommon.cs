@@ -64,6 +64,9 @@ namespace QuanLyXeKhach.App_Start
         private static void RegisterServices(IKernel kernel)
         {
             kernel.Bind<IPhongBanService<PhongBan>>().To<PhongBanService>();
-        }        
+            kernel.Bind<IChuyenXeService<ChuyenXe>>().To<ChuyenXeService>();
+            kernel.Bind<ITuyenXeService<TuyenXe>>().To<TuyenXeService>();
+
+        }
     }
 }

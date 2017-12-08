@@ -10,8 +10,9 @@ namespace DAO
     {
         IEnumerable<T> GetAll(Func<T, bool> predicate = null);
         T Get(Func<T, bool> predicate);
+        T GetByID(int id);
         void Add(T entity);
-        void Attach(T entity);
+        void Update(T entity);
         void Delete(T entity);
     }
 }

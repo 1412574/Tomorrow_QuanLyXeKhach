@@ -1,6 +1,7 @@
 ﻿using DataModel;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,9 +20,10 @@ namespace DAO
             _context.Set<T>().Add(entity);
         }
 
-        public void Attach(T entity)
+        public void Update(T entity)
         {
             _context.Set<T>().Attach(entity);
+            _context.Entry(entity).State = EntityState.Modified;
         }
 
         public void Delete(T entity)
@@ -33,7 +35,10 @@ namespace DAO
         {
             return _context.Set<T>().First(predicate);
         }
-
+        public virtual T GetByID(int id)
+        {
+            return _context.Set<T>().Find(id);
+        }
         public IEnumerable<T> GetAll(Func<T, bool> predicate = null)
         {
             if (predicate != null)
