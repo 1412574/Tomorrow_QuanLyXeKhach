@@ -6,6 +6,27 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/assets/AssetsDatve/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="/assets/AssetsDatve/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/assets/AssetsDatve/dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="/assets/AssetsDatve/vendor/morrisjs/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="/assets/AssetsDatve/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- DataTables CSS -->
+    <link href="/assets/AssetsDatve/vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="/assets/AssetsDatve/vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -21,16 +42,20 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Trang Chủ", "Home", "PhongBan")</li>
-                    <li>@Html.ActionLink("Đặt vé", "#", "PhongBan")</li>
-                    <li>@Html.ActionLink("Tuyến xe", "#", "PhongBan")</li>
+                    <li>@Html.ActionLink("Đặt vé", "index", "KhachHang")</li>
+                    <li>@Html.ActionLink("Tuyến xe", "index", "ChuyenXes")</li>
                     <li>@Html.ActionLink("Phòng ban", "Menu", "PhongBan")</li>
                     <li>@Html.ActionLink("Thống kê", "#", "PhongBan")</li>
+
                 </ul>
             </div>
         </div>
     </div>
-    <div class="container body-content">
+    <div id="wrapper">
         @RenderBody()
+    </div>
+
+    <div class="container">
         <hr />
         <footer>
             <p>&copy; @DateTime.Now.Year - TOMORROW TEAM</p>
@@ -40,5 +65,39 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)
+
+    <!-- jQuery -->
+    <script src="/assets/AssetsDatve/vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/assets/AssetsDatve/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="/assets/AssetsDatve/vendor/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Flot Charts JavaScript -->
+    <script src="/assets/AssetsDatve/vendor/flot/excanvas.min.js"></script>
+    <script src="/assets/AssetsDatve/vendor/flot/jquery.flot.js"></script>
+    <script src="/assets/AssetsDatve/vendor/flot/jquery.flot.pie.js"></script>
+    <script src="/assets/AssetsDatve/vendor/flot/jquery.flot.resize.js"></script>
+    <script src="/assets/AssetsDatve/vendor/flot/jquery.flot.time.js"></script>
+    <script src="/assets/AssetsDatve/vendor/flot-tooltip/jquery.flot.tooltip.min.js"></script>
+    <script src="/assets/AssetsDatve/data/flot-data.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="/assets/AssetsDatve/dist/js/sb-admin-2.js"></script>
+    <!-- DataTables JavaScript -->
+    <script src="/assets/AssetsDatve/vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="/assets/AssetsDatve/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+    <script src="/assets/AssetsDatve/vendor/datatables-responsive/dataTables.responsive.js"></script>
+    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+    <script>
+        $(document).ready(function () {
+            $('#dataTables-example').DataTable({
+                responsive: true
+            });
+        });
+    </script>
+
 </body>
 </html>

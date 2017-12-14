@@ -15,7 +15,8 @@ namespace DataModel
         public virtual DbSet<PhongBan> PhongBans { get; set; }
         public virtual DbSet<TuyenXe> TuyenXes { get; set; }
         public virtual DbSet<ChuyenXe> ChuyenXes { get; set; }
-
+        public virtual DbSet<KhachHang> KhachHangs { get; set; }
+        public virtual DbSet<DatVe> DatVes { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
