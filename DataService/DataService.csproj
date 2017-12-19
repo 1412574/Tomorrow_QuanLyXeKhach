@@ -43,8 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChiTietDatVeService.cs" />
     <Compile Include="ChuyenXeService.cs" />
     <Compile Include="DatVeService.cs" />
+    <Compile Include="IChiTietDatVeService.cs" />
     <Compile Include="IChuyenXeService.cs" />
     <Compile Include="IDatVeService.cs" />
     <Compile Include="IKhachHangService.cs" />

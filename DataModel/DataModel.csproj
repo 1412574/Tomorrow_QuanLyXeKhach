@@ -56,9 +56,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201712191409205_initall.cs" />
-    <Compile Include="Migrations\201712191409205_initall.Designer.cs">
-      <DependentUpon>201712191409205_initall.cs</DependentUpon>
+    <Compile Include="Migrations\201712191728153_initall.cs" />
+    <Compile Include="Migrations\201712191728153_initall.Designer.cs">
+      <DependentUpon>201712191728153_initall.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ChiTietDatVe.cs" />
@@ -80,8 +80,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201712191409205_initall.resx">
-      <DependentUpon>201712191409205_initall.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712191728153_initall.resx">
+      <DependentUpon>201712191728153_initall.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -35,27 +35,43 @@ namespace QuanLyXeKhach.Controllers
 
         public ActionResult Add()
         {
+            IList<ChuyenXe> listChuyenXe = new List<ChuyenXe>();
+            listChuyenXe = _serviceSX.XemChuyenXe();
+            List<SelectListItem> listMaChuyenXe = new List<SelectListItem>();
+            foreach (var cx in listChuyenXe)
+            {
+                SelectListItem select = new SelectListItem
+                {
+                    Value = cx.MaChuyenXe.ToString(),
+                    Text = cx.TenChuyenXe.ToString()
+                };
+                listMaChuyenXe.Add(select);
+            }
+            int firstChuyenXeId = listChuyenXe.First().MaChuyenXe;
+            IList<int> gheTrong = new List<int>();
+            gheTrong = _serviceSX.danhSachGheTrong(firstChuyenXeId);
+
+            IList<SelectListItem> gheTrongSelect = this.createOptionsForSelectFromList<int>(gheTrong);
+            ViewBag.listMaChuyenXe = listMaChuyenXe;
+            ViewBag.gheTrongSelect = gheTrongSelect;
             return View();
         }
 
-        public ActionResult ThemDatVe(DatVe dv)
+        public JsonResult LayGheTrongByChuyenXe(int id)
         {
-            logger.Info("Start controller....");
+            ChuyenXe cx = _serviceSX.LayChuyenXe(id);
+            IList<int> gheTrong = new List<int>();
+            gheTrong = _serviceSX.danhSachGheTrong(cx.MaChuyenXe);
 
-            if(dv.ChuyenXe == null) return Content("Chuyến xe phải tồn tại");
-            if(dv.KhachHang == null) return Content("Khách hàng phải tồn tại");
+            object[] result = new object[2];
+            result[0] = gheTrong;
+            result[1] = cx.TuyenXe.GiaVe;
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
 
-            int status = _service.themDatVe(dv);
-            if (status == 0)
-            {
-                logger.Info("Status: Success");
-                return RedirectToAction("index", "DatVe");
-            }
-            else
-            {
-                logger.Info("Status: Fail");
-                return Content("Thêm thất bại");
-            }
+        public ActionResult ThemDatVe()
+        {
+            return RedirectToAction("index", "DatVe");
         }
 
         public ActionResult Edit(int id)
@@ -103,6 +119,25 @@ namespace QuanLyXeKhach.Controllers
                 logger.Info("Status: Fail");
                 return Content("Xóa thất bại");
             }
+        }
+       
+        private IList<SelectListItem> createOptionsForSelectFromList<T>(IList<T> list)
+        {
+            IList<SelectListItem> listItems = new List<SelectListItem>();
+            if(typeof(T) == typeof(int))
+            {
+                foreach(var item in list)
+                {
+                    SelectListItem select = new SelectListItem
+                    {
+                        Value = item.ToString(),
+                        Text = item.ToString()
+                    };
+                    listItems.Add(select);
+                }
+               
+            }
+            return listItems;
         }
     }
 }

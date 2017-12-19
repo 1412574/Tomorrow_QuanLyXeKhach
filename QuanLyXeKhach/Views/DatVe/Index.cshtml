@@ -42,8 +42,8 @@
                                 @{i++; }
                                 <td>@Html.DisplayFor(modelItem => item.maDatVe)</td>
                                 <td>@Html.DisplayFor(modelItem => item.maChuyenXe)</td>
-                                <td>@Html.DisplayFor(modelItem => item.soGhe)</td>
-                                <td>@Html.DisplayFor(modelItem => item.giaVe)</td>
+                                <td>@item.danhSachGhe()</td>
+                                <td>@item.ChuyenXe.TuyenXe.GiaVe</td>
                                 <td>@Html.DisplayFor(modelItem => item.maKhachHang)</td>
                                 <td>@Html.DisplayFor(modelItem => item.trangThai)</td>
                                 <td>

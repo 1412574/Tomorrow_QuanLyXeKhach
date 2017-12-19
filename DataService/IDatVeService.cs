@@ -10,7 +10,6 @@ namespace DataService
     {
         int themDatVe(T t);
         IList<T> xemDatVe();
-
         T layDatVe(int id);
         int xoaDatVe(int id);
         int capnhatDatVe(T t);

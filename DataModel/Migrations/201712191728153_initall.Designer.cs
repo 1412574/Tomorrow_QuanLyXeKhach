@@ -13,7 +13,7 @@ namespace DataModel.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201712191409205_initall"; }
+            get { return "201712191728153_initall"; }
         }
         
         string IMigrationMetadata.Source
