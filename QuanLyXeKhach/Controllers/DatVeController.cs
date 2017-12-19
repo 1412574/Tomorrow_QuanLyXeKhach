@@ -69,8 +69,19 @@ namespace QuanLyXeKhach.Controllers
             return Json(result, JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult ThemDatVe()
+        public ActionResult ThemDatVe(FormCollection forms)
         {
+            int maChuyenXe = Int32.Parse(forms["ChuyenXe"]);
+            double giaVe = Double.Parse(forms["giave"]);
+            string soDienThoai = forms["sodienthoai"];
+            string tenkhachhang = forms["tenKhachHang"];
+            string[] soGheTemp = forms["soghes[]"].Split(',');
+            IList<int> soGhe = new List<int>();
+            for(int i = 0; i < soGheTemp.Length; i++)
+            {
+                soGhe.Add(Int32.Parse(soGheTemp[i]));
+            }
+
             return RedirectToAction("index", "DatVe");
         }
 
