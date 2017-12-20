@@ -90,5 +90,20 @@ namespace DataService
             }
             return ret;
         }
+
+        public KhachHang layKhachHangBySoDienThoai(string sdt, string tenKh)
+        {
+            IList<KhachHang> khachHangs = this.xemKhachHang();
+            foreach (KhachHang kh in khachHangs)
+            {
+                if (kh.soDienThoai == sdt)
+                    return kh;
+            }
+            KhachHang khachHang = new KhachHang();
+            khachHang.soDienThoai = sdt;
+            khachHang.tenKhachHang = tenKh;
+            this.themKhachHang(khachHang);
+            return khachHang;
+        }
     }
 }

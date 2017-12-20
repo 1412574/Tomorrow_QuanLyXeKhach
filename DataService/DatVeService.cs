@@ -57,7 +57,7 @@ namespace DataService
                 list = repository.GetAll().ToList();
                 for (int i = 0; i < list.Count(); i++)
                 {
-                    if (list[i].maKhachHang == id)
+                    if (list[i].maDatVe == id)
                     {
                         repository.Delete(list[i]);
                         unitofWork.SaveChange();

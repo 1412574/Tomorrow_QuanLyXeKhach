@@ -22,9 +22,8 @@
         public double? tongTien { get; set; }
 
         public DateTime? ngayDat { get; set; }
-
-        [StringLength(20)]
-        public string trangThai { get; set; }
+        
+        public bool trangThai { get; set; }
         
         public virtual ICollection<ChiTietDatVe> ChiTietDatVes { get; set; }
 

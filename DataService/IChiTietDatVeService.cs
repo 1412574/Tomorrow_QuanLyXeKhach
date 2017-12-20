@@ -8,6 +8,7 @@ namespace DataService
 {
     public interface IChiTietDatVeService<T> where T:class
     {
-       
+        int themChiTietDatVe(T t);
+        int xoaChiTietDatVe(int id);
     }
 }
