@@ -26,9 +26,9 @@
                                 <th>Mã vé</th>
                                 <th>Chuyến xe</th>
                                 <th>Số ghế</th>
-                                <th>Giá vé</th>
+                                <th>Tổng tiền</th>
                                 <th>Khách Hàng</th>
-                                <th>Trạng thái</th>
+                                <th>Thanh toán</th>
                                 <th>Lựa chọn</th>
                             </tr>
                         </thead>
@@ -42,16 +42,17 @@
                                 @{i++; }
                                 <td>@Html.DisplayFor(modelItem => item.maDatVe)</td>
                                 <td>@Html.DisplayFor(modelItem => item.maChuyenXe)</td>
-                                <td>@Html.DisplayFor(modelItem => item.soGhe)</td>
-                                <td>@Html.DisplayFor(modelItem => item.giaVe)</td>
-                                <td>@Html.DisplayFor(modelItem => item.maKhachHang)</td>
+                                <td>@item.danhSachGhe()</td>
+                                <td>@item.tongTien</td>
+                                <td>@item.KhachHang.tenKhachHang</td>
                                 <td>@Html.DisplayFor(modelItem => item.trangThai)</td>
                                 <td>
                                     @Html.ActionLink("Edit", "Edit", new { id = item.maDatVe }) |
-                                    @Html.ActionLink("Delete", "Delete", new { id = item.maDatVe })
+                                    @Html.ActionLink("Delete", "Delete", new { id = item.maDatVe }) |
+                                    @Html.ActionLink("Cập nhật thanh toán", "ThanhToan", new { id = item.maDatVe })
                                 </td>
                             </tr>
-                            }
+                                    }
 
                         </tbody>
                     </table>
@@ -60,14 +61,22 @@
                 </div>
                 <!-- /.panel-body -->
                 <div style="padding-left: 10px; padding-bottom: 10px">
-                    <input type="button" class="btn btn-lg btn-info" value="Thêm Đặt vé" onclick="location.href='@Url.Action("Add","DatVe")'" />
+                    <input type="button" class="btn btn-lg btn-info" value="Thêm Đặt vé" onclick="location.href='@Url.Action("Add", "DatVe")'" />
                 </div>
             </div>
             <!-- /.panel -->
         </div>
         <!-- /.col-lg-12 -->
     </div>
-
+    <script>
+        @{
+            string message = TempData["Message"] as string;
+            if (message != null)
+            {
+               <text>toastr.info('@message');</text>
+            }
+        }
+    </script>
     <!-- /.row -->
 </div>
 <!-- /#page-wrapper -->

@@ -16,9 +16,7 @@ namespace DataModel
         }
 
         [Key]
-        public int MaChuyenXe { get; set; }
-
-        public int MaTuyenXe { get; set; }
+        public int MaChuyenXe { get; set; }   
 
         public string TenChuyenXe { get; set; }
 
@@ -28,6 +26,7 @@ namespace DataModel
 
         public virtual ICollection<DatVe> DatVes { get; set; }
 
+        public int MaTuyenXe { get; set; }
         public virtual TuyenXe TuyenXe { get; set; }
 
     }

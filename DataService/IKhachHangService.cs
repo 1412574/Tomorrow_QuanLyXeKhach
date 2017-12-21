@@ -14,5 +14,6 @@ namespace DataService
         T layKhachHang(int id);
         int xoaKhachHang(int id);
         int capnhatKhachHang(T t);
+        T layKhachHangBySoDienThoai(string sdt, string tenKh);
     }
 }

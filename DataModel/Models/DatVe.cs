@@ -16,22 +16,31 @@
 
         [Key]
         public int maDatVe { get; set; }
-
-        public int? maChuyenXe { get; set; }
-
+ 
         public int? maKhachHang { get; set; }
 
         public double? tongTien { get; set; }
 
         public DateTime? ngayDat { get; set; }
-
-        [StringLength(20)]
-        public string trangThai { get; set; }
-
+        
+        public bool trangThai { get; set; }
+        
         public virtual ICollection<ChiTietDatVe> ChiTietDatVes { get; set; }
 
+        public int maChuyenXe { get; set; }
         public virtual ChuyenXe ChuyenXe { get; set; }
 
         public virtual KhachHang KhachHang { get; set; }
+
+        public string danhSachGhe()
+        {
+            string result = "";
+            foreach (ChiTietDatVe c in this.ChiTietDatVes)
+            {
+                result += c.soGhe.ToString();
+                result += ",";
+            }
+            return result.TrimEnd(',');
+        }
     }
 }

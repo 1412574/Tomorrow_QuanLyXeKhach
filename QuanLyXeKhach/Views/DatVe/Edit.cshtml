@@ -22,45 +22,33 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-6">
-                            @using (Html.BeginForm("CapNhatDatVe", "DatVe", FormMethod.Get))
+                            @using (Html.BeginForm("CapNhatDatVe", "DatVe", new { id = Model.maDatVe }, FormMethod.Post))
                             {
                                 @Html.AntiForgeryToken()
 
-                            <form role="form">
-                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                                @Html.HiddenFor(model => model.maDatVe)
+                                <form role="form">
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    @Html.HiddenFor(model => model.maDatVe)
 
-                                <div class="form-group">
-                                    <label>Mã chuyến xe:</label>
-                                    @Html.TextBoxFor(model => model.maChuyenXe, new { @class = "form-control" })
-                                </div>
+                                    <div class="form-group">
+                                        <label for="ChuyenXe">Mã chuyến xe</label>
+                                        @Html.DropDownListFor(model => model.ChuyenXe, (IEnumerable<SelectListItem>)ViewBag.listMaChuyenXe, new { @class = "form-control", @required = "required" })
+                                    </div>
 
-                               
 
-                                <div class="form-group">
-                                    <label>Số ghế:</label>
-                                    @Html.TextBoxFor(model => model.soGhe, new { @class = "form-control" })
+                                    <div class="form-group">
+                                        <label for="soghes__">Số ghế</label><br />
+                                        <select id="soghes__" name="soghes[]" class="form-control" required multiple></select>
+                                    </div>
 
-                                </div>
-                                <div class="form-group">
-                                    <label>Giá vé:</label>
-                                    @Html.TextBoxFor(model => model.giaVe, new { @class = "form-control" })
+                                    <div class="form-group">
+                                        <label for="giave">Giá vé</label>
+                                        <input type="text" name="giave" class="form-control" id="giave" required>
+                                    </div>
 
-                                </div>
+                                    <button type="submit" class="btn btn-lg btn-success">Lưu cập nhật</button>
 
-                                <div class="form-group">
-                                    <label>Mã khách hàng:</label>
-                                    @Html.TextBoxFor(model => model.maKhachHang, new { @class = "form-control" })
-
-                                </div>
-                                <div class="form-group">
-                                    <label>Trạng thái vé:</label>
-                                    @Html.TextBoxFor(model => model.trangThai, new { @class = "form-control" })
-                                    <p class="help-block">"Đã thanh toán" hoặc "Chưa thanh toán"</p>
-                                </div>
-                                <button type="submit" class="btn btn-lg btn-success">Lưu cập nhật</button>
-
-                            </form>
+                                </form>
                             }
                         </div>
 
@@ -73,6 +61,57 @@
         </div>
         <!-- /.col-lg-12 -->
     </div>
+   
+    <script type="text/javascript">
+        var soGheTrong = $('#soghes__');
+        var chuyenXe = $('#ChuyenXe');
+        chuyenXe.val(@ViewBag.selected);
+        var selections = @ViewBag.selections;
+        soGheTrong.select2();
+        for (var i = 0; i < selections.length; i++) {
+            var opt = '<option value=" ' + selections[i] + '" selected> ' + selections[i] + ' </option>';
+            soGheTrong.append(opt);
+        }
+        
+        chuyenXe.on('change', function (e) {
+            var val = $(this).val();
+            changeSoGheTrong(soGheTrong, val);
+        });
+        
+        changeSoGheTrong(soGheTrong, chuyenXe.val(), false);
+
+        function changeSoGheTrong(element, val, flg = true) {
+            var getUrl = '/DatVe/LayGheTrongByChuyenXe/' + val;
+            $.ajax({
+                url: getUrl,
+                type: "GET",
+                headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json"
+                }
+            })
+            .done(function (data) {
+                //element.val(null).trigger('change'); 
+                if (flg) {
+                    soGheTrong.select2('destroy');
+                    soGheTrong.html('');
+                }
+                
+                var items = [];
+                gheTrong = data[0] || [];
+                for (var i = 0; i < gheTrong.length; i++) {
+                    soGheTrong.append("<option value='" + gheTrong[i] + "'> " + gheTrong[i] + " </option>");
+                }
+
+                soGheTrong.select2()
+                $("#giave").val(data[1]);
+            })
+            .fail(function (error) {
+                console.log(error);
+            });
+        }
+    </script>
+    <!-- /.row --
     <!-- /.row -->
 </div>
 <!-- /#page-wrapper -->

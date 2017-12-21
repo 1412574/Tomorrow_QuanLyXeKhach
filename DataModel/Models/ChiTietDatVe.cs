@@ -15,12 +15,12 @@ namespace DataModel
         [Key]
         public int maCTDV { get; set; }
 
-        public int maDatVe { get; set; }
-
         public double? giaTien { get; set; }
 
-        public int? soGhe { get; set; }
+        public int soGhe { get; set; }
 
+        // FK
+        public int maDatVe { get; set; }
         public virtual DatVe DatVe { get; set; }
     }
 }

@@ -32,6 +32,8 @@ namespace DataService
             return ret;
         }
 
+
+
         public int ThemChuyenXe(ChuyenXe chuyenXe)
         {
             logger.Info("Start them chuyen xe method");
@@ -70,5 +72,24 @@ namespace DataService
             IRepository<ChuyenXe> repository = unitofWork.Repository<ChuyenXe>();
             return repository.GetById(id);
         }
+
+        public List<int> danhSachGheTrong(int id)
+        {
+            List<int> ghe = Enumerable.Range(1, 50).ToList<int>();
+            ChuyenXe chuyenXe = LayChuyenXe(id);
+            ICollection<DatVe> datVes = chuyenXe.DatVes;
+            foreach (var datVe in datVes)
+            {
+                ICollection<ChiTietDatVe> ctdvs = datVe.ChiTietDatVes;
+                foreach(var ctdv in ctdvs) {
+                    if(ghe.Contains(ctdv.soGhe))
+                    {
+                        ghe.Remove(ctdv.soGhe);
+                    }
+                }
+            }
+            return ghe;
+        }
+
     }
 }

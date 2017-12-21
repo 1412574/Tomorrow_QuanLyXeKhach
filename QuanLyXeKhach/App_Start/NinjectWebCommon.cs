@@ -68,6 +68,7 @@ namespace QuanLyXeKhach.App_Start
             kernel.Bind<ITuyenXeService<TuyenXe>>().To<TuyenXeService>();
             kernel.Bind<IKhachHangService<KhachHang>>().To<KhachHangService>();
             kernel.Bind<IDatVeService<DatVe>>().To<DatVeService>();
+            kernel.Bind<IChiTietDatVeService<ChiTietDatVe>>().To<ChiTietDatVeService>();
         }
     }
 }
