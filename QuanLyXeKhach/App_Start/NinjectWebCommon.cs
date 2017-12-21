@@ -66,7 +66,10 @@ namespace QuanLyXeKhach.App_Start
             kernel.Bind<IPhongBanService<PhongBan>>().To<PhongBanService>();
             kernel.Bind<IChuyenXeService<ChuyenXe>>().To<ChuyenXeService>();
             kernel.Bind<ITuyenXeService<TuyenXe>>().To<TuyenXeService>();
-
+            kernel.Bind<INhanVienService<NhanVien>>().To<NhanVienService>();
+            kernel.Bind<IVaiTroService<VaiTro>>().To<VaiTroService>();
+            kernel.Bind<ITrangThaiNVService<TrangThaiNV>>().To<TrangThaiNVService>();
+            kernel.Bind<ITaiKhoanNVService<TaiKhoanNV>>().To<TaiKhoanNVService>();
         }
     }
 }

@@ -1,0 +1,35 @@
+﻿@model DataModel.VaiTro
+<div class="container">
+    <h3>Bạn có chắc chắn muốn xóa?</h3>
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                Tên Vai Trò
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.tenVT)
+            </dd>
+
+            <dt>
+                Mô Tả
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.moTaVT)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Xóa" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "XemVaiTro")
+            </div>
+        }
+    </div>
+</div>

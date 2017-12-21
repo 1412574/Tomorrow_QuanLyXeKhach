@@ -1,0 +1,29 @@
+﻿@model IEnumerable<DataModel.VaiTro>
+<div class="container">
+    <p>
+        @Html.ActionLink("Thêm", "ThemVaiTro")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                Vai Trò
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tenVT)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.maVT }) |
+                    @Html.ActionLink("Details", "XemVaiTroNV", new { id = item.maVT }) |
+                    @Html.ActionLink("Delete", "XacNhanXoa", new { id = item.maVT })
+                </td>
+            </tr>
+        }
+
+    </table>
+    </div>

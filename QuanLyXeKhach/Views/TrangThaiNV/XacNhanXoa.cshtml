@@ -1,0 +1,35 @@
+﻿@model DataModel.TrangThaiNV
+<div class="container">
+    <h3>Bạn có chắc chắn muốn xóa?</h3>
+    <div>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                Tên Trạng Thái
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.tenTT)
+            </dd>
+
+            <dt>
+                Mô Tả
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.moTaTT)
+            </dd>
+
+        </dl>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Xóa" class="btn btn-default" /> |
+                @Html.ActionLink("Back to List", "XemTrangThai")
+            </div>
+        }
+    </div>
+    </div>

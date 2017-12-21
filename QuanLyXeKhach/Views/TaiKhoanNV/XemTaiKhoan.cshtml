@@ -1,0 +1,35 @@
+﻿@model IEnumerable<DataModel.TaiKhoanNV>
+<div class="container">
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.matKhau)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.maNV)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.matKhau)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.maNV)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.maTK }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.maTK }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.maTK })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

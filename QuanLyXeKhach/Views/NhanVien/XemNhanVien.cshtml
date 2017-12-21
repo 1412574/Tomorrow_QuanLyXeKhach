@@ -1,0 +1,71 @@
+﻿@model IEnumerable<DataModel.NhanVien>
+<div class="container main-content">
+    <p>
+        @Html.ActionLink("Thêm Mới Nhân Viên", "Create")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                Họ Tên
+            </th>
+            <th>
+                CCCD
+            </th>
+            <th>
+                Bằng Cấp
+            </th>
+            <th>
+                SĐT
+            </th>
+            <th>
+                Địa Chỉ
+            </th>
+            <th>
+                Lương Căn Bản
+            </th>
+            <th>
+                Trạng Thái
+            </th>
+            <th>
+                Vai Trò
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.hoTen)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.cCCD)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.bangCap)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.sDT)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.diaChi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.luongCanBan)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.VaiTro.tenVT)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TrangThai.tenTT)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.maNV }) |
+                    @Html.ActionLink("Details", "XemNhanVienNV", new { id = item.maNV }) |
+                    @Html.ActionLink("Delete", "XacNhanXoa", new { id = item.maNV })
+                </td>
+            </tr>
+        }
+
+    </table>
+    </div>

@@ -1,0 +1,29 @@
+﻿@model DataModel.VaiTro
+<div class="container">
+    <div>
+        <h4>Chi Tiết Vai Trò</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                Tên Vai Trò
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.tenVT)
+            </dd>
+
+            <dt>
+                Mô Tả
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.moTaVT)
+            </dd>
+
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.maVT }) |
+        @Html.ActionLink("Back to List", "XemVaiTro")
+    </p>
+</div>
