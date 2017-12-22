@@ -1,0 +1,299 @@
+﻿
+@{
+	ViewBag.Title = "Quản Lý Nhân Sự";
+	Layout = "~/Views/NhanSu/Shared/_Layout.cshtml";
+}
+
+
+@Styles.Render("~/Content/NhanSu/css/side-bar")
+@Styles.Render("~/Content/NhanSu/css/tab-content")
+<div class="container-fluid">
+	<div class="btn-group-vertical col-md-3 ">
+		<!---------------------------------------------------------------------------->
+		<div class="container-fluid" style="">
+			<div class="row">
+				<div id="sidebar" class="">
+					<h4>
+						NHÂN VIÊN
+					</h4>
+					<ul class="nav nav-pills nav-stacked">
+						<li><a id="lQLNV" class="tablink" href="#" onclick="openPage('QLNV', this)"><font color="black">Quản lý nhân viên</font></a></li>
+						<li><a id="lQLCV" class="tablink" href="#" onclick="openPage('QLCV', this)"><font color="black">Quản lý công việc</font></a></li>
+						<li><a id="lPC" class="tablink" href="#" onclick="openPage('PC', this)"><font color="black">Phân công</font></a></li>
+						<li><a id="lCC" class="tablink" href="#" onclick="openPage('CC', this)"><font color="black">Chấm công</font></a></li>
+					</ul>
+					<br />
+					<h4>
+						ỨNG VIÊN
+					</h4>
+					<ul class="nav  nav-stacked ">
+						<li><a id="lQLUV" class="tablink" href="~/UngVien/QuanLyUngVien" onclick="openPage('QLUV', this)"><font color="black">Quản lý ứng viên</font></a></li>
+						<li><a id="lLPV" class="tablink" href="#" onclick="openPage('LPV', this)"><font color="black">Lịch phỏng vấn</font></a></li>
+					</ul>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+	<div class="col-md-9" style="padding:0;   max-width: none !important; min-width: 600px !important;">
+		<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'>
+		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+		<div id="QLNV" class="tabcontent">
+			<div class="inbox-head">
+				<h3 class="col-md-4">Quản lý nhân viên</h3>
+				<form action="#" class="pull-right col-md-5">
+					<div class="input-append">
+						<input type="text" class="sr-input" placeholder="Tìm kiếm">
+						<button class="btn sr-btn" type="button"><i class="fa fa-search"></i></button>
+					</div>
+				</form>
+			</div>
+			<!------------------------------------------->
+			<div class="">
+				<aside class="lg-side">
+					<button class="btn btn-default pull-right" style="margin-top:20px;" data-toggle="modal" data-target="#item_add"><i class="glyphicon glyphicon-plus"></i> Thêm nhân viên</button>
+
+					<div class="inbox-body">
+						<div class="mail-option">
+							<table class="table table-header">
+								<tbody style="background-color: #f0f0f0;">
+									<tr class="unread">
+										<td class="col-sm-2 align-top">Mã nhân viên</td>
+										<td class="view-message col-sm-3">Họ và tên</td>
+										<td class="col-sm-2">
+											<div class="text-center">Tình trạng</div>
+											<div class="text-center">
+												<div id="checkbutton" class="btn-group" data-toggle="buttons">
+													<label class="checkbutton btn btn-xs done active filter show" data-target="done" onclick="filter(this)"><i class="glyphicon glyphicon-stop"></i></label>
+													<label class="checkbutton btn btn-xs doing active filter show" data-target="doing" onclick="filter(this)"><i class="glyphicon glyphicon-stop"></i></label>
+													<label class="checkbutton btn btn-xs late active filter show" data-target="late" onclick="filter(this)"><i class="glyphicon glyphicon-stop"></i></label>
+													<label class="checkbutton btn btn-xs fail active filter show" data-target="fail" onclick="filter(this)"><i class="glyphicon glyphicon-stop"></i></label>
+												</div>
+											</div>
+										</td>
+										<td class="view-message  text-left col-sm-2">Chức vụ</td>
+										<td class="col-sm-1"></td>
+									</tr>
+								</tbody>
+							</table>
+							<table class="table table-inbox table-hover table-inside">
+								<tbody>
+									<tr data-status="done">
+										<td data-toggle="modal" data-target="#item_view" class="col-sm-2 view-message  dont-show"><h5>NV0001</h5></td>
+										<td data-toggle="modal" data-target="#item_view" colspan="3" class="col-sm-3 view-message"><h5>Tên của nhân viên</h5></td>
+										<td data-toggle="modal" data-target="#item_view" class="col-sm-2"><h4 style="margin-top: 5px;"><span class="col-sm-12 label label-success">Đang làm</span></h4></td>
+										<td data-toggle="modal" data-target="#item_view" class="col-sm-2 view-message  text-left"><h5>Chức vụ</h5></td>
+										<td class="col-sm-1 no-pointer">
+											<span class="btn-group pull-right" style="margin-top: 5px">
+												<button class="btn btn-warning btn-xs" data-toggle="modal" data-target="#item_edit"><i class="glyphicon glyphicon-edit"></i></button>
+												<button class="btn btn-danger btn-xs" ; data-toggle="modal" data-target="#item_remove"><i class="glyphicon glyphicon-remove"></i></button>
+											</span>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+					<div class="text-center">
+						<ul class="pagination">
+							<li class="disabled"><span>«</span></li>
+							<li class="active"><span>1</span></li>
+							<li><a href="#">2</a></li>
+							<li><a href="#">3</a></li>
+							<li><a href="#">4</a></li>
+							<li class="disabled"><span>...</span></li>
+							<li><a href="#">5</a></li>
+							<li><a href="#" rel="next">»</a></li>
+						</ul>
+					</div>
+				</aside>
+			</div>
+			<div class="modal fade item_edit" id="item_edit">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<a href="#" data-dismiss="modal" class="class pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+							<h3 class="modal-title">Cập nhật thông tin nhân viên </h3>
+						</div>
+						<div class="modal-body">
+							<div class="row">
+								<div class="col-md-4 item_img">
+									<img src="http://www.bvctch.vn/vnt_upload/about/thumbs/270_crop__Bsvoduylinh.jpg" class="img-responsive">
+								</div>
+								<div class="col-md-8 item_content">
+									<form>
+										<h4>
+											<span>Mã nhân viên: NV0001</span>
+											<!--span class="input-group-btn">
+												<button class="btn btn-danger btn-xs pull-right"; data-toggle="modal" data-target="#item_view"><i class="glyphicon glyphicon-remove" ></i></button>
+											</span-->
+										</h4>
+										<div class="container">
+											<div class="row">
+												<div class="col-md-5">
+													<div class="panel">
+														<div class="panel-body">
+															<label>Chức vụ</label><input type='text' class='form-control' value=''>
+															<label style="margin-top:15px;">Tinh trạng</label><input type='text' class='form-control' value=''>
+															<label style="margin-top:15px;">Họ và tên</label><input type='text' class='form-control' value=''>
+															<!--label style="margin-top:15px;">Giới tính</label><input type='text' class='form-control'  value='' >
+															<label style="margin-top:15px;">CMND/CCCD :</label><input type='text' class='form-control'  value='' >
+															<label style="margin-top:15px;">Số diện thoại</label><input type='text' class='form-control'  value='' >
+															<label style="margin-top:15px;">Địa chỉ</label><input type='text' class='form-control'  value='' -->
+															<label style="margin-top:15px;">Mô tả bản thân</label><textarea class="form-control " style="resize: vertical;" rows="2" id="comment"></textarea>
+															<div class="text-center" style="margin-top:15px;"><button class="btn btn-primary btn-sx" type="button"><i class="glyphicon glyphicon-save"></i> Save</button></div>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade item_add" id="item_add">
+				<div class="modal-dialog">
+					<div class="modal-content col-md-10" @*style="width:900px;*@ margin:0 auto;">
+						<div class="modal-header">
+							<a class="class pull-right" href="#" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span></a>
+							<h3 class="modal-title">Thêm nhân viên </h3>
+						</div>
+						<div class="modal-body">
+							<div>
+								@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+							</div>
+							<div class="row">
+								<div class="form-group">
+									<div class="container col-md-12 item_content panel-body">
+										<div class="panel-body col-md-6">
+											<label>Chức vụ</label>
+											<input type='text' class='form-control' value=''>
+										</div>
+										<div class="panel-body col-md-6"><label>Tinh trạng</label><input type='text' class='form-control' value=''> </div>
+										<div class="panel-body col-md-6"><label>Họ và tên</label><input type='text' class='form-control' value=''></div>
+										<div class="panel-body col-md-6"><label>Giới tính</label><input type='text' class='form-control' value=''></div>
+										<div class="panel-body col-md-6"><label>CMND/CCCD :</label><input type='text' class='form-control' value=''></div>
+										<div class="panel-body col-md-6"><label>Số diện thoại</label><input type='text' class='form-control' value=''> </div>
+										<div class="panel-body col-md-12"><label>Địa chỉ</label><input type='text' class='form-control' value=''></div>
+										@*<div class="col-md-6"><label>Mô tả bản thân</label><textarea class="form-control " style="resize: vertical;" rows="2" id="comment"></textarea> </div>*@
+									</div>
+								</div>
+							</div>
+							<div class="text-center" style="margin-top:15px;"><button class="btn btn-primary btn-sx" type="button"><i class="glyphicon glyphicon-plus"></i> Add</button></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="modal fade item_view" id="item_view">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<a href="#" data-dismiss="modal" class="class pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+							<h3 class="modal-title">Thông tin chi tiết nhân viên </h3>
+						</div>
+						<div class="modal-body">
+							<div class="row">
+								<div class="col-md-6 item_img">
+									<img src="http://www.bvctch.vn/vnt_upload/about/thumbs/270_crop__Bsvoduylinh.jpg" class="img-responsive">
+								</div>
+								<div class="col-md-6 item_content">
+									<h4>
+										<span>Mã nhân viên: NV0001</span>
+										<!--span class="input-group-btn">
+											<button class="btn btn-danger btn-xs pull-right"; data-dismiss="modal" data-toggle="modal" data-target="#item_remove"><i class="glyphicon glyphicon-remove" ></i></button>
+											<button class="btn btn-warning btn-xs pull-right"; data-dismiss="modal" data-toggle="modal" data-target= "#item_edit"><i class="glyphicon glyphicon-edit" ></i></button>
+										</span-->
+									</h4>
+									<h5>Chức vụ: <span>Kế toán</span></h5>
+									<p>Tình trạng: Làm việc</p>
+
+									<p>Họ và tên: Tên Của Nhân Viên</p>
+									<p>Bằng cấp: Đại học</p>
+									<p>SĐT: 09111xxxxx</p>
+									<p>Địa chỉ: 227 Nguyễn Văn Cừ - P.2 - Q.5 - Tp.HCM</p>
+									<p>Mô tả bản thân.</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal fade item_remove" id="item_remove">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<a href="#" data-dismiss="modal" class="class pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+							<h3 class="modal-title">Xác nhận</h3>
+						</div>
+						<div class="modal-body">
+							<p>Bạn có thật sự muốn xóa?</p>
+							<div class="row">
+								<div class="col-12-xs text-center">
+									<button class="btn btn-success btn-md col-3-xs">Có</button>
+									<button class="btn btn-danger btn-md col-3-xs">Không</button>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<p>Home is where the heart is..</p>
+
+		</div>
+		<!------------------------------------------->
+	</div>
+
+	<div id="QLCV" class="tabcontent">
+		<h3>News</h3>
+		<p>Some news this fine day!</p>
+	</div>
+
+	<div id="PC" class="tabcontent">
+		<h3>Contact</h3>
+		<p>Get in touch, or swing by for a cup of coffee.</p>
+	</div>
+
+	<div id="CC" class="tabcontent">
+		<h3>About</h3>
+		<p>Who we are and what we do.</p>
+	</div>
+</div>
+@Scripts.Render("~/bundles/NhanSu/Scripts/tab-content")
+
+<script>
+	openPage("QLNV", document.getElementById("lQLNV"));
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

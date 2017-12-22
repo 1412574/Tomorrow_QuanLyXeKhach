@@ -1,0 +1,50 @@
+﻿@model DataModel.ChuyenXe
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ChuyenXe</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TuyenXe.TenTuyenXe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TuyenXe.TenTuyenXe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TenChuyenXe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenChuyenXe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NgayGioChay)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NgayGioChay)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TaiXe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TaiXe)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaChuyenXe }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

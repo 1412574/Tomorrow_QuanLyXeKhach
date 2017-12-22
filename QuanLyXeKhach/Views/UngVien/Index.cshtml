@@ -1,0 +1,58 @@
+﻿@model IEnumerable<DataModel.UngVien>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/NhanSu/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.LichPhongVan.diaDiem)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.hoTen)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.sDT)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.trangThai)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.LichPhongVan.diaDiem)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.hoTen)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.sDT)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.trangThai)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.maUV }) |
+            @Html.ActionLink("Details", "Details", new { id=item.maUV }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.maUV })
+        </td>
+    </tr>
+}
+
+</table>
