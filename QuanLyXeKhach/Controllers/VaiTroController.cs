@@ -86,12 +86,10 @@ namespace QuanLyXeKhach.Controllers
             return View(modelView);
         }
         //POST: Xác nhận xóa vai trò.
-        [HttpPost, ActionName("XacNhanXoa")]
-        [ValidateAntiForgeryToken]
-        public ActionResult XoaVaiTro(int id)
+        public ActionResult XoaVaiTro(VaiTro vaiTro)
         {
             logger.Info("Start controller....");
-            int status = vaiTroService.XoaVaiTro(id);
+            int status = vaiTroService.XoaVaiTro(vaiTro.maVT);
             if (status == 0)
             {
                 logger.Info("Status: Success");

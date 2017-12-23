@@ -80,12 +80,10 @@ namespace QuanLyXeKhach.Controllers
             return View(modelView);
         }
         //POST: Xác nhận xóa một trạng thái.
-        [HttpPost, ActionName("XacNhanXoa")]
-        [ValidateAntiForgeryToken]
-        public ActionResult XoaTrangThaiNV(int id)
+        public ActionResult XoaTrangThaiNV(TrangThaiNV trangThaiNV)
         {
             logger.Info("Start controller....");
-            int status = trangThaiNVService.XoaTrangThaiNV(id);
+            int status = trangThaiNVService.XoaTrangThaiNV(trangThaiNV.maTT);
             if (status == 0)
             {
                 logger.Info("Status: Success");

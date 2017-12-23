@@ -1,35 +1,69 @@
-﻿@model IEnumerable<DataModel.PhongBan>
-<div class="container">
-    <p>
-        @Html.ActionLink("Thêm mới", "Index")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                Tên phòng ban
-            </th>
-            <th>
-                Mô tả
-            </th>
-            <th></th>
-        </tr>
+﻿@{
+    Layout = "~/Views/Shared/_LayoutPhongBan.cshtml";
+}
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.tenPB)
-                </td>
-                @*<td>
-                        @Html.DisplayFor(modelItem => item.moTaPB)
-                    </td>*@
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.maPB }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.maPB }) |
-                    @Html.ActionLink("Delete", "XoaPhongBan", new { id = item.maPB })
-                </td>
-            </tr>
-        }
 
-    </table>
+@model IEnumerable<DataModel.PhongBan>
+
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">QUẢN LÝ PHÒNG BAN</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    Danh sách phòng ban
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Mã Phòng Ban</th>
+                                <th>Tên Phòng Ban</th>
+                                <th>Mô Tả</th>
+                                <th>Lựa chọn</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{int i = 1;}
+                            @foreach (var item in Model)
+                            {
+
+                                <tr class="odd gradeX">
+                                    <td>@i</td>
+                                    @{i++; }
+                                    <td>@Html.DisplayFor(modelItem => item.maPB)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.tenPB)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.moTaPB)</td>
+                                    <td>
+                                        @Html.ActionLink("Cập Nhật", "Edit", new { id = item.maPB }) |
+                                        @Html.ActionLink("Xóa", "XacNhanXoa", new { id = item.maPB })
+                                    </td>
+                                </tr>
+                                        }
+
+                        </tbody>
+                    </table>
+                    <!-- /.table-responsive -->
+
+                </div>
+                <!-- /.panel-body -->
+                <div style="padding-left: 10px; padding-bottom: 10px">
+                    <input type="button" class="btn btn-lg btn-info" value="Thêm Phòng Ban" onclick="location.href='@Url.Action("Index","PhongBan")'" />
+                </div>
+            </div>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+
+    <!-- /.row -->
 </div>
+<!-- /#page-wrapper -->

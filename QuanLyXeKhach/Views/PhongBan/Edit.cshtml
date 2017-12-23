@@ -1,45 +1,64 @@
 ﻿@model DataModel.PhongBan
 
-<div class="container">
-    @using (Html.BeginForm("CapNhatPhongBan", "PhongBan", FormMethod.Post))
-    {
-        @Html.AntiForgeryToken()
 
-        <div class="form-horizontal">
-            <h4>CẬP NHẬT</h4>
-            <hr />
-            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-            @Html.HiddenFor(model => model.maPB)
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutPhongBan.cshtml";
+}
 
-            <div class="form-group">
-                @Html.Label("Tên phòng", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.tenPB, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.tenPB, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                @Html.Label("Mô tả", htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.moTaPB, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.moTaPB, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <div class="form-group">
-                <div class="col-md-offset-2 col-md-10">
-                    <input type="submit" value="Lưu" class="btn btn-default" />
-                </div>
-            </div>
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">CẬP NHẬT THÔNG TIN PHÒNG BAN</h1>
         </div>
-    }
-
-    <div>
-        @Html.ActionLink("Trở lại", "Menu")
+        <!-- /.col-lg-12 -->
     </div>
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    Cập nhật thông tin phòng ban
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            @using (Html.BeginForm("CapNhatPhongBan", "PhongBan", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
 
-    @section Scripts {
-        @Scripts.Render("~/bundles/jqueryval")
-    }
+                                <form role="form">
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    @Html.HiddenFor(model => model.maPB)
+
+                                    <div class="form-group">
+                                        <label>Tên Vai Trò:</label>
+                                        @Html.TextBoxFor(model => model.tenPB, new { @class = "form-control" })
+                                    </div>
+
+
+
+                                    <div class="form-group">
+                                        <label>Mô Tả:</label>
+                                        @Html.TextBoxFor(model => model.moTaPB, new { @class = "form-control" })
+
+                                    </div>
+
+                                    <button type="submit" class="btn btn-lg btn-success">Lưu cập nhật</button>
+
+                                </form>
+                            }
+                        </div>
+
+                    </div>
+                    <!-- /.row (nested) -->
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
 </div>
+<!-- /#page-wrapper -->

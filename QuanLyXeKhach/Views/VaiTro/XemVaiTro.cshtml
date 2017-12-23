@@ -1,29 +1,69 @@
-﻿@model IEnumerable<DataModel.VaiTro>
-<div class="container">
-    <p>
-        @Html.ActionLink("Thêm", "ThemVaiTro")
-    </p>
-    <table class="table">
-        <tr>
-            <th>
-                Vai Trò
-            </th>
-            <th></th>
-        </tr>
+﻿@{
+    Layout = "~/Views/Shared/_LayoutNhanVien.cshtml";
+}
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.tenVT)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.maVT }) |
-                    @Html.ActionLink("Details", "XemVaiTroNV", new { id = item.maVT }) |
-                    @Html.ActionLink("Delete", "XacNhanXoa", new { id = item.maVT })
-                </td>
-            </tr>
-        }
 
-    </table>
+@model IEnumerable<DataModel.VaiTro>
+
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">QUẢN LÝ VAI TRÒ</h1>
+        </div>
+        <!-- /.col-lg-12 -->
     </div>
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-success">
+                <div class="panel-heading">
+                    Danh sách vai trò
+                </div>
+                <!-- /.panel-heading -->
+                <div class="panel-body">
+                    <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>Mã Vai Trò</th>
+                                <th>Tên Vai Trò</th>
+                                <th>Mô Tả</th>
+                                <th>Lựa chọn</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @{int i = 1;}
+                            @foreach (var item in Model)
+                            {
+
+                                <tr class="odd gradeX">
+                                    <td>@i</td>
+                                    @{i++; }
+                                    <td>@Html.DisplayFor(modelItem => item.maVT)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.tenVT)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.moTaVT)</td>
+                                    <td>
+                                        @Html.ActionLink("Cập Nhật", "Edit", new { id = item.maVT }) |
+                                        @Html.ActionLink("Xóa", "XacNhanXoa", new { id = item.maVT })
+                                    </td>
+                                </tr>
+                                        }
+
+                        </tbody>
+                    </table>
+                    <!-- /.table-responsive -->
+
+                </div>
+                <!-- /.panel-body -->
+                <div style="padding-left: 10px; padding-bottom: 10px">
+                    <input type="button" class="btn btn-lg btn-info" value="Thêm Vai Trò" onclick="location.href='@Url.Action("ThemVaiTro","VaiTro")'" />
+                </div>
+            </div>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+
+    <!-- /.row -->
+</div>
+<!-- /#page-wrapper -->

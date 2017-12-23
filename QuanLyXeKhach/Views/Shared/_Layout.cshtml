@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
@@ -25,12 +26,28 @@
 
     <script src="/assets/js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
    @* @Styles.Render("~/Content/css")*@
-    <style>
-        /*body {
-            min-height: 75rem;
-            padding-top: 12rem;
-        }*/
-    </style>
+    <!-- Bootstrap Core CSS -->
+    <link href="/assets/AssetsDatve/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="/assets/AssetsDatve/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/assets/AssetsDatve/dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="/assets/AssetsDatve/vendor/morrisjs/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="/assets/AssetsDatve/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- DataTables CSS -->
+    <link href="/assets/AssetsDatve/vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="/assets/AssetsDatve/vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="/assets/AssetsLogin/css/style.css">
+
 
 </head>
 <body>
@@ -47,31 +64,34 @@
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    <li class="active">@Html.ActionLink("Trang Chủ", "Home", "PhongBan")</li>
-                    <li>@Html.ActionLink("Đặt vé", "#", "PhongBan")</li>
-                    <li>@Html.ActionLink("Nhân Viên", "XemNhanVien", "NhanVien")</li>
-                    <li>@Html.ActionLink("Trạng Thái", "XemTrangThai", "TrangThaiNV")</li>
-                    <li>@Html.ActionLink("Vai trò", "XemVaiTro", "VaiTro")</li>
-                    <li class="dropdown">
-                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Pages <i class="icon-angle-down"></i></a>
-                        <ul class="dropdown-menu">
-                            <li><a href="#">Dropdown Menu 1</a></li>
-                            <li><a href="#">Dropdown Menu 2</a></li>
-                            <li><a href="#">Dropdown Menu 3</a></li>
-                            <li><a href="#">Dropdown Menu 4</a></li>
-                            <li><a href="#">Dropdown Menu 5</a></li>
-                            <li class="divider"></li>
-                            <li><a href="#">Privacy Policy</a></li>
-                            <li><a href="#">Terms of Use</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="blog.html">Blog</a></li>
-                    <li><a href="contact-us.html">Contact</a></li>
+                    @{ 
+                        var session = (QuanLyXeKhach.Common.UserLogin)Session[QuanLyXeKhach.Common.CommonConstants.userName];
+                    }
+
+                    @if (session != null)
+                    {
+                        <li class="active">@Html.ActionLink("Trang Chủ", "Home", "PhongBan")</li>
+                        <li>@Html.ActionLink("Đặt vé", "#", "PhongBan")</li>
+                        <li>@Html.ActionLink("Nhân Viên", "XemNhanVien", "NhanVien")</li>
+                        <li>@Html.ActionLink("Phòng Ban", "Menu", "PhongBan")</li>
+                        <li><a>Online:@session.UserID</a></li>
+                        <li>@Html.ActionLink("Đăng Xuất", "Logout", "TaiKhoanNV")</li>
+                    }
+                    else{ 
+                        <li class="active">@Html.ActionLink("Trang Chủ", "Home", "PhongBan")</li>
+                        <li>@Html.ActionLink("Đặt vé", "#", "PhongBan")</li>
+                        <li>@Html.ActionLink("Nhân Viên", "XemNhanVien", "NhanVien")</li>
+                        <li>@Html.ActionLink("Phòng Ban", "Menu", "PhongBan")</li>
+                        <li>@Html.ActionLink("Đăng Nhập", "Login", "TaiKhoanNV")</li>
+                    }
+                    
                 </ul>
             </div>
         </div>
     </header><!--/header-->
+    <div id="wrapper">
         @RenderBody()
+    </div>
     <!-- Footer -->
     <footer>
         <div class="footer">
@@ -125,5 +145,38 @@
     @*@Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @RenderSection("scripts", required: false)*@
+
+    <!-- jQuery -->
+    <script src="/assets/AssetsDatve/vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/assets/AssetsDatve/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="/assets/AssetsDatve/vendor/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Flot Charts JavaScript -->
+    <script src="/assets/AssetsDatve/vendor/flot/excanvas.min.js"></script>
+    <script src="/assets/AssetsDatve/vendor/flot/jquery.flot.js"></script>
+    <script src="/assets/AssetsDatve/vendor/flot/jquery.flot.pie.js"></script>
+    <script src="/assets/AssetsDatve/vendor/flot/jquery.flot.resize.js"></script>
+    <script src="/assets/AssetsDatve/vendor/flot/jquery.flot.time.js"></script>
+    <script src="/assets/AssetsDatve/vendor/flot-tooltip/jquery.flot.tooltip.min.js"></script>
+    <script src="/assets/AssetsDatve/data/flot-data.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="/assets/AssetsDatve/dist/js/sb-admin-2.js"></script>
+    <!-- DataTables JavaScript -->
+    <script src="/assets/AssetsDatve/vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="/assets/AssetsDatve/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+    <script src="/assets/AssetsDatve/vendor/datatables-responsive/dataTables.responsive.js"></script>
+    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+    <script>
+        $(document).ready(function () {
+            $('#dataTables-example').DataTable({
+                responsive: true
+            });
+        });
+    </script>
 </body>
 </html>

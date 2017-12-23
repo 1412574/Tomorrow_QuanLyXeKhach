@@ -1,6 +1,8 @@
 ﻿using DataModel;
 using DataService;
 using NLog;
+using QuanLyXeKhach.Common;
+using QuanLyXeKhach.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +20,7 @@ namespace QuanLyXeKhach.Controllers
         NhanVien nhanVien;
         TaiKhoanNV taiKhoan;
         MD5 md5Hash;
+
         public TaiKhoanNVController(ITaiKhoanNVService<TaiKhoanNV> taiKhoanNVService, INhanVienService<NhanVien> nhanVienService)
         {
             this.taiKhoanNVService = taiKhoanNVService;
@@ -31,8 +34,19 @@ namespace QuanLyXeKhach.Controllers
         {
             return View();
         }
+        //GET: Login
+        public ActionResult Login()
+        {
+            return View();
+        }
+
+        public ActionResult Logout()
+        {
+            Session.Add(Common.CommonConstants.userName, null);
+            return View("Login");
+        }
         //POST: Login
-        public ActionResult Login(TaiKhoanNV taiKhoanNV)
+        public ActionResult DangNhap(TaiKhoanNV taiKhoanNV)
         {
             if(ModelState.IsValid){
                 string pass = taiKhoanNVService.GetMd5Hash(md5Hash, taiKhoanNV.matKhau);
@@ -43,10 +57,14 @@ namespace QuanLyXeKhach.Controllers
                 {
                     ModelState.AddModelError("", "Tên đăng nhập không đúng.");
                 }
-                else if (taiKhoanNVService.VerifyMd5Hash(md5Hash, nhanVien.cCCD, pass))
+                else if (taiKhoanNVService.VerifyMd5Hash(md5Hash, nhanVien.cCCD, pass) && taiKhoanNVService.VerifyMd5Hash(md5Hash, taiKhoanNV.matKhau, taiKhoan.matKhau))
                 {
-           
-                    return RedirectToAction("Edit", "TaiKhoanNV", new { id = taiKhoanNV.maNV });
+
+                    //return RedirectToAction("Edit", "TaiKhoanNV", new { id = taiKhoanNV.maNV });
+                    var userSession = new Common.PassWord();
+                    userSession.maNV = taiKhoanNV.maNV;
+                    Session.Add(Common.CommonPassword.nhanVien, userSession);
+                    return RedirectToAction("Edit", "TaiKhoanNV"); 
                 }
                 else if (taiKhoanNVService.VerifyMd5Hash(md5Hash, taiKhoanNV.matKhau, taiKhoan.matKhau) != true)
                 {
@@ -54,36 +72,48 @@ namespace QuanLyXeKhach.Controllers
                 }
                 else
                 {
+                    var userSession = new Common.UserLogin();
+                    userSession.UserID = taiKhoanNV.maNV;
+                    Session.Add(Common.CommonConstants.userName, userSession);
                     return RedirectToAction("XemNhanVien", "NhanVien");
                 }
             }
-            return View("Index");
+            return View("Login");
         }
         //GET:
-        public ActionResult Edit(int id)
+        public ActionResult Edit()
         {
-            int a = id;
-            var modelView = taiKhoanNVService.XemTaiKhoanNV(id);
-            return View(modelView);
+            return View();
         }
         //POST:
-        public ActionResult CapNhatTaiKhoanNV(TaiKhoanNV taiKhoanNV)
+        public ActionResult CapNhatTaiKhoanNV(PassWords taiKhoanNV)
         {
             logger.Info("Start controller....");
-            taiKhoanNV.matKhau = taiKhoanNVService.GetMd5Hash(md5Hash, taiKhoanNV.matKhau);
-            int status = taiKhoanNVService.CapNhatTaiKhoan(taiKhoanNV);
-            if (status == 0)
+            if (String.Compare(taiKhoanNV.passWord, taiKhoanNV.passWordCF, true) == 0)
             {
-                logger.Info("Status: Success");
-                return RedirectToAction("Index", "TaiKhoanNV");
+                var session = (PassWord)Session[CommonPassword.nhanVien];
+                int maNV = session.maNV;
+                TaiKhoanNV taiKhoan = new TaiKhoanNV();
+                taiKhoan = taiKhoanNVService.XemTaiKhoanNV(maNV);
+                taiKhoan.matKhau = taiKhoanNVService.GetMd5Hash(md5Hash, taiKhoanNV.passWord);
+                int status = taiKhoanNVService.CapNhatTaiKhoan(taiKhoan);
+                if (status == 0)
+                {
+                    logger.Info("Status: Success");
+                    return RedirectToAction("Login", "TaiKhoanNV");
+                }
+                else
+                {
+                    logger.Info("Status: Fail");
+                    return Content("Thất bại");
+                }
             }
             else
             {
-                logger.Info("Status: Fail");
-                return Content("Thất bại");
+                ModelState.AddModelError("", "Xác nhận mật khẩu sai.");
             }
+            return View("Edit");
         }
-        //
 
     }
 }

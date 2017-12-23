@@ -1,35 +1,61 @@
 ﻿@model DataModel.TrangThaiNV
-<div class="container">
-    <h3>Bạn có chắc chắn muốn xóa?</h3>
-    <div>
-        <hr />
-        <dl class="dl-horizontal">
-            <dt>
-                Tên Trạng Thái
-            </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.tenTT)
-            </dd>
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutNhanVien.cshtml";
+}
 
-            <dt>
-                Mô Tả
-            </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.moTaTT)
-            </dd>
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">XÓA TRẠNG THÁI</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    Bạn thật sự muốn xóa trạng thái này chứ ?
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            @using (Html.BeginForm("XoaTrangThaiNV", "TrangThaiNV", FormMethod.Post))
+                            {
+                                @Html.AntiForgeryToken()
 
-        </dl>
+                                <form role="form">
+                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                    @Html.HiddenFor(model => model.maTT)
 
-        @using (Html.BeginForm())
-        {
-            @Html.AntiForgeryToken()
+                                    <div class="form-group">
+                                        <label>Tên TRạng Thái:</label>
+                                        @Html.TextBoxFor(model => model.tenTT, new { @class = "form-control", @disabled = "disabled" })
 
-            <div class="form-actions no-color">
-                <input type="submit" value="Xóa" class="btn btn-default" /> |
-                @Html.ActionLink("Back to List", "XemTrangThai")
+                                    </div>
+                                    <div class="form-group">
+                                        <label>Mô Tả:</label>
+                                        @Html.TextBoxFor(model => model.moTaTT, new { @class = "form-control" })
+
+                                    </div>
+                                    <button type="submit" class="btn btn-lg btn-danger">Xác nhận xóa</button>
+
+                                </form>
+                            }
+                        </div>
+
+                    </div>
+                    <!-- /.row (nested) -->
+                </div>
+                <!-- /.panel-body -->
             </div>
-        }
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-12 -->
     </div>
-    </div>
+    <!-- /.row -->
+</div>
+<!-- /#page-wrapper -->

@@ -102,13 +102,10 @@ namespace QuanLyXeKhach.Controllers
         //GET: 
         public ActionResult XacNhanXoa(int id)
         {
-            var modelView = nhanVienService.XemNhanVienNV(id);
-            return View(modelView);
+            return View(nhanVienService.XemNhanVienNV(id));
         }
         //POST:
-        [HttpPost, ActionName("XacNhanXoa")]
-        [ValidateAntiForgeryToken]
-        public ActionResult XoaNhanVien(int id)
+        public ActionResult XoaNhanVien(NhanVien nhanVien)
         {
             logger.Info("Start controller....");
             IList<TaiKhoanNV> listTK = new List<TaiKhoanNV>();
@@ -116,13 +113,13 @@ namespace QuanLyXeKhach.Controllers
             int statusTK = 0;
             for(int i = 0; i < listTK.Count(); i++)
             {
-                if(listTK[i].maNV == id)
+                if(listTK[i].maNV == nhanVien.maNV)
                 {
                     statusTK = taiKhoanNVService.XoaTaiKhoan(listTK[i].maNV);
                     break;
                 }
             }
-            int status = nhanVienService.XoaNhanVien(id);
+            int status = nhanVienService.XoaNhanVien(nhanVien.maNV);
             if (status == 0 && statusTK == 0)
             {
                 logger.Info("Status: Success");
