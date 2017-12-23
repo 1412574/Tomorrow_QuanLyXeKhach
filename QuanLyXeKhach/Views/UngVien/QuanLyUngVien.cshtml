@@ -1,0 +1,285 @@
+﻿@model IEnumerable<DataModel.UngVien>
+@*@model DataModel.PagedList<DataModel.UngVien>*@
+
+@{
+	ViewBag.Title = "Quản Lý Nhân Sự";
+	Layout = "~/Views/NhanSu/Shared/_Layout.cshtml";
+}
+
+
+@Styles.Render("~/Content/NhanSu/css/side-bar")
+@Styles.Render("~/Content/NhanSu/css/tab-content")
+
+<div id="QLNV" class="tabcontent">
+	<h3>Home</h3>
+	<p>Home is where the heart is..</p>
+</div>
+
+<div id="QLCV" class="tabcontent">
+	<h3>News</h3>
+	<p>Some news this fine day!</p>
+</div>
+
+<div id="PC" class="tabcontent">
+	<h3>Contact</h3>
+	<p>Get in touch, or swing by for a cup of coffee.</p>
+</div>
+
+<div id="CC" class="tabcontent">
+	<h3>About</h3>
+	<p>Who we are and what we do.</p>
+</div>
+
+<div id="QLUV" class="tabcontent ">
+	<div class="inbox-head">
+		<h3 class="col-md-4">Quản lý ứng viên</h3>
+		<form action="#" class="pull-right">
+			<div class="input-append">
+				<input type="text" class="sr-input" placeholder="Tìm kiếm">
+				<button class="btn sr-btn sharp" type="button"><i class="fa fa-search"></i></button>
+			</div>
+		</form>
+	</div>
+
+
+
+	<div class="">
+					<aside class="lg-side">
+						<button class="btn btn-default pull-right sharp" style="margin-top:20px;" data-toggle="modal" onclick="Create()"><i class="glyphicon glyphicon-plus"></i> Thêm ứng viên</button>
+
+						<div class="inbox-body">
+							<div class="mail-option">
+								<table class="table table-header">
+									<tbody style="background-color: #f0f0f0;">
+										<tr class="unread">
+											<td class="col-sm-2 align-top">@Html.DisplayNameFor(model => model.maUV)</td>
+											<td class="view-message col-sm-3">@Html.DisplayNameFor(model => model.hoTen)</td>
+											<td class="col-sm-2">
+												<div class="text-center">@Html.DisplayNameFor(model => model.trangThai)</div>
+												<div class="text-center">
+													<div id="checkbutton" class="btn-group" data-toggle="buttons">
+														<label class="checkbutton btn btn-xs green active filter show sharp" data-target="3" onclick="filter(this)"><i class="glyphicon glyphicon-stop"></i></label>
+														<label class="checkbutton btn btn-xs blue active filter show sharp" data-target="2" onclick="filter(this)"><i class="glyphicon glyphicon-stop"></i></label>
+														<label class="checkbutton btn btn-xs orange active filter show sharp" data-target="1" onclick="filter(this)"><i class="glyphicon glyphicon-stop"></i></label>
+														<label class="checkbutton btn btn-xs red active filter show sharp" data-target="4" onclick="filter(this)"><i class="glyphicon glyphicon-stop"></i></label>
+													</div>
+												</div>
+											</td>
+											<td class="view-message  text-left col-sm-2">@Html.DisplayNameFor(model => model.LichPhongVan.maLPV)</td>
+											<td class="col-sm-1">Thao tác</td>
+										</tr>
+									</tbody>
+								</table>
+								<table class="table table-inbox table-hover table-inside">
+									<tbody>
+										@foreach (var item in Model)
+										{
+											<tr data-status="@item.trangThai">
+												<td data-toggle="modal" class="col-sm-2 view-message  dont-show" onclick="Details(@item.maUV)">
+													<h5>
+														@Html.DisplayFor(modelItem => item.maUV)
+													</h5>
+												</td>
+												<td data-toggle="modal" colspan="3" class="col-sm-3 view-message" onclick="Details(@item.maUV)">
+													<h5>
+														@Html.DisplayFor(modelItem => item.hoTen)
+													</h5>
+												</td>
+												<td data-toggle="modal" class="col-sm-2" onclick="Details(@item.maUV)">
+													<h4 style="margin-top: 5px;">
+														@if (item.trangThai == 4)
+														{
+															<span class="col-sm-12 label label-danger sharp">
+																@Html.DisplayFor(modelItem => item.TrangThaiUV.tenTT)
+															</span>
+
+														}
+														else if (item.trangThai == 1)
+														{
+															<span class="col-sm-12 label label-warning sharp">
+																@Html.DisplayFor(modelItem => item.TrangThaiUV.tenTT)
+															</span>
+		}
+														else if (item.trangThai == 2)
+														{
+															<span class="col-sm-12 label label-info sharp">
+																@Html.DisplayFor(modelItem => item.TrangThaiUV.tenTT)
+															</span>
+		}
+														else if (item.trangThai == 3)
+														{
+															<span class="col-sm-12 label label-success sharp">
+																@Html.DisplayFor(modelItem => item.TrangThaiUV.tenTT)
+															</span>
+		}
+													</h4>
+												</td>
+												<td data-toggle="modal" class="col-sm-2 view-message  text-left" onclick="Details(@item.maUV)">
+													<h5>
+														@Html.DisplayFor(modelItem => item.maLPV)
+													</h5>
+												</td>
+												<td class="col-sm-1 no-pointer">
+													<span class="btn-group pull-right" style="margin-top: 5px">
+														<button class="btn btn-warning btn-xs sharp" data-toggle="modal" title="Cập nhật ứng viên" onclick="Edit(@item.maUV)"><i class="glyphicon glyphicon-edit"></i></button>
+														<button class="btn btn-danger btn-xs sharp" data-toggle="modal" title="Xóa ứng viên" onclick="ConfirmDelete(@item.maUV)"><i class="glyphicon glyphicon-remove"></i></button>
+													</span>
+												</td>
+											</tr>
+										}
+									</tbody>
+								</table>
+							</div>
+						</div>
+						@*<div class="text-center">
+							<ul class="pagination">
+								<li class="disabled"><span>«</span></li>
+								<li class="active"><span>1</span></li>
+								<li><a href="#">2</a></li>
+								<li><a href="#">3</a></li>
+								<li><a href="#">4</a></li>
+								<li class="disabled"><span>...</span></li>
+								<li><a href="#">5</a></li>
+								<li><a href="#" rel="next">»</a></li>
+							</ul>
+						</div>*@
+					</aside>
+				</div>
+
+	<div class="modal fade item_edit" id="item_edit">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<a href="#" data-dismiss="modal" class="class pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+					<h2 class="modal-title">Cập nhật thông tin ứng viên </h2>
+				</div>
+				<div class="modal-body" id="PVEdit">
+					@*PVEdit Partial View*@
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade item_create" id="item_create">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<a class="class pull-right" href="#" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span></a>
+					<h2 class="modal-title">Thêm ứng viên </h2>
+				</div>
+				<div class="modal-body" id="PVCreate">
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade item_view" id="item_view">
+		<div class="modal-dialog" style="max-width:450px;">
+			<div class="modal-content">
+				<div class="modal-header">
+					<a href="#" data-dismiss="modal" class="class pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+					<h2 class="modal-title">Thông tin chi tiết ứng viên </h2>
+				</div>
+				<div class="modal-body" id="PVDetails">
+					@* PVDetails *@
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade item_remove" id="item_remove">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<a href="#" data-dismiss="modal" class="class pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+					<h3 class="modal-title">Xác nhận</h3>
+				</div>
+				<div class="modal-body" id="PVConfirmDelete">
+					@*PVConfirmDelete Partial View*@
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="LPV" class="tabcontent">
+	<h3>About</h3>
+	<p>Who we are and what we do.</p>
+</div>
+@Scripts.Render("~/bundles/NhanSu/Scripts/tab-content")
+
+<script>
+	openPage("QLUV", document.getElementById("lQLUV"));
+
+	function ConfirmDelete(currentId) {
+		$.ajax({
+			type: "Get",
+			url: '@Url.Action("PVConfirmDelete", "UngVien")',
+			data: { id: currentId },
+			success: function (data) {
+				$('#PVConfirmDelete').html(data);
+				$('#item_remove').modal('show');
+			}
+		})
+	}
+
+	function Edit(currentId) {
+		$.ajax({
+			type: "Get",
+			url: '@Url.Action("PVEdit", "UngVien")',
+			data: { id: currentId },
+			success: function (data) {
+				$('#PVEdit').html(data);
+				$('#item_edit').modal('show');
+			}
+		})
+	}
+
+	function Details(currentId) {
+		$.ajax({
+			type: "Get",
+			url: '@Url.Action("PVDetails", "UngVien")',
+			data: { id: currentId },
+			success: function (data) {
+				$('#PVDetails').html(data);
+				$('#item_view').modal('show');
+			}
+		})
+	}
+
+	function Create() {
+		$.ajax({
+			type: "Get",
+			url: '@Url.Action("PVCreate", "UngVien")',
+			success: function (data) {
+				$('#PVCreate').html(data);
+				$('#item_create').modal('show');
+			}
+		})
+	}
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

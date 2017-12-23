@@ -1,9 +1,12 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27004.2009
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuanLyXeKhach", "QuanLyXeKhach\QuanLyXeKhach.csproj", "{99C80485-D020-42BE-B622-76FF6580C317}"
+	ProjectSection(ProjectDependencies) = postProject
+		{66C689F9-5CF9-470A-8DB1-48C293E12FF1} = {66C689F9-5CF9-470A-8DB1-48C293E12FF1}
+	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataModel", "DataModel\DataModel.csproj", "{5A99A923-EB84-4C52-BB8C-1AB45AF173BC}"
 EndProject

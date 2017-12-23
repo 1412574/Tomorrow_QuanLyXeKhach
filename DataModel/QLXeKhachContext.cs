@@ -1,3 +1,4 @@
+
 namespace DataModel
 {
     using System;
@@ -19,6 +20,10 @@ namespace DataModel
         public virtual DbSet<NhanVien> NhanViens { get; set; }
         public virtual DbSet<TrangThaiNV> TrangThaiNVs { get; set; }
         public virtual DbSet<TaiKhoanNV> TaiKhhoanNVs { get; set; }
+        public virtual DbSet<UngVien> UngViens { get; set; }
+        public virtual DbSet<LichPhongVan> LichPhongVans { get; set; }
+
+        public virtual DbSet<TrangThaiUV> TrangThaiUVs { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
