@@ -56,11 +56,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201712081333506_initial.cs" />
-    <Compile Include="Migrations\201712081333506_initial.Designer.cs">
-      <DependentUpon>201712081333506_initial.cs</DependentUpon>
+    <Compile Include="Migrations\201712210329418_BaoCaoinit.cs" />
+    <Compile Include="Migrations\201712210329418_BaoCaoinit.Designer.cs">
+      <DependentUpon>201712210329418_BaoCaoinit.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\BaoCao.cs" />
     <Compile Include="QLXeKhachContext.cs" />
     <Compile Include="Models\PhongBan.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -77,8 +78,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201712081333506_initial.resx">
-      <DependentUpon>201712081333506_initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712210329418_BaoCaoinit.resx">
+      <DependentUpon>201712210329418_BaoCaoinit.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

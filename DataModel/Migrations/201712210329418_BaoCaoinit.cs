@@ -3,10 +3,24 @@ namespace DataModel.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class initial : DbMigration
+    public partial class BaoCaoinit : DbMigration
     {
         public override void Up()
         {
+            CreateTable(
+                "dbo.BaoCao",
+                c => new
+                    {
+                        maBienBan = c.Int(nullable: false, identity: true),
+                        tenBienBan = c.String(maxLength: 50),
+                        noiDung = c.String(maxLength: 200),
+                        ngayLapBaoCao = c.DateTime(nullable: false),
+                        ngaySuaDoi = c.DateTime(nullable: false),
+                        lanSuaDoi = c.Int(nullable: false),
+                        ghiChu = c.String(maxLength: 200),
+                    })
+                .PrimaryKey(t => t.maBienBan);
+            
             CreateTable(
                 "dbo.ChuyenXes",
                 c => new
@@ -49,6 +63,7 @@ namespace DataModel.Migrations
             DropTable("dbo.PhongBan");
             DropTable("dbo.TuyenXes");
             DropTable("dbo.ChuyenXes");
+            DropTable("dbo.BaoCao");
         }
     }
 }

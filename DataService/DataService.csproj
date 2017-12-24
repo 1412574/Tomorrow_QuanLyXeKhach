@@ -43,7 +43,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaoCaoService.cs" />
     <Compile Include="ChuyenXeService.cs" />
+    <Compile Include="IBaoCaoService.cs" />
     <Compile Include="IChuyenXeService.cs" />
     <Compile Include="IPhongBanService.cs" />
     <Compile Include="ITuyenXeService.cs" />

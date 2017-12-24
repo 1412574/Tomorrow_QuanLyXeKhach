@@ -166,6 +166,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\BaoCaoController.cs" />
     <Compile Include="Controllers\ChuyenXesController.cs" />
     <Compile Include="Controllers\PhongBanController.cs" />
     <Compile Include="Global.asax.cs">
@@ -241,6 +242,19 @@
     <Content Include="Views\ChuyenXes\Details.cshtml" />
     <Content Include="Views\ChuyenXes\Edit.cshtml" />
     <Content Include="Views\ChuyenXes\Index.cshtml" />
+    <Content Include="Views\BaoCao\Index.cshtml" />
+    <Content Include="Views\BaoCao\Edit.cshtml" />
+    <Content Include="Views\BaoCao\CapNhatBaoCao.cshtml" />
+    <Content Include="Views\BaoCao\Details.cshtml" />
+    <Content Include="Views\BaoCao\Menu.cshtml" />
+    <Content Include="Views\PhongBan\Details.cshtml" />
+    <Content Include="Views\PhongBan\Edit.cshtml" />
+    <Content Include="Views\PhongBan\Home.cshtml" />
+    <Content Include="Views\PhongBan\Menu.cshtml" />
+    <Content Include="Views\PhongBan\ThemPhongBan.cshtml" />
+    <Content Include="Views\BaoCao\ThemBaoCao.cshtml" />
+    <Content Include="Views\BaoCao\XoaBaoCao.cshtml" />
+    <Content Include="Views\BaoCao\XacNhanXoa.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

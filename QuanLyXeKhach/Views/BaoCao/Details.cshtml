@@ -1,0 +1,58 @@
+﻿@model DataModel.BaoCao
+
+<div>
+    <h4>Chi tiết Báo cáo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Tên Biên bản
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tenBienBan)
+        </dd>
+
+        <dt>
+            Nội dung
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.noiDung)
+        </dd>
+        <dt>
+           Ngày lập Báo cáo
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.ngayLapBaoCao)
+        </dd>
+
+        <dt>
+            Ngày sửa đổi
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ngaySuaDoi)
+        </dd>
+
+        <dt>
+            Lần sửa đổi
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lanSuaDoi)
+        </dd>
+
+        <dt>
+            Ghi chú
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ghiChu)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Sửa", "Edit", new { id = Model.maBienBan }) |
+    @Html.ActionLink("Trở về", "Menu")
+</p>

@@ -1,0 +1,71 @@
+﻿@model DataModel.BaoCao
+
+<h3>Bạn có chắc là muốn xóa Báo cáo này không?</h3>
+
+<div>
+    <h4>Báo cáo</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+           Tên biên bản
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tenBienBan)
+        </dd>
+
+        <dt>
+            Nội dung
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.noiDung)
+        </dd>
+
+        <dt>
+            Ngày lập Báo cáo
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ngayLapBaoCao)
+        </dd>
+
+        <dt>
+           Ngày sửa đổi
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ngaySuaDoi)
+        </dd>
+
+        <dt>
+            Lần sửa đổi
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lanSuaDoi)
+        </dd>
+
+        <dt>
+           Ghi chú
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ghiChu)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            @Html.ActionLink("Trở về", "Menu")
+        </div>
+    }
+ 
+</div>
+
+
