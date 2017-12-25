@@ -56,18 +56,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201712210847121_updateinit.cs" />
-    <Compile Include="Migrations\201712210847121_updateinit.Designer.cs">
-      <DependentUpon>201712210847121_updateinit.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201712211251028_initall.cs" />
-    <Compile Include="Migrations\201712211251028_initall.Designer.cs">
-      <DependentUpon>201712211251028_initall.cs</DependentUpon>
+    <Compile Include="Migrations\201712251459200_Initial.cs" />
+    <Compile Include="Migrations\201712251459200_Initial.Designer.cs">
+      <DependentUpon>201712251459200_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\NhanVien.cs" />
     <Compile Include="Models\TaiKhoanNV.cs" />
     <Compile Include="Models\TrangThaiNV.cs" />
+    <Compile Include="Models\ChiTietDatVe.cs" />
+    <Compile Include="Models\DatVe.cs" />
+    <Compile Include="Models\KhachHang.cs" />
     <Compile Include="Models\VaiTro.cs" />
     <Compile Include="QLXeKhachContext.cs" />
     <Compile Include="Models\PhongBan.cs" />
@@ -85,11 +84,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201712210847121_updateinit.resx">
-      <DependentUpon>201712210847121_updateinit.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201712211251028_initall.resx">
-      <DependentUpon>201712211251028_initall.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712251459200_Initial.resx">
+      <DependentUpon>201712251459200_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

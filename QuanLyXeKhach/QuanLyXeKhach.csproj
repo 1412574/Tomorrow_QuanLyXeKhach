@@ -172,6 +172,8 @@
     <Compile Include="Common\UserLogin.cs" />
     <Compile Include="Controllers\ChuyenXesController.cs" />
     <Compile Include="Controllers\NhanVienController.cs" />
+    <Compile Include="Controllers\DatVeController.cs" />
+    <Compile Include="Controllers\KhachHangController.cs" />
     <Compile Include="Controllers\PhongBanController.cs" />
     <Compile Include="Controllers\TaiKhoanNVController.cs" />
     <Compile Include="Controllers\TrangThaiNVController.cs" />
@@ -297,6 +299,8 @@
     <Content Include="assets\css\font-awesome.min.css" />
     <Content Include="assets\css\icomoon-social.css" />
     <Content Include="assets\css\main.css" />
+    <Content Include="assets\css\font-awesome.css" />
+    <Content Include="assets\css\style.css" />
     <Content Include="assets\fonts\fontawesome-webfont.svg" />
     <Content Include="assets\fonts\glyphicons-halflings-regular.svg" />
     <Content Include="assets\images\111.jpg" />
@@ -497,6 +501,16 @@
     <Content Include="Views\Shared\_LeftLayoutPhongBan.cshtml" />
     <Content Include="Views\TaiKhoanNV\Login.cshtml" />
     <Content Include="Views\TaiKhoanNV\Edit.cshtml" />
+    <Content Include="Views\Shared\_LayoutDatVe.cshtml" />
+    <Content Include="Views\KhachHang\Index.cshtml" />
+    <Content Include="Views\Shared\_LeftmenuDatVe.cshtml" />
+    <Content Include="Views\KhachHang\Them.cshtml" />
+    <Content Include="Views\KhachHang\Edit.cshtml" />
+    <Content Include="Views\KhachHang\Delete.cshtml" />
+    <Content Include="Views\DatVe\Index.cshtml" />
+    <Content Include="Views\DatVe\Add.cshtml" />
+    <Content Include="Views\DatVe\Edit.cshtml" />
+    <Content Include="Views\DatVe\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

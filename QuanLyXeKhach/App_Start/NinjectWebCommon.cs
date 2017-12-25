@@ -70,6 +70,9 @@ namespace QuanLyXeKhach.App_Start
             kernel.Bind<IVaiTroService<VaiTro>>().To<VaiTroService>();
             kernel.Bind<ITrangThaiNVService<TrangThaiNV>>().To<TrangThaiNVService>();
             kernel.Bind<ITaiKhoanNVService<TaiKhoanNV>>().To<TaiKhoanNVService>();
+            kernel.Bind<IKhachHangService<KhachHang>>().To<KhachHangService>();
+            kernel.Bind<IDatVeService<DatVe>>().To<DatVeService>();
+            kernel.Bind<IChiTietDatVeService<ChiTietDatVe>>().To<ChiTietDatVeService>();
         }
     }
 }
