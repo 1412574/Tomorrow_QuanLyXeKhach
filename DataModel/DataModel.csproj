@@ -56,14 +56,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201712210807590_initupdate.cs" />
-    <Compile Include="Migrations\201712210807590_initupdate.Designer.cs">
-      <DependentUpon>201712210807590_initupdate.cs</DependentUpon>
+    <Compile Include="Migrations\201712250916510_aupgate.cs" />
+    <Compile Include="Migrations\201712250916510_aupgate.Designer.cs">
+      <DependentUpon>201712250916510_aupgate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ChiTietDatVe.cs" />
     <Compile Include="Models\DatVe.cs" />
     <Compile Include="Models\KhachHang.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="QLXeKhachContext.cs" />
     <Compile Include="Models\PhongBan.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -74,15 +80,64 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="bin\Debug\ApplicationInsights.config" />
+    <None Include="bin\Debug\DataModel.dll.config" />
+    <None Include="bin\Release\DataModel.dll.config" />
+    <None Include="obj\Release\DataModel.csproj.CopyComplete" />
+    <None Include="obj\Release\DataModel.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Release\DataModel.csproj.GenerateResource.Cache" />
+    <None Include="obj\Release\DataModel.csprojResolveAssemblyReference.cache" />
+    <None Include="obj\Release\DesignTimeResolveAssemblyReferencesInput.cache" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201712210807590_initupdate.resx">
-      <DependentUpon>201712210807590_initupdate.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712250916510_aupgate.resx">
+      <DependentUpon>201712250916510_aupgate.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="obj\Release\DataModel.Migrations.updateinit.resources" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\DataModel.dll" />
+    <Content Include="bin\Debug\DataModel.pdb" />
+    <Content Include="bin\Debug\EntityFramework.dll" />
+    <Content Include="bin\Debug\EntityFramework.SqlServer.dll" />
+    <Content Include="bin\Debug\EntityFramework.SqlServer.xml" />
+    <Content Include="bin\Debug\EntityFramework.xml" />
+    <Content Include="bin\Debug\Microsoft.AI.Agent.Intercept.dll" />
+    <Content Include="bin\Debug\Microsoft.AI.DependencyCollector.dll" />
+    <Content Include="bin\Debug\Microsoft.AI.DependencyCollector.xml" />
+    <Content Include="bin\Debug\Microsoft.AI.PerfCounterCollector.dll" />
+    <Content Include="bin\Debug\Microsoft.AI.ServerTelemetryChannel.dll" />
+    <Content Include="bin\Debug\Microsoft.AI.ServerTelemetryChannel.xml" />
+    <Content Include="bin\Debug\Microsoft.AI.Web.dll" />
+    <Content Include="bin\Debug\Microsoft.AI.Web.xml" />
+    <Content Include="bin\Debug\Microsoft.AI.WindowsServer.dll" />
+    <Content Include="bin\Debug\Microsoft.AI.WindowsServer.xml" />
+    <Content Include="bin\Debug\Microsoft.ApplicationInsights.dll" />
+    <Content Include="bin\Debug\Microsoft.ApplicationInsights.xml" />
+    <Content Include="bin\Debug\Microsoft.AspNet.TelemetryCorrelation.dll" />
+    <Content Include="bin\Debug\Microsoft.AspNet.TelemetryCorrelation.xml" />
+    <Content Include="bin\Debug\NLog.dll" />
+    <Content Include="bin\Debug\NLog.xml" />
+    <Content Include="bin\Debug\System.Diagnostics.DiagnosticSource.dll" />
+    <Content Include="bin\Debug\System.Diagnostics.DiagnosticSource.xml" />
+    <Content Include="bin\Release\DataModel.dll" />
+    <Content Include="bin\Release\DataModel.pdb" />
+    <Content Include="bin\Release\EntityFramework.dll" />
+    <Content Include="bin\Release\EntityFramework.SqlServer.dll" />
+    <Content Include="bin\Release\EntityFramework.SqlServer.xml" />
+    <Content Include="bin\Release\EntityFramework.xml" />
+    <Content Include="bin\Release\NLog.dll" />
+    <Content Include="bin\Release\NLog.xml" />
+    <Content Include="obj\Release\DataModel.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Release\DataModel.dll" />
+    <Content Include="obj\Release\DataModel.pdb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="obj\Release\TempPE\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

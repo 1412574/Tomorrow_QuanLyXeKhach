@@ -19,10 +19,24 @@
         <!-- /.navbar-header -->
         <!-- /.navbar-top-links -->
 
-       @RenderPage("_LeftmenuDatVe.cshtml")
+        @RenderPage("_LeftmenuDatVe.cshtml")
     </nav>
 
     @RenderBody()
 
 </div>
 <!-- /#wrapper -->
+
+@section scripts
+{
+    @Scripts.Render("~/bundles/datvejs")
+
+    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+    <script>
+        $(document).ready(function () {
+            $('#dataTables-example').DataTable({
+                responsive: true
+            });
+        });
+    </script>
+}

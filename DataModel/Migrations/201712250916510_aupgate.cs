@@ -3,7 +3,7 @@ namespace DataModel.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class initupdate : DbMigration
+    public partial class aupgate : DbMigration
     {
         public override void Up()
         {
@@ -12,9 +12,9 @@ namespace DataModel.Migrations
                 c => new
                     {
                         maCTDV = c.Int(nullable: false, identity: true),
-                        maDatVe = c.Int(nullable: false),
                         giaTien = c.Double(),
-                        soGhe = c.Int(),
+                        soGhe = c.Int(nullable: false),
+                        maDatVe = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.maCTDV)
                 .ForeignKey("dbo.DatVes", t => t.maDatVe, cascadeDelete: true)
@@ -25,27 +25,27 @@ namespace DataModel.Migrations
                 c => new
                     {
                         maDatVe = c.Int(nullable: false, identity: true),
-                        maChuyenXe = c.Int(),
                         maKhachHang = c.Int(),
                         tongTien = c.Double(),
                         ngayDat = c.DateTime(),
-                        trangThai = c.String(maxLength: 20),
+                        trangThai = c.Boolean(nullable: false),
+                        maChuyenXe = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.maDatVe)
-                .ForeignKey("dbo.ChuyenXes", t => t.maChuyenXe)
+                .ForeignKey("dbo.ChuyenXes", t => t.maChuyenXe, cascadeDelete: true)
                 .ForeignKey("dbo.KhachHangs", t => t.maKhachHang)
-                .Index(t => t.maChuyenXe)
-                .Index(t => t.maKhachHang);
+                .Index(t => t.maKhachHang)
+                .Index(t => t.maChuyenXe);
             
             CreateTable(
                 "dbo.ChuyenXes",
                 c => new
                     {
                         MaChuyenXe = c.Int(nullable: false, identity: true),
-                        MaTuyenXe = c.Int(nullable: false),
                         TenChuyenXe = c.String(),
                         NgayGioChay = c.DateTime(nullable: false),
                         TaiXe = c.Int(nullable: false),
+                        MaTuyenXe = c.Int(nullable: false),
                     })
                 .PrimaryKey(t => t.MaChuyenXe)
                 .ForeignKey("dbo.TuyenXes", t => t.MaTuyenXe, cascadeDelete: true)
@@ -91,8 +91,8 @@ namespace DataModel.Migrations
             DropForeignKey("dbo.DatVes", "maChuyenXe", "dbo.ChuyenXes");
             DropForeignKey("dbo.ChiTietDatVes", "maDatVe", "dbo.DatVes");
             DropIndex("dbo.ChuyenXes", new[] { "MaTuyenXe" });
-            DropIndex("dbo.DatVes", new[] { "maKhachHang" });
             DropIndex("dbo.DatVes", new[] { "maChuyenXe" });
+            DropIndex("dbo.DatVes", new[] { "maKhachHang" });
             DropIndex("dbo.ChiTietDatVes", new[] { "maDatVe" });
             DropTable("dbo.PhongBan");
             DropTable("dbo.KhachHangs");
