@@ -67,6 +67,7 @@ namespace QuanLyXeKhach.App_Start
             kernel.Bind<IChuyenXeService<ChuyenXe>>().To<ChuyenXeService>();
             kernel.Bind<ITuyenXeService<TuyenXe>>().To<TuyenXeService>();
 
+
             kernel.Bind<INhanVienService<NhanVien>>().To<NhanVienService>();
             kernel.Bind<IVaiTroService<VaiTro>>().To<VaiTroService>();
             kernel.Bind<ITrangThaiNVService<TrangThaiNV>>().To<TrangThaiNVService>();
@@ -75,6 +76,11 @@ namespace QuanLyXeKhach.App_Start
             kernel.Bind<ILichPhongVanService<LichPhongVan>>().To<LichPhongVanService>();
             kernel.Bind<ITrangThaiUVService<TrangThaiUV>>().To<TrangThaiUVService>();
             kernel.Bind<IUngVienService<UngVien>>().To<UngVienService>();
+
+
+            kernel.Bind<IKhachHangService<KhachHang>>().To<KhachHangService>();
+            kernel.Bind<IDatVeService<DatVe>>().To<DatVeService>();
+            kernel.Bind<IChiTietDatVeService<ChiTietDatVe>>().To<ChiTietDatVeService>();
 
         }
     }

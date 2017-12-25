@@ -10,12 +10,24 @@ namespace DataModel
 {
     public class ChuyenXe
     {
+        public ChuyenXe()
+        {
+            DatVes = new HashSet<DatVe>();
+        }
+
         [Key]
-        public int MaChuyenXe { get; set; }
-        public int MaTuyenXe { get; set; }
+        public int MaChuyenXe { get; set; }   
+
         public string TenChuyenXe { get; set; }
+
         public DateTime NgayGioChay { get; set; }
+
         public int TaiXe { get; set; }
+
+        public virtual ICollection<DatVe> DatVes { get; set; }
+
+        public int MaTuyenXe { get; set; }
         public virtual TuyenXe TuyenXe { get; set; }
+
     }
 }

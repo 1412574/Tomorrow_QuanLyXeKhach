@@ -1,0 +1,64 @@
+﻿
+@{
+    Layout = "~/Views/Shared/_LayoutDatVe.cshtml";
+}
+@model DataModel.KhachHang
+
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">CẬP NHẬT KHÁCH HÀNG</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+                    Cập nhật thông tin khách hàng
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-6">
+                            @using (Html.BeginForm("CapNhatKhachHang","KhachHang", FormMethod.Get))
+                            {
+                                @Html.AntiForgeryToken()
+
+                            <form role="form">
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                @Html.HiddenFor(model => model.maKhachHang)
+
+                                <div class="form-group">
+                                    <label>Họ và tên:</label>
+                                    @Html.TextBoxFor(model => model.tenKhachHang, new { @class = "form-control" })
+
+                                </div>
+                                <div class="form-group">
+                                    <label>Số điện thoại:</label>
+                                    @Html.TextBoxFor(model => model.soDienThoai, new { @class = "form-control" })
+                                    <p class="help-block">Chỉ gồm chữ số</p>
+                                </div>
+                                <div class="form-group">
+                                    <label>Email tài khoản:</label>
+                                    @Html.TextBoxFor(model => model.taiKhoan, new { @class = "form-control", @disabled = "disabled" })
+
+                                </div>
+                                <button type="submit" class="btn btn-lg btn-success">Lưu</button>
+
+                            </form>
+                            }
+                        </div>
+
+                    </div>
+                    <!-- /.row (nested) -->
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /#page-wrapper -->
