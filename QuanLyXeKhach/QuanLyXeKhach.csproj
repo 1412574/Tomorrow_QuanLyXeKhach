@@ -168,6 +168,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ChuyenXesController.cs" />
     <Compile Include="Controllers\PhongBanController.cs" />
+    <Compile Include="Controllers\ThongKeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -241,6 +242,17 @@
     <Content Include="Views\ChuyenXes\Details.cshtml" />
     <Content Include="Views\ChuyenXes\Edit.cshtml" />
     <Content Include="Views\ChuyenXes\Index.cshtml" />
+    <Content Include="Views\ThongKe\Index.cshtml" />
+    <Content Include="Views\ThongKe\XoaThongKe.cshtml" />
+    <Content Include="Views\ThongKe\CapNhatThongKe.cshtml" />
+    <Content Include="Views\PhongBan\Details.cshtml" />
+    <Content Include="Views\PhongBan\Edit.cshtml" />
+    <Content Include="Views\PhongBan\Home.cshtml" />
+    <Content Include="Views\PhongBan\Menu.cshtml" />
+    <Content Include="Views\PhongBan\ThemPhongBan.cshtml" />
+    <Content Include="Views\ThongKe\Menu.cshtml" />
+    <Content Include="Views\ThongKe\Details.cshtml" />
+    <Content Include="Views\ThongKe\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
