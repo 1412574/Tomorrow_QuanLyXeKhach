@@ -29,5 +29,13 @@ namespace DataModel
 
         public virtual ICollection<UngVien> UngViens { get; set; }
 
+        public string displayName
+        {
+            get
+            {
+                return this.maLPV + " - " + this.ngay.ToShortDateString();
+            }
+        }
+
     }
 }

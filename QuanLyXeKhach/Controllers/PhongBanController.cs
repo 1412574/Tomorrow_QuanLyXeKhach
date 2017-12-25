@@ -33,12 +33,6 @@ namespace QuanLyXeKhach.Controllers
             return View();
         }
         //
-        public ActionResult XacNhanXoa(int id)
-        {
-            //PhongBan phongBan = new PhongBan();
-            return View(service.GetPhongBan(id));
-        }
-        //
         public ActionResult ThemPhongBan(PhongBan phongBan)
         {
             logger.Info("Start controller....");
@@ -62,11 +56,11 @@ namespace QuanLyXeKhach.Controllers
             return View(listPhong);
         }
         //POST:
-        public ActionResult XoaPhongBan(PhongBan phongBan)
+        public ActionResult XoaPhongBan(int id)
         {
             
             logger.Info("Start controller....");
-            int status = service.XoaPhongBan(phongBan.maPB);
+            int status = service.XoaPhongBan(id);
             if (status == 0)
             {
                 logger.Info("Status: Success");
