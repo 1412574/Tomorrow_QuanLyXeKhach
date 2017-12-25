@@ -74,6 +74,7 @@ namespace QuanLyXeKhach.App_Start
             kernel.Bind<IDatVeService<DatVe>>().To<DatVeService>();
             kernel.Bind<IChiTietDatVeService<ChiTietDatVe>>().To<ChiTietDatVeService>();
             kernel.Bind<IThongKeService<ThongKe>>().To<ThongKeService>();
+            kernel.Bind<IBaoCaoService<BaoCao>>().To<BaoCaoService>();
         }
     }
 }

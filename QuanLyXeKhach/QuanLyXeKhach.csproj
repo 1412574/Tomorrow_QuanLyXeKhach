@@ -170,6 +170,7 @@
     <Compile Include="Common\CommonPassword.cs" />
     <Compile Include="Common\PassWord.cs" />
     <Compile Include="Common\UserLogin.cs" />
+    <Compile Include="Controllers\BaoCaoController.cs" />
     <Compile Include="Controllers\ChuyenXesController.cs" />
     <Compile Include="Controllers\NhanVienController.cs" />
     <Compile Include="Controllers\DatVeController.cs" />
@@ -486,6 +487,11 @@
     <Content Include="Views\ThongKe\Index.cshtml" />
     <Content Include="Views\ThongKe\XoaThongKe.cshtml" />
     <Content Include="Views\ThongKe\CapNhatThongKe.cshtml" />
+    <Content Include="Views\BaoCao\Index.cshtml" />
+    <Content Include="Views\BaoCao\Edit.cshtml" />
+    <Content Include="Views\BaoCao\CapNhatBaoCao.cshtml" />
+    <Content Include="Views\BaoCao\Details.cshtml" />
+    <Content Include="Views\BaoCao\Menu.cshtml" />
     <Content Include="Views\PhongBan\Details.cshtml" />
     <Content Include="Views\PhongBan\Edit.cshtml" />
     <Content Include="Views\PhongBan\Home.cshtml" />
@@ -518,6 +524,9 @@
     <Content Include="Views\ThongKe\Menu.cshtml" />
     <Content Include="Views\ThongKe\Details.cshtml" />
     <Content Include="Views\ThongKe\Edit.cshtml" />
+    <Content Include="Views\BaoCao\ThemBaoCao.cshtml" />
+    <Content Include="Views\BaoCao\XoaBaoCao.cshtml" />
+    <Content Include="Views\BaoCao\XacNhanXoa.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

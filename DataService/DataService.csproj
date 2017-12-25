@@ -47,6 +47,8 @@
     <Compile Include="ChuyenXeService.cs" />
     <Compile Include="DatVeService.cs" />
     <Compile Include="IChiTietDatVeService.cs" />
+    <Compile Include="BaoCaoService.cs" />
+    <Compile Include="IBaoCaoService.cs" />
     <Compile Include="IChuyenXeService.cs" />
     <Compile Include="INhanVienService.cs" />
     <Compile Include="IDatVeService.cs" />
