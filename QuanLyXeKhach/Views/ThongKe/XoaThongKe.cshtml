@@ -1,0 +1,71 @@
+﻿@model DataModel.ThongKe
+
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/jqueryval")
+
+
+@using (Html.BeginForm("XoaThongKe", "ThongKe", FormMethod.Post))
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>ThongKe</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.tenBienBan)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.tenBienBan)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.noiDung)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.noiDung)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ngayLapThongKe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ngayLapThongKe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ngaySuaDoi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ngaySuaDoi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.lanSuaDoi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.lanSuaDoi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ghiChu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ghiChu)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -178,6 +178,7 @@
     <Compile Include="Controllers\TaiKhoanNVController.cs" />
     <Compile Include="Controllers\TrangThaiNVController.cs" />
     <Compile Include="Controllers\VaiTroController.cs" />
+    <Compile Include="Controllers\ThongKeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -482,6 +483,9 @@
     <Content Include="Views\TrangThaiNV\XemTrangThaiNV.cshtml" />
     <Content Include="Views\TrangThaiNV\Edit.cshtml" />
     <Content Include="Views\TrangThaiNV\XacNhanXoa.cshtml" />
+    <Content Include="Views\ThongKe\Index.cshtml" />
+    <Content Include="Views\ThongKe\XoaThongKe.cshtml" />
+    <Content Include="Views\ThongKe\CapNhatThongKe.cshtml" />
     <Content Include="Views\PhongBan\Details.cshtml" />
     <Content Include="Views\PhongBan\Edit.cshtml" />
     <Content Include="Views\PhongBan\Home.cshtml" />
@@ -511,6 +515,9 @@
     <Content Include="Views\DatVe\Add.cshtml" />
     <Content Include="Views\DatVe\Edit.cshtml" />
     <Content Include="Views\DatVe\Delete.cshtml" />
+    <Content Include="Views\ThongKe\Menu.cshtml" />
+    <Content Include="Views\ThongKe\Details.cshtml" />
+    <Content Include="Views\ThongKe\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

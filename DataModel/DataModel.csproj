@@ -68,6 +68,7 @@
     <Compile Include="Models\DatVe.cs" />
     <Compile Include="Models\KhachHang.cs" />
     <Compile Include="Models\VaiTro.cs" />
+    <Compile Include="Models\ThongKe.cs" />
     <Compile Include="QLXeKhachContext.cs" />
     <Compile Include="Models\PhongBan.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

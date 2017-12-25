@@ -19,6 +19,7 @@ namespace DataModel
         public virtual DbSet<NhanVien> NhanViens { get; set; }
         public virtual DbSet<TrangThaiNV> TrangThaiNVs { get; set; }
         public virtual DbSet<TaiKhoanNV> TaiKhhoanNVs { get; set; }
+        public virtual DbSet<ThongKe> ThongKes { get; set; }
 
 
         public virtual DbSet<KhachHang> KhachHangs { get; set; }

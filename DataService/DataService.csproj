@@ -54,6 +54,7 @@
     <Compile Include="IPhongBanService.cs" />
     <Compile Include="ITrangThaiNVService.cs" />
     <Compile Include="ITaiKhoanNVService.cs" />
+    <Compile Include="IThongKeService.cs" />
     <Compile Include="ITuyenXeService.cs" />
     <Compile Include="IVaiTroService.cs" />
     <Compile Include="NhanVienService.cs" />
@@ -62,6 +63,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TaiKhoanNVService.cs" />
     <Compile Include="TrangThaiNVService.cs" />
+    <Compile Include="ThongKeService.cs" />
     <Compile Include="TuyenXeService.cs" />
     <Compile Include="VaiTroService.cs" />
   </ItemGroup>
