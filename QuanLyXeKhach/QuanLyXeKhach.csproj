@@ -166,6 +166,9 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\HanhTrinhsController.cs" />
+    <Compile Include="Controllers\TramXeController.cs" />
+    <Compile Include="Controllers\TuyenXeController.cs" />
     <Compile Include="Controllers\ChuyenXesController.cs" />
     <Compile Include="Controllers\PhongBanController.cs" />
     <Compile Include="Global.asax.cs">
@@ -241,6 +244,21 @@
     <Content Include="Views\ChuyenXes\Details.cshtml" />
     <Content Include="Views\ChuyenXes\Edit.cshtml" />
     <Content Include="Views\ChuyenXes\Index.cshtml" />
+    <Content Include="Views\TuyenXe\Index.cshtml" />
+    <Content Include="Views\TuyenXe\Create.cshtml" />
+    <Content Include="Views\TuyenXe\Details.cshtml" />
+    <Content Include="Views\TuyenXe\Edit.cshtml" />
+    <Content Include="Views\TuyenXe\Delete.cshtml" />
+    <Content Include="Views\TramXe\Index.cshtml" />
+    <Content Include="Views\TramXe\Details.cshtml" />
+    <Content Include="Views\TramXe\Create.cshtml" />
+    <Content Include="Views\TramXe\Edit.cshtml" />
+    <Content Include="Views\TramXe\Delete.cshtml" />
+    <Content Include="Views\HanhTrinhs\Index.cshtml" />
+    <Content Include="Views\HanhTrinhs\Details.cshtml" />
+    <Content Include="Views\HanhTrinhs\Create.cshtml" />
+    <Content Include="Views\HanhTrinhs\Edit.cshtml" />
+    <Content Include="Views\HanhTrinhs\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

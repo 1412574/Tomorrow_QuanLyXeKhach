@@ -44,11 +44,15 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ChuyenXeService.cs" />
+    <Compile Include="IHanhTrinhService.cs" />
+    <Compile Include="ITramXeService.cs" />
     <Compile Include="IChuyenXeService.cs" />
     <Compile Include="IPhongBanService.cs" />
     <Compile Include="ITuyenXeService.cs" />
     <Compile Include="PhongBanService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="HanhTrinhService.cs" />
+    <Compile Include="TramXeService.cs" />
     <Compile Include="TuyenXeService.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -20,5 +20,9 @@ namespace DataModel
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
         }
+
+        public System.Data.Entity.DbSet<DataModel.TramXe> TramXes { get; set; }
+
+        public System.Data.Entity.DbSet<DataModel.HanhTrinh> HanhTrinhs { get; set; }
     }
 }
