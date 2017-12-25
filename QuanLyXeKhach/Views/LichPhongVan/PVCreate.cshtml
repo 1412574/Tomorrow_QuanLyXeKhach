@@ -1,0 +1,84 @@
+﻿@model DataModel.LichPhongVan
+
+
+@using (Html.BeginForm())
+{
+	@Html.AntiForgeryToken()
+	<form>
+		<div class="modal-body">
+			<div class="form-horizontal">
+
+				<div class="row">
+					@*<div class="col-md-4 item_img">
+							<img src="http://www.bvctch.vn/vnt_upload/about/thumbs/270_crop__Bsvoduylinh.jpg" class="img-responsive">
+						</div>*@
+					<div class="col-md-12 item_content">
+						@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+						@Html.HiddenFor(model => model.maLPV)
+
+
+
+						<div class="col-md-12">
+							<div class="col-md-12">
+								<div class="row form-group"></div>
+							</div>
+							<div class="col-md-12">
+								<div class="form-group">
+									@Html.LabelFor(model => model.hoTen, htmlAttributes: new { @class = "col-md-12" })
+									<div class="col-md-12">
+										@Html.EditorFor(model => model.hoTen, new { htmlAttributes = new { @class = "form-control" } })
+										@Html.ValidationMessageFor(model => model.hoTen, "", new { @class = "text-danger" })
+									</div>
+								</div>
+							</div>
+
+							<div class="col-md-12">
+								<div class="form-group">
+									@Html.LabelFor(model => model.email, htmlAttributes: new { @class = "col-md-12" })
+									<div class="col-md-12">
+										@Html.EditorFor(model => model.email, new { htmlAttributes = new { @class = "form-control" } })
+										@Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+									</div>
+								</div>
+							</div>
+
+							<div class="col-md-12">
+								<div class="form-group">
+									@Html.LabelFor(model => model.sDT, htmlAttributes: new { @class = "col-md-12" })
+									<div class="col-md-12">
+										@Html.EditorFor(model => model.sDT, new { htmlAttributes = new { @class = "form-control" } })
+										@Html.ValidationMessageFor(model => model.email, "", new { @class = "text-danger" })
+									</div>
+								</div>
+							</div>
+
+							<div class="col-md-12">
+								<div class="form-group">
+									@Html.LabelFor(model => model.trangThai, htmlAttributes: new { @class = "col-md-12" })
+									<div class="col-md-12">
+										@Html.DropDownListFor(model => model.trangThai, (IEnumerable<SelectListItem>)ViewData["TrangThaiUVs"], new { id = "trangThai", @class = "form-control" })
+									</div>
+								</div>
+							</div>
+
+							<div class="col-md-12">
+								<div class="form-group">
+									@Html.LabelFor(model => model.maLPV, htmlAttributes: new { @class = "col-md-12" })
+									<div class="col-md-12">
+										@Html.DropDownListFor(model => model.maLPV, (IEnumerable<SelectListItem>)ViewData["LichPhongVans"], "--Chưa sếp lịch--", new { id = "lichPhongVan", @class = "form-control" })
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<div class="text-center col-md-12" style="margin-top:15px;">
+				<button type="submit" class="btn btn-primary btn-sx"><i class="glyphicon glyphicon-plus"></i> Thêm</button>
+			</div>
+		</div>
+	</form>
+}
