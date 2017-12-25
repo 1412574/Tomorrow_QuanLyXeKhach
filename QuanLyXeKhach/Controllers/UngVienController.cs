@@ -25,8 +25,10 @@ namespace QuanLyXeKhach.Controllers
             trangThaiUVService = _trangThaiUVService;
             lichPhongVanService = _lichPhongVanService;
         }
+
+
         public ActionResult QuanLyUngVien(string filter = null, int page = 1,
-         int pageSize = 5, string sort = "PhoneId", string sortdir = "DESC")
+         int pageSize = 5, string sort = "maUV", string sortdir = "DESC")
         {
             //logger.Info("HttpGet recived. Contoller: UngVienController, ActionResult: QuanLyUngVien.");
             //ViewBag.LichPhongVans = new SelectList(lichPhongVanService.XemLichPhongVan(), "maLPV", "maLPV");
@@ -58,7 +60,7 @@ namespace QuanLyXeKhach.Controllers
                 if (ungvien.maLPV == null)
                     ungvien.LichPhongVan = null;
                 else
-                    ungvien.LichPhongVan = lichPhongVanService.XemLichPhongVan(ungvien.maLPV ?? default(int));
+                    ungvien.LichPhongVan = lichPhongVanService.XemThongTinLPV(ungvien.maLPV ?? default(int));
                 ungvien.TrangThaiUV = trangThaiUVService.XemTrangThaiUV(ungvien.trangThai);
             }
             logger.Info("/Return to action QuanLyUngVien with list of UngVien as model.");
@@ -115,7 +117,7 @@ namespace QuanLyXeKhach.Controllers
             }
 
             logger.Info("/tRedirect to action QuanLyUngVien.");
-            return RedirectToAction("QuanLyUngVien");
+            return View("QuanLyUngVien");
         }
         
         //// GET: UngVien
@@ -150,7 +152,7 @@ namespace QuanLyXeKhach.Controllers
         {
             logger.Info("HttpGet recived. Contoller: UngVienController, ActionResult: PVCreate.");
 
-            ViewBag.LichPhongVans = new SelectList(lichPhongVanService.XemLichPhongVan(), "maLPV", "displayName");
+            ViewBag.LichPhongVans = new SelectList(lichPhongVanService.XemThongTinLPV(), "maLPV", "displayName");
             ViewBag.TrangThaiUVs = new SelectList(trangThaiUVService.XemTrangThaiUV(), "maTT", "tenTT");
 
             logger.Info("/tReturn partial view PVCreate.");
@@ -237,7 +239,7 @@ namespace QuanLyXeKhach.Controllers
             }
 
 
-            ViewBag.LichPhongVans = new SelectList(lichPhongVanService.XemLichPhongVan(), "maLPV", "maLPV");
+            ViewBag.LichPhongVans = new SelectList(lichPhongVanService.XemThongTinLPV(), "maLPV", "displayName");
             ViewBag.TrangThaiUVs = new SelectList(trangThaiUVService.XemTrangThaiUV(), "maTT", "tenTT");
 
             logger.Info("/tReturn partial view PVEdit.");
@@ -300,7 +302,7 @@ namespace QuanLyXeKhach.Controllers
                 logger.Info("/tRedirect to action QuanLyUngVien.");
                 return RedirectToAction("QuanLyUngVien");
             }
-            ViewBag.LichPhongVans = new SelectList(lichPhongVanService.XemLichPhongVan(), "maLPV", "maLPV");
+            ViewBag.LichPhongVans = new SelectList(lichPhongVanService.XemThongTinLPV(), "maLPV", "maLPV");
             ViewBag.TrangThaiUVs = new SelectList(trangThaiUVService.XemTrangThaiUV(), "maTT", "tenTT");
             return View(ungVien);
         }

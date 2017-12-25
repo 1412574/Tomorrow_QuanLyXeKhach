@@ -13,7 +13,7 @@ namespace DataService
     {
         ILogger logger = LogManager.GetCurrentClassLogger();
         IUnitOfWork unitofWork = new GenericUnitOfWork();
-        public int CapNhatLichPhongVan(LichPhongVan lichPhongVan)
+        public int CapNhatThongTinLPV(LichPhongVan lichPhongVan)
         {
             logger.Info("Bat dau cap nhat thong tin lich phong van");
             int ret = 0;
@@ -52,16 +52,23 @@ namespace DataService
             return ret;
         }
 
-        public IList<LichPhongVan> XemLichPhongVan()
+        public IList<LichPhongVan> XemThongTinLPV()
         {
             IRepository<LichPhongVan> repository = unitofWork.Repository<LichPhongVan>();
             return repository.GetAll().ToList();
         }
 
-        public LichPhongVan XemLichPhongVan(int id)
+        public LichPhongVan XemThongTinLPV(int id)
         {
             IRepository<LichPhongVan> repository = unitofWork.Repository<LichPhongVan>();
             return repository.GetById(id);
+        }
+
+        public IList<LichPhongVan> XemThongTinLPV(string filter)
+        {
+            IRepository<LichPhongVan> repository = unitofWork.Repository<LichPhongVan>();
+            return repository.GetAll(u => filter == null || (u.maLPV.ToString().Contains(filter))
+                                                            ).ToList();
         }
 
         public int XoaLichPhongVan(int id)

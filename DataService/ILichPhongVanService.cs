@@ -10,8 +10,9 @@ namespace DataService
     {
         int ThemLichPhongVan(T lichPhongVan);
         int XoaLichPhongVan(int id);
-        int CapNhatLichPhongVan(T lichPhongVan);
-        IList<T> XemLichPhongVan();
-        T XemLichPhongVan(int id);
+        int CapNhatThongTinLPV(T lichPhongVan);
+        IList<T> XemThongTinLPV();
+        T XemThongTinLPV(int id);
+        IList<T> XemThongTinLPV(string filter);
     }
 }

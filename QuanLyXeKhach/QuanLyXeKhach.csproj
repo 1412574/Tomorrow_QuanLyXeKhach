@@ -50,11 +50,11 @@
       <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net45\EntityFramework.SqlServer.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.AI.DependencyCollector, Version=2.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -178,6 +178,7 @@
     <Compile Include="Common\PassWord.cs" />
     <Compile Include="Common\UserLogin.cs" />
     <Compile Include="Controllers\ChuyenXesController.cs" />
+    <Compile Include="Controllers\LichPhongVanController.cs" />
     <Compile Include="Controllers\NhanVienController.cs" />
     <Compile Include="Controllers\TaiKhoanNVController.cs" />
     <Compile Include="Controllers\TrangThaiNVController.cs" />
@@ -526,7 +527,6 @@
     <Content Include="Scripts\respond.matchmedia.addListener.js" />
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
-    <Content Include="Views\UngVien\Create.cshtml" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -579,13 +579,17 @@
     <Content Include="Views\TaiKhoanNV\Edit.cshtml" />
     <Content Include="Views\NhanSu\ChucNang.cshtml" />
     <Content Include="Views\NhanSu\Shared\_Layout.cshtml" />
-    <Content Include="Views\UngVien\Delete.cshtml" />
-    <Content Include="Views\UngVien\Details.cshtml" />
     <Content Include="Views\UngVien\QuanLyUngVien.cshtml" />
     <Content Include="Views\UngVien\PVConfirmDelete.cshtml" />
     <Content Include="Views\UngVien\PVEdit.cshtml" />
     <Content Include="Views\UngVien\PVDetails.cshtml" />
     <Content Include="Views\UngVien\PVCreate.cshtml" />
+    <Content Include="Views\LichPhongVan\PVConfirmDelete.cshtml" />
+    <Content Include="Views\LichPhongVan\PVCreate.cshtml" />
+    <Content Include="Views\LichPhongVan\PVDetails.cshtml" />
+    <Content Include="Views\LichPhongVan\PVEdit.cshtml" />
+    <Content Include="Views\LichPhongVan\QuanLyLichPhongVan.cshtml" />
+    <Content Include="Views\LichPhongVan\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

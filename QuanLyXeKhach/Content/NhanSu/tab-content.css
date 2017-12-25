@@ -1,15 +1,18 @@
 ﻿.item_view .modal-dialog {
 	max-width: 800px;
+	width: 500px !important;
 	width: 100%;
 }
 
 .item_edit .modal-dialog {
 	max-width: 800px;
+	width: 600px !important;
 	width: 100%;
 }
 
 .item_add .modal-dialog {
 	max-width: 800px;
+	width: 600px !important;
 	width: 100%;
 }
 
