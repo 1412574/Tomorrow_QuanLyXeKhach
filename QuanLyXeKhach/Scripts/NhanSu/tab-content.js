@@ -63,24 +63,3 @@ $('#my_modal').on('show.bs.modal', function (e) {
 });
 
 
-function ConfirmDelete(currentId) {
-    $.ajax({
-        type: "Get",
-        url: '@Url.Action("ConfirmDelete", "UngVien")',
-        data: { id: currentId },
-        success: function (data) {
-            $('#PVConfirmDelete').html(data);
-            $('#item_remove').modal('show');
-        }
-    })
-}
-function Delete(currentId) {
-    $.ajax({
-        type: "Get",
-        url: '@Url.Action("Delete", "UngVien")',
-        data: { id: currentId },
-        success: function (data) {
-            //notification here
-        }
-    })
-}

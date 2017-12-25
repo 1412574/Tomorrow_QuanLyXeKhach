@@ -1,6 +1,7 @@
 ﻿using DAO;
 using DataModel;
 using NLog;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -48,6 +49,14 @@ namespace DataService
             }
             return ret;
         }
+        
+         public IList<UngVien> XemThongTinUV(string filter)
+        {
+            IRepository<UngVien> repository = unitofWork.Repository<UngVien>();
+            return repository.GetAll(u => filter == null || (u.maUV.ToString().Contains(filter)) ||
+                                                            u.hoTen.Contains(filter)
+                                                            ).ToList();
+        }
 
         public IList<UngVien> XemThongTinUV()
         {
@@ -69,5 +78,8 @@ namespace DataService
             unitofWork.SaveChange();
             return 0;
         }
+
+
+
     }
 }

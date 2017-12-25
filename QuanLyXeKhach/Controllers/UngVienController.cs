@@ -25,14 +25,35 @@ namespace QuanLyXeKhach.Controllers
             trangThaiUVService = _trangThaiUVService;
             lichPhongVanService = _lichPhongVanService;
         }
-        public ActionResult QuanLyUngVien()
+        public ActionResult QuanLyUngVien(string filter = null, int page = 1,
+         int pageSize = 5, string sort = "PhoneId", string sortdir = "DESC")
         {
-            logger.Info("HttpGet recived. Contoller: UngVienController, ActionResult: QuanLyUngVien.");
-            ViewBag.LichPhongVans = new SelectList(lichPhongVanService.XemLichPhongVan(), "maLPV", "maLPV");
-            ViewBag.TrangThaiUVs = new SelectList(trangThaiUVService.XemTrangThaiUV(), "maTT", "tenTT");
-            var ungViens = ungVienService.XemThongTinUV();
+            //logger.Info("HttpGet recived. Contoller: UngVienController, ActionResult: QuanLyUngVien.");
+            //ViewBag.LichPhongVans = new SelectList(lichPhongVanService.XemLichPhongVan(), "maLPV", "maLPV");
+            //ViewBag.TrangThaiUVs = new SelectList(trangThaiUVService.XemTrangThaiUV(), "maTT", "tenTT");
+            //var ungViens = ungVienService.XemThongTinUV();
 
-            foreach (var ungvien in ungViens)
+            //foreach (var ungvien in ungViens)
+            //{
+            //    if (ungvien.maLPV == null)
+            //        ungvien.LichPhongVan = null;
+            //    else
+            //        ungvien.LichPhongVan = lichPhongVanService.XemLichPhongVan(ungvien.maLPV ?? default(int));
+            //    ungvien.TrangThaiUV = trangThaiUVService.XemTrangThaiUV(ungvien.trangThai);
+            //}
+            //logger.Info("/Return to action QuanLyUngVien with list of UngVien as model.");
+            //return View(ungViens.ToList());
+            var records = new PagedList<UngVien>();
+            ViewBag.filter = filter;
+            records.Content = ungVienService.XemThongTinUV(filter).ToList();
+
+            // Count
+            records.TotalRecords = records.Content.Count();
+
+            records.CurrentPage = page;
+            records.PageSize = pageSize;
+
+            foreach (var ungvien in records.Content)
             {
                 if (ungvien.maLPV == null)
                     ungvien.LichPhongVan = null;
@@ -41,7 +62,7 @@ namespace QuanLyXeKhach.Controllers
                 ungvien.TrangThaiUV = trangThaiUVService.XemTrangThaiUV(ungvien.trangThai);
             }
             logger.Info("/Return to action QuanLyUngVien with list of UngVien as model.");
-            return View(ungViens.ToList());
+            return View(records);
         }
         public ActionResult PVConfirmDelete(int? id)
         {
@@ -83,19 +104,20 @@ namespace QuanLyXeKhach.Controllers
             else if (status < 0)
             {
                 logger.Info("/t.Delete unsuccessfully.");
-                ViewBag.msgType = "danger";
+                ViewBag.msgType = "warning";ViewBag.msgTitle = "Lỗi!";
                 ViewBag.msg = "Xóa ứng viên thất bại.";
             }
             else if (status > 0)
             {
                 logger.Info("/t.Deleted with warning.");
-                ViewBag.msgType = "warning";
+                ViewBag.msgType = "warning";ViewBag.msgTitle = "Cảnh báo!";
                 ViewBag.msg = "Ứng viên đã được xóa.";
             }
 
             logger.Info("/tRedirect to action QuanLyUngVien.");
             return RedirectToAction("QuanLyUngVien");
         }
+        
         //// GET: UngVien
         //public ActionResult Index()
         //{
@@ -175,13 +197,13 @@ namespace QuanLyXeKhach.Controllers
             else if (status < 0)
             {
                 logger.Info("/t.Create unsuccessfully.");
-                ViewBag.msgType = "danger";
+                ViewBag.msgType = "warning";ViewBag.msgTitle = "Lỗi!";
                 ViewBag.msg = "Thêm ứng viên thành công.";
             }
             else if (status > 0)
             {
                 logger.Info("/t.Deleted with warning.");
-                ViewBag.msgType = "warning";
+                ViewBag.msgType = "warning";ViewBag.msgTitle = "Cảnh báo!";
                 ViewBag.msg = "Ứng viên đã được thêm.";
             }
             logger.Info("/tRedirect to action QuanLyUngVien.");
@@ -264,16 +286,17 @@ namespace QuanLyXeKhach.Controllers
                 else if (status < 0)
                 {
                     logger.Info("/t.Update unsuccessfully.");
-                    ViewBag.msgType = "danger";
+                    ViewBag.msgType = "warning";ViewBag.msgTitle = "Lỗi!";
                     ViewBag.msg = "Cập nhật ứng viên không thành công.";
                 }
                 else if (status > 0)
                 {
                     logger.Info("/t.Updated with warning.");
-                    ViewBag.msgType = "warning";
+                    ViewBag.msgType = "warning";ViewBag.msgTitle = "Cảnh báo!";
                     ViewBag.msg = "Ứng viên đã được cập nhật .";
                 }
 
+                //return this.ModalDialog(RetResult);
                 logger.Info("/tRedirect to action QuanLyUngVien.");
                 return RedirectToAction("QuanLyUngVien");
             }
@@ -298,16 +321,16 @@ namespace QuanLyXeKhach.Controllers
         //    return View(ungVien);
         //}
 
-        //// POST: UngVien/Delete/5
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult DeleteConfirmed(int id)
-        //{
-        //    UngVien ungVien = db.UngViens.Find(id);
-        //    db.UngViens.Remove(ungVien);
-        //    db.SaveChanges();
-        //    return RedirectToAction("QuanLyUngVien");
-        //}
+        // POST: UngVien/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            //UngVien ungVien = db.UngViens.Find(id);
+            //db.UngViens.Remove(ungVien);
+            //db.SaveChanges();
+            return RedirectToAction("QuanLyUngVien");
+        }
 
         //protected override void Dispose(bool disposing)
         //{
