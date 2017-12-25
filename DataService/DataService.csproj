@@ -83,6 +83,12 @@
     <Compile Include="ILichPhongVanService.cs" />
     <Compile Include="ITrangThaiUVService.cs" />
     <Compile Include="LichPhongVanService.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
+    <Compile Include="obj\Release\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="TrangThaiUVService.cs" />
     <Compile Include="IChuyenXeService.cs" />
     <Compile Include="INhanVienService.cs" />
@@ -90,22 +96,16 @@
     <Compile Include="ITrangThaiNVService.cs" />
     <Compile Include="ITaiKhoanNVService.cs" />
     <Compile Include="ITuyenXeService.cs" />
-
     <Compile Include="IVaiTroService.cs" />
     <Compile Include="NhanVienService.cs" />
-
     <Compile Include="IUngVienService.cs" />
-
     <Compile Include="PhongBanService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TaiKhoanNVService.cs" />
     <Compile Include="TrangThaiNVService.cs" />
     <Compile Include="TuyenXeService.cs" />
-
     <Compile Include="VaiTroService.cs" />
-
     <Compile Include="UngVienService.cs" />
-
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DAO\DAO.csproj">
@@ -124,7 +124,46 @@
     <None Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="bin\Debug\DAO.dll.config" />
+    <None Include="bin\Debug\DataModel.dll.config" />
+    <None Include="bin\Debug\DataService.dll.config" />
+    <None Include="bin\Release\DAO.dll.config" />
+    <None Include="bin\Release\DataModel.dll.config" />
+    <None Include="bin\Release\DataService.dll.config" />
+    <None Include="obj\Release\DataService.csproj.CopyComplete" />
+    <None Include="obj\Release\DataService.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Release\DataService.csprojResolveAssemblyReference.cache" />
+    <None Include="obj\Release\DesignTimeResolveAssemblyReferencesInput.cache" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="bin\Debug\DAO.dll" />
+    <Content Include="bin\Debug\DAO.pdb" />
+    <Content Include="bin\Debug\DataModel.dll" />
+    <Content Include="bin\Debug\DataModel.pdb" />
+    <Content Include="bin\Debug\DataService.dll" />
+    <Content Include="bin\Debug\DataService.pdb" />
+    <Content Include="bin\Debug\EntityFramework.dll" />
+    <Content Include="bin\Debug\EntityFramework.xml" />
+    <Content Include="bin\Debug\NLog.dll" />
+    <Content Include="bin\Debug\NLog.xml" />
+    <Content Include="bin\Release\DAO.dll" />
+    <Content Include="bin\Release\DAO.pdb" />
+    <Content Include="bin\Release\DataModel.dll" />
+    <Content Include="bin\Release\DataModel.pdb" />
+    <Content Include="bin\Release\DataService.dll" />
+    <Content Include="bin\Release\DataService.pdb" />
+    <Content Include="bin\Release\EntityFramework.dll" />
+    <Content Include="bin\Release\EntityFramework.xml" />
+    <Content Include="bin\Release\NLog.dll" />
+    <Content Include="bin\Release\NLog.xml" />
+    <Content Include="obj\Release\DataService.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\Release\DataService.dll" />
+    <Content Include="obj\Release\DataService.pdb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Connected Services\" />
+    <Folder Include="obj\Release\TempPE\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
