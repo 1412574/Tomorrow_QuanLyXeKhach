@@ -93,9 +93,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201712230553383_initall.cs" />
-    <Compile Include="Migrations\201712230553383_initall.Designer.cs">
-      <DependentUpon>201712230553383_initall.cs</DependentUpon>
+    <Compile Include="Migrations\201712251020395_initall.cs" />
+    <Compile Include="Migrations\201712251020395_initall.Designer.cs">
+      <DependentUpon>201712251020395_initall.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\NhanVien.cs" />
     <Compile Include="Models\TaiKhoanNV.cs" />
@@ -103,6 +103,9 @@
     <Compile Include="Models\VaiTro.cs" />
     <Compile Include="CustomRequiredValidator.cs" />
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\ChiTietDatVe.cs" />
+    <Compile Include="Models\DatVe.cs" />
+    <Compile Include="Models\KhachHang.cs" />
     <Compile Include="Models\ChuyenXe.cs" />
     <Compile Include="Models\LichPhongVan.cs" />
     <Compile Include="Models\PagedList.cs" />
@@ -131,6 +134,7 @@
     <None Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="bin\Debug\ApplicationInsights.config" />
     <None Include="bin\Debug\DataModel.dll.config" />
     <None Include="bin\Release\DataModel.dll.config" />
     <None Include="obj\Release\DataModel.csproj.CopyComplete" />
@@ -149,8 +153,8 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201712230553383_initall.resx">
-      <DependentUpon>201712230553383_initall.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712251020395_initall.resx">
+      <DependentUpon>201712251020395_initall.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="obj\Release\DataModel.Migrations.updateinit.resources" />
   </ItemGroup>
@@ -163,6 +167,24 @@
     <Content Include="bin\Debug\EntityFramework.xml" />
     <Content Include="bin\Debug\NLog.dll" />
     <Content Include="bin\Debug\NLog.xml" />
+    <Content Include="bin\Debug\Microsoft.AI.Agent.Intercept.dll" />
+    <Content Include="bin\Debug\Microsoft.AI.DependencyCollector.dll" />
+    <Content Include="bin\Debug\Microsoft.AI.DependencyCollector.xml" />
+    <Content Include="bin\Debug\Microsoft.AI.PerfCounterCollector.dll" />
+    <Content Include="bin\Debug\Microsoft.AI.ServerTelemetryChannel.dll" />
+    <Content Include="bin\Debug\Microsoft.AI.ServerTelemetryChannel.xml" />
+    <Content Include="bin\Debug\Microsoft.AI.Web.dll" />
+    <Content Include="bin\Debug\Microsoft.AI.Web.xml" />
+    <Content Include="bin\Debug\Microsoft.AI.WindowsServer.dll" />
+    <Content Include="bin\Debug\Microsoft.AI.WindowsServer.xml" />
+    <Content Include="bin\Debug\Microsoft.ApplicationInsights.dll" />
+    <Content Include="bin\Debug\Microsoft.ApplicationInsights.xml" />
+    <Content Include="bin\Debug\Microsoft.AspNet.TelemetryCorrelation.dll" />
+    <Content Include="bin\Debug\Microsoft.AspNet.TelemetryCorrelation.xml" />
+    <Content Include="bin\Debug\NLog.dll" />
+    <Content Include="bin\Debug\NLog.xml" />
+    <Content Include="bin\Debug\System.Diagnostics.DiagnosticSource.dll" />
+    <Content Include="bin\Debug\System.Diagnostics.DiagnosticSource.xml" />
     <Content Include="bin\Release\DataModel.dll" />
     <Content Include="bin\Release\DataModel.pdb" />
     <Content Include="bin\Release\EntityFramework.dll" />

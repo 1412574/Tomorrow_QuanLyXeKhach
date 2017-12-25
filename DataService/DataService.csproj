@@ -79,6 +79,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ChiTietDatVeService.cs" />
     <Compile Include="ChuyenXeService.cs" />
     <Compile Include="ILichPhongVanService.cs" />
     <Compile Include="ITrangThaiUVService.cs" />
@@ -90,8 +91,12 @@
     <Compile Include="obj\Release\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
     <Compile Include="obj\Release\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="TrangThaiUVService.cs" />
-    <Compile Include="IChuyenXeService.cs" />
     <Compile Include="INhanVienService.cs" />
+    <Compile Include="DatVeService.cs" />
+    <Compile Include="IChiTietDatVeService.cs" />
+    <Compile Include="IChuyenXeService.cs" />
+    <Compile Include="IDatVeService.cs" />
+    <Compile Include="IKhachHangService.cs" />
     <Compile Include="IPhongBanService.cs" />
     <Compile Include="ITrangThaiNVService.cs" />
     <Compile Include="ITaiKhoanNVService.cs" />
@@ -99,6 +104,7 @@
     <Compile Include="IVaiTroService.cs" />
     <Compile Include="NhanVienService.cs" />
     <Compile Include="IUngVienService.cs" />
+    <Compile Include="KhachHangService.cs" />
     <Compile Include="PhongBanService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TaiKhoanNVService.cs" />
@@ -162,7 +168,9 @@
     <Content Include="obj\Release\DataService.pdb" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Connected Services\" />
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
     <Folder Include="obj\Release\TempPE\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

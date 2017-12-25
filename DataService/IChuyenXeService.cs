@@ -13,5 +13,6 @@ namespace DataService
         int CapNhatChuyenXe(T chuyenXe);
         IList<T> XemChuyenXe();
         T LayChuyenXe(int id);
+        List<int> danhSachGheTrong(int id);
     }
 }

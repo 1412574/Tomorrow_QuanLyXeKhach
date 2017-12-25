@@ -184,6 +184,31 @@ namespace QuanLyXeKhach
 
             //bundles.Add(new StyleBundle("~/Content/NhanSu/css/zabuto_calendar.min").Include(
             //          "~/Content/NhanSu/zabuto_calendar.min.css"));
+
+            bundles.Add(new StyleBundle("~/Assets/datvecss").Include(
+                    "~/assets/AssetsDatve/vendor/bootstrap/css/bootstrap.min.css",
+                    "~/assets/AssetsDatve/vendor/metisMenu/metisMenu.min.css",
+                    "~/assets/AssetsDatve/dist/css/sb-admin-2.css",
+                    "~/assets/AssetsDatve/vendor/morrisjs/morris.css",
+                    "~/assets/AssetsDatve/vendor/font-awesome/css/font-awesome.min.css",
+                    "~/assets/AssetsDatve/vendor/datatables-plugins/dataTables.bootstrap.css",
+                    "~/assets/AssetsDatve/vendor/datatables-responsive/dataTables.responsive.css"
+                ));
+
+            bundles.Add(new ScriptBundle("~/bundles/datvejs").Include(
+                        "~/assets/AssetsDatve/vendor/flot/excanvas.min.js",
+                        "~/assets/AssetsDatve/vendor/flot/excanvas.min.js",
+                        "~/assets/AssetsDatve/vendor/flot/jquery.flot.pie.js",
+                        "~/assets/AssetsDatve/vendor/flot/jquery.flot.resize.js",
+                        "~/assets/AssetsDatve/vendor/flot/jquery.flot.time.js",
+                        "~/assets/AssetsDatve/vendor/flot-tooltip/jquery.flot.tooltip.min.js",
+                        "~/assets/AssetsDatve/data/flot-data.js",
+                        "~/assets/AssetsDatve/dist/js/sb-admin-2.js",
+                        "~/assets/AssetsDatve/vendor/datatables/js/jquery.dataTables.min.js",
+                        "~/assets/AssetsDatve/vendor/datatables-plugins/dataTables.bootstrap.min.js",
+                        "~/assets/AssetsDatve/vendor/datatables-responsive/dataTables.responsive.js"
+                        ));
+
         }
     }
 }
