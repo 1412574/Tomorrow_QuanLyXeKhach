@@ -1,0 +1,36 @@
+﻿@model DataModel.HanhTrinh
+
+<div>
+    <h4>HanhTrinh</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TramXe.TenTramXe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TramXe.TenTramXe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.TuyenXe.TenTuyenXe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TuyenXe.TenTuyenXe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ThuTu)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ThuTu)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaHanhTrinh }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

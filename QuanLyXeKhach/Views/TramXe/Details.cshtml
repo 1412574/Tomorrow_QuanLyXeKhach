@@ -1,0 +1,28 @@
+﻿@model DataModel.TramXe
+
+<div>
+    <h4>TramXe</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TenTramXe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TenTramXe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DiaChi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiaChi)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.MaTramXe }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

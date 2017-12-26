@@ -1,0 +1,33 @@
+﻿@model IEnumerable<DataModel.TramXe>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TenTramXe)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DiaChi)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenTramXe)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DiaChi)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.MaTramXe }) |
+            @Html.ActionLink("Details", "Details", new { id=item.MaTramXe }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.MaTramXe })
+        </td>
+    </tr>
+}
+
+</table>

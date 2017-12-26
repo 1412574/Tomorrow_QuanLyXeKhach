@@ -1,0 +1,57 @@
+﻿@model IEnumerable<DataModel.TuyenXe>
+
+<p>
+    @Html.ActionLink("Thêm tuyến mới", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TenTuyenXe)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.GiaVe)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LoaiXe)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ThoiGian)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.QuangDuong)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SoChuyen)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TenTuyenXe)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.GiaVe)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LoaiXe)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ThoiGian)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.QuangDuong)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SoChuyen)
+        </td>
+        <td>
+            @Html.ActionLink("Chỉnh sửa", "Edit", new { id=item.MaTuyenXe }) |
+            @Html.ActionLink("Chi tiết", "Details", new { id=item.MaTuyenXe }) |
+            @Html.ActionLink("Xóa", "Delete", new { id=item.MaTuyenXe })
+        </td>
+    </tr>
+}
+
+</table>
