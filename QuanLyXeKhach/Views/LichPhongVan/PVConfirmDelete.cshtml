@@ -1,0 +1,52 @@
+﻿
+@model DataModel.LichPhongVan
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>Xác nhận xóa lịch phỏng vấn</title>
+</head>
+<body>
+	@using (Html.BeginForm())
+	{
+		<div class="modal-body">
+			<p>Bạn có thật sự muốn xóa lịch phỏng vấn @Model.maLPV?</p>
+			<div class="row">
+				<div class="col-12-xs text-center">
+					<div class="col-md-12">
+						@Html.AntiForgeryToken()
+
+
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<div class="form-actions no-color">
+				<div class="col-md-6">
+					<button type="submit" class="btn btn-danger btn-md col-3-xs" style="width:100%;" onclick="Delete(@Model.maLPV)">Có</button>
+				</div>
+				<div class="col-md-6">
+					<button data-dismiss="modal" class="btn btn-success btn-md col-3-xs" style="width:100%;">Không</button>
+				</div>
+			</div>
+		</div>
+	}
+
+
+</body>
+</html>
+<script>
+	function Delete(currentId) {
+		$.ajax({
+			type: "Post",
+			url: '@Url.Action("DeleteConfirmed", "LichPhongVan")',
+			data: { id: currentId },
+			success: function (data) {
+				//notification here
+			}
+		})
+	}
+</script>

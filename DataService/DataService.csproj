@@ -50,6 +50,7 @@
     <Compile Include="BaoCaoService.cs" />
     <Compile Include="IBaoCaoService.cs" />
     <Compile Include="IChuyenXeService.cs" />
+    <Compile Include="ILichPhongVanService.cs" />
     <Compile Include="INhanVienService.cs" />
     <Compile Include="IDatVeService.cs" />
     <Compile Include="IKhachHangService.cs" />
@@ -57,8 +58,11 @@
     <Compile Include="ITrangThaiNVService.cs" />
     <Compile Include="ITaiKhoanNVService.cs" />
     <Compile Include="IThongKeService.cs" />
+    <Compile Include="ITrangThaiUVService.cs" />
     <Compile Include="ITuyenXeService.cs" />
+    <Compile Include="IUngVienService.cs" />
     <Compile Include="IVaiTroService.cs" />
+    <Compile Include="LichPhongVanService.cs" />
     <Compile Include="NhanVienService.cs" />
     <Compile Include="KhachHangService.cs" />
     <Compile Include="PhongBanService.cs" />
@@ -66,7 +70,9 @@
     <Compile Include="TaiKhoanNVService.cs" />
     <Compile Include="TrangThaiNVService.cs" />
     <Compile Include="ThongKeService.cs" />
+    <Compile Include="TrangThaiUVService.cs" />
     <Compile Include="TuyenXeService.cs" />
+    <Compile Include="UngVienService.cs" />
     <Compile Include="VaiTroService.cs" />
   </ItemGroup>
   <ItemGroup>

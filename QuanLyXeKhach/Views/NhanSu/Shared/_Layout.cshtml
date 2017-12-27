@@ -1,0 +1,126 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>@ViewBag.Title - Quản Lý Xe Khách</title>
+	@Styles.Render("~/Content/css")
+	@Styles.Render("~/bundles/NhanSu/css")
+	@Scripts.Render("~/bundles/modernizr")
+</head>
+<body sstyle="background-color:#fafafa">
+	<nav class="navbar navbar-inverse navbar-fixed-top col-md-12" role="navigation">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbarCollapse">
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+
+				<a class="navbar-brand" href="/">Quản lý xe khách</a>
+			</div>
+
+			<div class="collapse navbar-inverse navbar-collapse navbarCollapse">
+				<ul class="nav navbar-nav navbar-right">
+					<li>
+						<a href="/">Trang chủ</a>
+					</li>
+
+					<li>
+						<a href="#">Đặt vé</a>
+					</li>
+
+					<li>
+						<a href="#">Tuyến xe</a>
+					</li>
+
+					<li>
+						<a href="#">Phòng ban</a>
+					</li>
+
+					<li class="active">
+						<a href="/NhanSu/ChucNang">Nhân sự</a>
+					</li>
+
+
+
+
+					@*<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Nhân sự <span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="#">Quản lý nhân viên</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Chấm công</a></li>
+								<li class="divider"></li>
+								<li><a href="#">Công việc</a></li>
+								<li><a href="#">Phân công</a></li>
+							</ul>
+						</li>
+
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">Ứng viên <span class="caret"></span></a>
+							<ul class="dropdown-menu" role="menu">
+								<li><a href="#">Ứng viên</a></li>
+								<li><a href="#">Lịch phỏng vấn</a></li>
+							</ul>
+						</li>*@
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+	<div class="container-fluid">
+		<div class="btn-group-vertical col-md-3 col-sm-12 col-xs-12">
+				<!---------------------------------------------------------------------------->
+				<div class="container-fluid" style="">
+					<div class="row">
+						<div id="sidebar" class="">
+							<h4>
+								NHÂN VIÊN
+							</h4>
+							<ul class="nav nav-pills nav-stacked">
+								<li><a id="lQLNV" class="tablink" href="#" onclick="openPage('QLNV', this)"><font color="black">Quản lý nhân viên</font></a></li>
+								<li><a id="lQLCV" class="tablink" href="#" onclick="openPage('QLCV', this)"><font color="black">Quản lý công việc</font></a></li>
+								<li><a id="lPC" class="tablink" href="#" onclick="openPage('PC', this)"><font color="black">Phân công</font></a></li>
+								<li><a id="lCC" class="tablink" href="#" onclick="openPage('CC', this)"><font color="black">Chấm công</font></a></li>
+							</ul>
+							<br />
+							<h4>
+								ỨNG VIÊN
+							</h4>
+							<ul class="nav  nav-stacked ">
+								<li><a id="lQLUV" class="tablink" href="~/UngVien/QuanLyUngVien" onclick="openPage('QLUV', this)"><font color="black">Quản lý ứng viên</font></a></li>
+								<li><a id="lQLLPV" class="tablink" href="~/LichPhongVan/QuanLyLichPhongVan" onclick="openPage('QLLPV', this)"><font color="black">Lịch phỏng vấn</font></a></li>
+							</ul>
+						</div>
+					</div>
+				</div>
+				</div>
+
+
+		<div class="col-md-9 col-sm-12 col-xs-12" style="padding:0;   max-width: none !important; min-width: 600px !important;">
+			<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'>
+			<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+			<!------------------------------------------->
+			@RenderSection("scripts", required: false)
+			<section class="content-wrapper main-content clear-fix">
+				@RenderBody()
+			</section>
+
+
+		</div>
+	</div>
+	<div class="">
+	</div>
+	<footer class="col-md-12 container-fluid">
+		<hr />
+		<p>&copy; @DateTime.Now.Year - TOMORROW TEAM</p>
+	</footer>
+
+	@Scripts.Render("~/bundles/jquery")
+	@Scripts.Render("~/bundles/bootstrap")
+	@RenderSection("scripts", required: false)
+</body>
+</html>

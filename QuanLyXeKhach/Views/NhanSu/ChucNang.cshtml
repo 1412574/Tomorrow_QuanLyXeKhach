@@ -1,0 +1,71 @@
+﻿
+@{
+	ViewBag.Title = "Quản Lý Nhân Sự";
+	Layout = "~/Views/NhanSu/Shared/_Layout.cshtml";
+}
+
+
+@Styles.Render("~/Content/NhanSu/css/side-bar")
+@Styles.Render("~/Content/NhanSu/css/tab-content")
+<div class="container-fluid">
+
+
+
+	<div class="col-md-9" style="padding:0;   max-width: none !important; min-width: 600px !important;">
+		<link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css'>
+		<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+		<div id="QLNV" class="tabcontent">
+			<h3>Home</h3>
+			<p>Home is where the heart is..</p>
+
+		</div>
+		<!------------------------------------------->
+	</div>
+
+	<div id="QLCV" class="tabcontent">
+		<h3>News</h3>
+		<p>Some news this fine day!</p>
+	</div>
+
+	<div id="PC" class="tabcontent">
+		<h3>Contact</h3>
+		<p>Get in touch, or swing by for a cup of coffee.</p>
+	</div>
+
+	<div id="CC" class="tabcontent">
+		<h3>About</h3>
+		<p>Who we are and what we do.</p>
+	</div>
+</div>
+@Scripts.Render("~/bundles/NhanSu/Scripts/tab-content")
+
+<script>
+	//openPage("QLNV", document.getElementById("lQLNV"));
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -36,6 +36,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
     <Reference Include="NLog, Version=4.0.0.0, Culture=neutral, PublicKeyToken=5120e14c03d0593c, processorArchitecture=MSIL">
       <HintPath>..\packages\NLog.4.4.12\lib\net45\NLog.dll</HintPath>
     </Reference>
@@ -48,6 +51,24 @@
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.3\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.3\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.3\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -56,17 +77,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CustomRequiredValidator.cs" />
     <Compile Include="Migrations\201712251459200_Initial.cs" />
     <Compile Include="Migrations\201712251459200_Initial.Designer.cs">
       <DependentUpon>201712251459200_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\LichPhongVan.cs" />
     <Compile Include="Models\NhanVien.cs" />
+    <Compile Include="Notify.cs" />
+    <Compile Include="PagedList.cs" />
     <Compile Include="Models\TaiKhoanNV.cs" />
     <Compile Include="Models\TrangThaiNV.cs" />
     <Compile Include="Models\ChiTietDatVe.cs" />
     <Compile Include="Models\DatVe.cs" />
     <Compile Include="Models\KhachHang.cs" />
+    <Compile Include="Models\TrangThaiUV.cs" />
+    <Compile Include="Models\UngVien.cs" />
     <Compile Include="Models\VaiTro.cs" />
     <Compile Include="Models\ThongKe.cs" />
     <Compile Include="Models\BaoCao.cs" />
@@ -80,7 +107,86 @@
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
+    <None Include="Content\bootstrap\alerts.less" />
+    <None Include="Content\bootstrap\badges.less" />
+    <None Include="Content\bootstrap\bootstrap.less" />
+    <None Include="Content\bootstrap\breadcrumbs.less" />
+    <None Include="Content\bootstrap\button-groups.less" />
+    <None Include="Content\bootstrap\buttons.less" />
+    <None Include="Content\bootstrap\carousel.less" />
+    <None Include="Content\bootstrap\close.less" />
+    <None Include="Content\bootstrap\code.less" />
+    <None Include="Content\bootstrap\component-animations.less" />
+    <None Include="Content\bootstrap\dropdowns.less" />
+    <None Include="Content\bootstrap\forms.less" />
+    <None Include="Content\bootstrap\glyphicons.less" />
+    <None Include="Content\bootstrap\grid.less" />
+    <None Include="Content\bootstrap\input-groups.less" />
+    <None Include="Content\bootstrap\jumbotron.less" />
+    <None Include="Content\bootstrap\labels.less" />
+    <None Include="Content\bootstrap\list-group.less" />
+    <None Include="Content\bootstrap\media.less" />
+    <None Include="Content\bootstrap\mixins.less" />
+    <None Include="Content\bootstrap\mixins\alerts.less" />
+    <None Include="Content\bootstrap\mixins\background-variant.less" />
+    <None Include="Content\bootstrap\mixins\border-radius.less" />
+    <None Include="Content\bootstrap\mixins\buttons.less" />
+    <None Include="Content\bootstrap\mixins\center-block.less" />
+    <None Include="Content\bootstrap\mixins\clearfix.less" />
+    <None Include="Content\bootstrap\mixins\forms.less" />
+    <None Include="Content\bootstrap\mixins\gradients.less" />
+    <None Include="Content\bootstrap\mixins\grid-framework.less" />
+    <None Include="Content\bootstrap\mixins\grid.less" />
+    <None Include="Content\bootstrap\mixins\hide-text.less" />
+    <None Include="Content\bootstrap\mixins\image.less" />
+    <None Include="Content\bootstrap\mixins\labels.less" />
+    <None Include="Content\bootstrap\mixins\list-group.less" />
+    <None Include="Content\bootstrap\mixins\nav-divider.less" />
+    <None Include="Content\bootstrap\mixins\nav-vertical-align.less" />
+    <None Include="Content\bootstrap\mixins\opacity.less" />
+    <None Include="Content\bootstrap\mixins\pagination.less" />
+    <None Include="Content\bootstrap\mixins\panels.less" />
+    <None Include="Content\bootstrap\mixins\progress-bar.less" />
+    <None Include="Content\bootstrap\mixins\reset-filter.less" />
+    <None Include="Content\bootstrap\mixins\reset-text.less" />
+    <None Include="Content\bootstrap\mixins\resize.less" />
+    <None Include="Content\bootstrap\mixins\responsive-visibility.less" />
+    <None Include="Content\bootstrap\mixins\size.less" />
+    <None Include="Content\bootstrap\mixins\tab-focus.less" />
+    <None Include="Content\bootstrap\mixins\table-row.less" />
+    <None Include="Content\bootstrap\mixins\text-emphasis.less" />
+    <None Include="Content\bootstrap\mixins\text-overflow.less" />
+    <None Include="Content\bootstrap\mixins\vendor-prefixes.less" />
+    <None Include="Content\bootstrap\modals.less" />
+    <None Include="Content\bootstrap\navbar.less" />
+    <None Include="Content\bootstrap\navs.less" />
+    <None Include="Content\bootstrap\normalize.less" />
+    <None Include="Content\bootstrap\pager.less" />
+    <None Include="Content\bootstrap\pagination.less" />
+    <None Include="Content\bootstrap\panels.less" />
+    <None Include="Content\bootstrap\popovers.less" />
+    <None Include="Content\bootstrap\print.less" />
+    <None Include="Content\bootstrap\progress-bars.less" />
+    <None Include="Content\bootstrap\responsive-embed.less" />
+    <None Include="Content\bootstrap\responsive-utilities.less" />
+    <None Include="Content\bootstrap\scaffolding.less" />
+    <None Include="Content\bootstrap\tables.less" />
+    <None Include="Content\bootstrap\theme.less" />
+    <None Include="Content\bootstrap\thumbnails.less" />
+    <None Include="Content\bootstrap\tooltip.less" />
+    <None Include="Content\bootstrap\type.less" />
+    <None Include="Content\bootstrap\utilities.less" />
+    <None Include="Content\bootstrap\variables.less" />
+    <None Include="Content\bootstrap\wells.less" />
+    <None Include="Content\fonts\glyphicons-halflings-regular.eot" />
+    <None Include="Content\fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="Content\fonts\glyphicons-halflings-regular.woff" />
+    <None Include="Content\fonts\glyphicons-halflings-regular.woff2" />
+    <None Include="fonts\glyphicons-halflings-regular.eot" />
+    <None Include="fonts\glyphicons-halflings-regular.ttf" />
+    <None Include="fonts\glyphicons-halflings-regular.woff" />
     <None Include="packages.config" />
+    <None Include="Scripts\jquery-1.9.1.min.map" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -89,6 +195,23 @@
     <EmbeddedResource Include="Migrations\201712251459200_Initial.resx">
       <DependentUpon>201712251459200_Initial.cs</DependentUpon>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\jquery-1.9.1-vsdoc.js" />
+    <Content Include="Scripts\jquery-1.9.1.js" />
+    <Content Include="Scripts\jquery-1.9.1.min.js" />
+    <Content Include="Scripts\moment-with-locales.js" />
+    <Content Include="Scripts\moment-with-locales.min.js" />
+    <Content Include="Scripts\moment.js" />
+    <Content Include="Scripts\moment.min.js" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
