@@ -82,9 +82,15 @@
     <Compile Include="Migrations\201712251459200_Initial.Designer.cs">
       <DependentUpon>201712251459200_Initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201712271154478_updateDB.cs" />
+    <Compile Include="Migrations\201712271154478_updateDB.Designer.cs">
+      <DependentUpon>201712271154478_updateDB.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\HanhTrinh.cs" />
     <Compile Include="Models\LichPhongVan.cs" />
     <Compile Include="Models\NhanVien.cs" />
+    <Compile Include="Models\TramXe.cs" />
     <Compile Include="Notify.cs" />
     <Compile Include="PagedList.cs" />
     <Compile Include="Models\TaiKhoanNV.cs" />
@@ -194,6 +200,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201712251459200_Initial.resx">
       <DependentUpon>201712251459200_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712271154478_updateDB.resx">
+      <DependentUpon>201712271154478_updateDB.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

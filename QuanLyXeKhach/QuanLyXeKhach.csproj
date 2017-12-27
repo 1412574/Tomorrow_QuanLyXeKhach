@@ -172,6 +172,7 @@
     <Compile Include="Common\UserLogin.cs" />
     <Compile Include="Controllers\BaoCaoController.cs" />
     <Compile Include="Controllers\ChuyenXesController.cs" />
+    <Compile Include="Controllers\HanhTrinhsController.cs" />
     <Compile Include="Controllers\LichPhongVanController.cs" />
     <Compile Include="Controllers\NhanSuController.cs" />
     <Compile Include="Controllers\NhanVienController.cs" />
@@ -179,7 +180,9 @@
     <Compile Include="Controllers\KhachHangController.cs" />
     <Compile Include="Controllers\PhongBanController.cs" />
     <Compile Include="Controllers\TaiKhoanNVController.cs" />
+    <Compile Include="Controllers\TramXeController.cs" />
     <Compile Include="Controllers\TrangThaiNVController.cs" />
+    <Compile Include="Controllers\TuyenXeController.cs" />
     <Compile Include="Controllers\UngVienController.cs" />
     <Compile Include="Controllers\VaiTroController.cs" />
     <Compile Include="Controllers\ThongKeController.cs" />
@@ -702,6 +705,23 @@
     <Content Include="Views\LichPhongVan\PVEdit.cshtml" />
     <Content Include="Views\LichPhongVan\QuanLyLichPhongVan.cshtml" />
     <Content Include="Views\Shared\_Notifications.cshtml" />
+    <Content Include="Views\HanhTrinhs\Create.cshtml" />
+    <Content Include="Views\HanhTrinhs\Delete.cshtml" />
+    <Content Include="Views\HanhTrinhs\Details.cshtml" />
+    <Content Include="Views\HanhTrinhs\Edit.cshtml" />
+    <Content Include="Views\HanhTrinhs\Index.cshtml" />
+    <Content Include="Views\TramXe\Create.cshtml" />
+    <Content Include="Views\TramXe\Delete.cshtml" />
+    <Content Include="Views\TramXe\Details.cshtml" />
+    <Content Include="Views\TramXe\Edit.cshtml" />
+    <Content Include="Views\TramXe\Index.cshtml" />
+    <Content Include="Views\TuyenXe\Create.cshtml" />
+    <Content Include="Views\TuyenXe\Delete.cshtml" />
+    <Content Include="Views\TuyenXe\Details.cshtml" />
+    <Content Include="Views\TuyenXe\Edit.cshtml" />
+    <Content Include="Views\TuyenXe\Index.cshtml" />
+    <Content Include="Views\Shared\_LayoutTuyenXe.cshtml" />
+    <Content Include="Views\Shared\_LeftmenuTuyenXe.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

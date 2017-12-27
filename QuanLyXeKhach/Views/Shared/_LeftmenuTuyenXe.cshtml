@@ -1,0 +1,61 @@
+﻿
+
+<div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav navbar-collapse">
+        <ul class="nav" id="side-menu">
+            <li class="sidebar-search">
+                <div class="input-group custom-search-form">
+                    <input type="text" class="form-control" placeholder="Search...">
+                    <span class="input-group-btn">
+                        <button class="btn btn-default" type="button">
+                            <i class="fa fa-search"></i>
+                        </button>
+                    </span>
+                </div>
+                <!-- /input-group -->
+            </li>
+
+            <li>
+                <a href="#"><i class="fa fa-edit fa-fw"></i>Tuyến xe<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        @Html.ActionLink("Thêm Tuyến xe", "Create", "TuyenXe")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Xem Tuyến xe", "Index", "TuyenXe")
+                    </li>
+                </ul>
+                <!-- /.nav-second-level -->
+            </li>
+
+            <li>
+                <a href="#"><i class="fa fa-edit fa-fw"></i>Trạm xe<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        @Html.ActionLink("Thêm Trạm xe", "Create", "TramXe")
+                    </li>
+                    <li>
+                       @Html.ActionLink("Xem Trạm xe","Index", "TramXe")
+                    </li>
+                </ul>
+                <!-- /.nav-second-level -->
+            </li>
+            <li>
+                <a href="#"><i class="fa fa-edit fa-fw"></i>Hành trình<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        @Html.ActionLink("Thêm hành trình", "Create", "HanhTrinhs")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Xem hành trình", "Index", "HanhTrinhs")
+                    </li>
+                </ul>
+                <!-- /.nav-second-level -->
+            </li>
+
+
+        </ul>
+    </div>
+    <!-- /.sidebar-collapse -->
+</div>
+<!-- /.navbar-static-side -->

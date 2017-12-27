@@ -9,18 +9,18 @@ using System.Threading.Tasks;
 
 namespace DataService
 {
-    public class TuyenXeService : ITuyenXeService<TuyenXe>
+    public class HanhTrinhService : IHanhTrinhService<HanhTrinh>
     {
         ILogger logger = LogManager.GetCurrentClassLogger();
         IUnitOfWork unitofWork = new GenericUnitOfWork();
-        public int CapNhatTuyenXe(TuyenXe tuyenXe)
+        public int CapNhatHanhTrinh(HanhTrinh hanhTrinh)
         {
-            logger.Info("Start cap nhat tuyen xe method");
+            logger.Info("Start cap nhat hanh trinh method");
             int ret = 0;
             try
             {
-                IRepository<TuyenXe> repository = unitofWork.Repository<TuyenXe>();
-                repository.Update(tuyenXe);
+                IRepository<HanhTrinh> repository = unitofWork.Repository<HanhTrinh>();
+                repository.Update(hanhTrinh);
                 unitofWork.SaveChange();
                 logger.Info("Status: Success");
             }
@@ -32,14 +32,14 @@ namespace DataService
             return ret;
         }
 
-        public int ThemTuyenXe(TuyenXe tuyenXe)
+        public int ThemHanhTrinh(HanhTrinh hanhTrinh)
         {
-            logger.Info("Start them tuyen xe method");
+            logger.Info("Start them hanh trinh method");
             int ret = 0;
             try
             {
-                IRepository<TuyenXe> repository = unitofWork.Repository<TuyenXe>();
-                repository.Add(tuyenXe);
+                IRepository<HanhTrinh> repository = unitofWork.Repository<HanhTrinh>();
+                repository.Add(hanhTrinh);
                 unitofWork.SaveChange();
                 logger.Info("Status: Success");
             }
@@ -51,24 +51,28 @@ namespace DataService
             return ret;
         }
 
-        public IList<TuyenXe> XemTuyenXe()
+        public IList<HanhTrinh> XemHanhTrinh()
         {
-            IRepository<TuyenXe> repository = unitofWork.Repository<TuyenXe>();
+            IRepository<HanhTrinh> repository = unitofWork.Repository<HanhTrinh>();
             return repository.GetAll().ToList();
         }
 
-        public int XoaTuyenXe(int id)
+        
+
+        public int XoaHanhTrinh(int id)
         {
-            IRepository<TuyenXe> repository = unitofWork.Repository<TuyenXe>();
+            IRepository<HanhTrinh> repository = unitofWork.Repository<HanhTrinh>();
             repository.Delete(repository.GetById(id));
             unitofWork.SaveChange();
             return 0;
         }
 
-        public TuyenXe LayTuyenXe(int id)
+        public HanhTrinh LayHanhTrinh(int id)
         {
-            IRepository<TuyenXe> repository = unitofWork.Repository<TuyenXe>();
+            IRepository<HanhTrinh> repository = unitofWork.Repository<HanhTrinh>();
             return repository.GetById(id);
         }
+
+        
     }
 }
