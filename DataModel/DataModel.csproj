@@ -83,6 +83,7 @@
       <DependentUpon>201712251459200_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\CongViec.cs" />
     <Compile Include="Models\LichPhongVan.cs" />
     <Compile Include="Models\NhanVien.cs" />
     <Compile Include="Notify.cs" />

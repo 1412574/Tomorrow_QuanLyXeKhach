@@ -42,11 +42,13 @@
         [Display(Name = "Vai trò", ShortName = "Vai trò")]
         public int maVT { get; set; }
 
+        [Display(Name = "Vai trò", ShortName = "Vai trò")]
         public virtual VaiTro VaiTro { get; set; }
 
         [Display(Name = "Trạng thái", ShortName = "Trạng thái")]
         public int maTT { get; set; }
 
+        [Display(Name = "Trạng thái", ShortName = "Trạng thái")]
         public virtual TrangThaiNV TrangThai { get; set; }
 
         public virtual ICollection<TaiKhoanNV> TaiKhoanNVs { get; set; }
