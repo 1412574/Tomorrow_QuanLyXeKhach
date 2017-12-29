@@ -12,7 +12,7 @@
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
-        [Display(Name = "Mã nhân viên", ShortName = "Mã")]
+        [Display(Name = "Mã nhân viên", ShortName = "Mã số")]
         public int maNV { get; set; }
 
         [StringLength(30)]
@@ -52,6 +52,8 @@
         public virtual TrangThaiNV TrangThai { get; set; }
 
         public virtual ICollection<TaiKhoanNV> TaiKhoanNVs { get; set; }
+
+        public virtual ICollection<PhanCong> PhanCongs { get; set; }
 
     }
 }
