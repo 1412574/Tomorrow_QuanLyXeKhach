@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "Chi tiết trạm";
+    Layout = "~/Views/Shared/_LayoutTuyenXe.cshtml";
+}
+
+@model DataModel.TramXe
+
+
+
+
+
+
+
+
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">CHI TIẾT TRẠM XE</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    Thông tin chi tiết trạm xe
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-10">
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.TenTramXe)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.TenTramXe)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.DiaChi)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.DiaChi)
+                                </dd>
+
+                            </dl>
+                        </div>
+
+                    </div>
+                    <!-- /.row (nested) -->
+                </div>
+                <!-- /.panel-body -->
+                <div>
+                    @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.MaTramXe }) |
+                    @Html.ActionLink("Trở lại danh sách", "Index")
+                </div>
+            </div>
+            <!-- /.panel -->
+
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /#page-wrapper -->

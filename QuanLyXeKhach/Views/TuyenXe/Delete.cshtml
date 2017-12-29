@@ -1,0 +1,100 @@
+﻿@{
+    ViewBag.Title = "Xóa tuyến";
+    Layout = "~/Views/Shared/_LayoutTuyenXe.cshtml";
+}
+
+@model DataModel.TuyenXe
+
+
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">XÓA TUYẾN XE</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    Bạn có thật sự muốn xóa tuyến xe này?
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-10">
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.TenTuyenXe)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.TenTuyenXe)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.GiaVe)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.GiaVe)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.LoaiXe)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.LoaiXe)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.ThoiGian)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.ThoiGian)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.QuangDuong)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.QuangDuong)
+                                </dd>
+
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.SoChuyen)
+                                </dt>
+
+                                <dd>
+                                    @Html.DisplayFor(model => model.SoChuyen)
+                                </dd>
+
+                            </dl>
+
+                            @using (Html.BeginForm())
+                            {
+                                @Html.AntiForgeryToken()
+
+                                <div class="form-actions no-color">
+                                    <input type="submit" value="Xóa" class="btn btn-danger" /> |
+                                    @Html.ActionLink("Trở lại danh sách", "Index")
+                                </div>
+                            }
+                        </div>
+
+                    </div>
+                    <!-- /.row (nested) -->
+                </div>
+                <!-- /.panel-body -->
+            </div>
+            <!-- /.panel -->
+
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+</div>
+<!-- /#page-wrapper -->
