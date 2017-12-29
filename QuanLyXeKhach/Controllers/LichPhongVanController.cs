@@ -87,7 +87,7 @@ namespace QuanLyXeKhach.Controllers
             {
                 logger.Info("/tId not found.");
                 IList<Notify> notificationList = new List<Notify>();
-                notificationList.Add(new Notify("Lịch phỏng vấn không tồn tại hoặc đã xóa.", NotificationType.ERROR));
+                notificationList.Add(new Notify(String.Format("Lịch phỏng vấn không tồn tại hoặc đã xóa. Mã lịch phỏng vấn {0}.", lichPhongVan.maLPV), NotificationType.ERROR));
                 TempData["notificationList"] = notificationList;
                 return RedirectToAction("QuanLyLichPhongVan");
             }
@@ -106,7 +106,7 @@ namespace QuanLyXeKhach.Controllers
             if (lichPhongVan == null)
             {
                 logger.Info("/tId not found.");
-                notificationList.Add(new Notify("Lịch phỏng vấn không tồn tại hoặc đã xóa.", NotificationType.ERROR));
+                notificationList.Add(new Notify(String.Format("Lịch phỏng vấn không tồn tại hoặc đã xóa. Mã lịch phỏng vấn {0}.", lichPhongVan.maLPV), NotificationType.ERROR));
                 TempData["notificationList"] = notificationList;
                 return RedirectToAction("QuanLyLichPhongVan");
             }
@@ -116,21 +116,21 @@ namespace QuanLyXeKhach.Controllers
                 logger.Info("/t.Delete successfully.");
                 //ViewBag.msgType = "sussces";
                 //ViewBag.msg = "Xóa lịch phỏng vấn thành công.";
-                notificationList.Add(new Notify("Xóa lịch phỏng vấn thành công.", NotificationType.SUCCESS));
+                notificationList.Add(new Notify(String.Format("Xóa lịch phỏng vấn thành công. Mã lịch phỏng vấn {0}.", lichPhongVan.maLPV), NotificationType.SUCCESS));
             }
             else if (status < 0)
             {
                 logger.Info("/t.Delete unsuccessfully.");
                 //ViewBag.msgType = "warning"; ViewBag.msgTitle = "Lỗi!";
                 //ViewBag.msg = "Xóa lịch phỏng vấn thất bại.";
-                notificationList.Add(new Notify("Xóa lịch phỏng vấn thất bại.", NotificationType.ERROR));
+                notificationList.Add(new Notify(String.Format("Xóa lịch phỏng vấn thất bại. Mã lịch phỏng vấn {0}.", lichPhongVan.maLPV), NotificationType.ERROR));
             }
             else if (status > 0)
             {
                 logger.Info("/t.Deleted with warning.");
                 //ViewBag.msgType = "warning"; ViewBag.msgTitle = "Cảnh báo!";
                 //ViewBag.msg = "Lịch phỏng vấn đã được xóa.";
-                notificationList.Add(new Notify("Lịch phỏng vấn đã được xóa.", NotificationType.WARNING));
+                notificationList.Add(new Notify(String.Format("Lịch phỏng vấn đã được xóa. Mã lịch phỏng vấn {0}.", lichPhongVan.maLPV), NotificationType.WARNING));
             }
 
             logger.Info("/tRedirect to action QuanLyLichPhongVan.");
@@ -163,7 +163,7 @@ namespace QuanLyXeKhach.Controllers
             {
                 logger.Info("/tId not found.");
                 IList<Notify> notificationList = new List<Notify>();
-                notificationList.Add(new Notify("Lịch phỏng vấn không tồn tại hoặc đã xóa.", NotificationType.ERROR));
+                notificationList.Add(new Notify(String.Format("Lịch phỏng vấn không tồn tại hoặc đã xóa. Mã lịch phỏng vấn {0}.", lichPhongVan.maLPV), NotificationType.ERROR));
                 TempData["notificationList"] = notificationList;
                 return RedirectToAction("QuanLyLichPhongVan");
             }
@@ -217,7 +217,7 @@ namespace QuanLyXeKhach.Controllers
                 logger.Info("/t.Create successfully.");
                 //ViewBag.msgType = "sussces";
                 //ViewBag.msg = "Thêm lịch phỏng vấn thành công.";
-                notificationList.Add(new Notify("Thêm lịch phỏng vấn thành công.", NotificationType.SUCCESS));
+                notificationList.Add(new Notify(String.Format("Thêm lịch phỏng vấn thành công. Mã lịch phỏng vấn {0}.", lichPhongVan.maLPV), NotificationType.SUCCESS));
             }
             else if (status < 0)
             {
@@ -231,7 +231,7 @@ namespace QuanLyXeKhach.Controllers
                 logger.Info("/t.Deleted with warning.");
                 //ViewBag.msgType = "warning"; ViewBag.msgTitle = "Cảnh báo!";
                 //ViewBag.msg = "Lịch phỏng vấn đã được thêm.";
-                notificationList.Add(new Notify("Lịch phỏng vấn đã được thêm", NotificationType.WARNING));
+                notificationList.Add(new Notify(String.Format("Lịch phỏng vấn đã được thêm. Mã lịch phỏng vấn {0}.", lichPhongVan.maLPV), NotificationType.WARNING));
             }
             logger.Info("/tRedirect to action QuanLyLichPhongVan.");
             TempData["notificationList"] = notificationList;
@@ -265,7 +265,7 @@ namespace QuanLyXeKhach.Controllers
             {
                 logger.Info("/tId not found.");
                 IList<Notify> notificationList = new List<Notify>();
-                notificationList.Add(new Notify("Lịch phỏng vấn không tồn tại hoặc đã xóa.", NotificationType.ERROR));
+                notificationList.Add(new Notify(String.Format("Lịch phỏng vấn không tồn tại hoặc đã xóa. Mã lịch phỏng vấn {0}.", lichPhongVan.maLPV), NotificationType.ERROR));
                 TempData["notificationList"] = notificationList;
                 return RedirectToAction("QuanLyLichPhongVan");
             }
@@ -299,21 +299,21 @@ namespace QuanLyXeKhach.Controllers
                     logger.Info("/t.Update successfully.");
                     //ViewBag.msgType = "sussces";
                     //ViewBag.msg = "Cập nhật lịch phỏng vấn thành công.";
-                    notificationList.Add(new Notify("Cập nhật lịch phỏng vấn thành công.", NotificationType.SUCCESS));
+                    notificationList.Add(new Notify(String.Format("Cập nhật lịch phỏng vấn thành công. Mã lịch phỏng vấn {0}.", lichPhongVan.maLPV), NotificationType.SUCCESS));
                 }
                 else if (status < 0)
                 {
                     logger.Info("/t.Update unsuccessfully.");
                     //ViewBag.msgType = "warning"; ViewBag.msgTitle = "Lỗi!";
                     //ViewBag.msg = "Cập nhật lịch phỏng vấn không thành công.";
-                    notificationList.Add(new Notify("Cập nhật lịch phỏng vấn không thành công.", NotificationType.ERROR));
+                    notificationList.Add(new Notify(String.Format("Cập nhật lịch phỏng vấn không thành công. Mã lịch phỏng vấn {0}.", lichPhongVan.maLPV), NotificationType.ERROR));
                 }
                 else if (status > 0)
                 {
                     logger.Info("/t.Updated with warning.");
                     //ViewBag.msgType = "warning"; ViewBag.msgTitle = "Cảnh báo!";
                     //ViewBag.msg = "Lịch phỏng vấn đã được cập nhật .";
-                    notificationList.Add(new Notify("Lịch phỏng vấn đã được cập nhật.", NotificationType.WARNING));
+                    notificationList.Add(new Notify(String.Format("Lịch phỏng vấn đã được cập nhật. Mã lịch phỏng vấn {0}.", lichPhongVan.maLPV), NotificationType.WARNING));
                 }
 
                 //return this.ModalDialog(RetResult);

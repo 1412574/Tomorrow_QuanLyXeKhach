@@ -20,9 +20,11 @@ namespace DataModel
         [Display(Name = "Tên công việc", ShortName = "Tên")]
         public string tenCV { get; set; }
 
+        [DataType(DataType.MultilineText)]
         [Display(Name = "Yêu cầu công việc", ShortName = "Yêu cầu")]
         public string yeuCauCV { get; set; }
 
+        [DataType(DataType.MultilineText)]
         [Display(Name = "Mô tả công việc", ShortName = "Mô tả")]
         public string moTaCV { get; set; }
 
@@ -32,6 +34,8 @@ namespace DataModel
         public DateTime hanHoanThanh { get; set; }
 
         public virtual ICollection<PhanCong> PhanCongs { get; set; }
+
+        public int trangThai { get { return (hanHoanThanh > DateTime.Now) ? 2 : 1; } }
 
     }
 }

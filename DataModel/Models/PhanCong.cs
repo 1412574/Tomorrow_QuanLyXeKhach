@@ -20,12 +20,14 @@ namespace DataModel
         public int maCV { get; set; }
 
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         [Display(Name = "Ngày phân công", ShortName = "Ngày phân công")]
         public DateTime ngayPC { get; set; } = DateTime.Now;
 
         [Display(Name = "Đánh giá", ShortName = "Đánh giá")]
         public string danhGia { get; set; }
 
+        [DataType(DataType.MultilineText)]
         [Display(Name = "Ghi chú", ShortName = "Ghi chú")]
         public string ghiChu { get; set; }
 

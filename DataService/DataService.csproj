@@ -45,11 +45,13 @@
   <ItemGroup>
     <Compile Include="ChiTietDatVeService.cs" />
     <Compile Include="ChuyenXeService.cs" />
+    <Compile Include="CongViecService.cs" />
     <Compile Include="DatVeService.cs" />
     <Compile Include="IChiTietDatVeService.cs" />
     <Compile Include="BaoCaoService.cs" />
     <Compile Include="IBaoCaoService.cs" />
     <Compile Include="IChuyenXeService.cs" />
+    <Compile Include="ICongViecService.cs" />
     <Compile Include="ILichPhongVanService.cs" />
     <Compile Include="INhanVienService.cs" />
     <Compile Include="IDatVeService.cs" />
