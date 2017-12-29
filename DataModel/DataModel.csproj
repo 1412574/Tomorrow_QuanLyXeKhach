@@ -88,9 +88,11 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\HanhTrinh.cs" />
+    <Compile Include="Models\CongViec.cs" />
     <Compile Include="Models\LichPhongVan.cs" />
     <Compile Include="Models\NhanVien.cs" />
     <Compile Include="Models\TramXe.cs" />
+    <Compile Include="Models\PhanCong.cs" />
     <Compile Include="Notify.cs" />
     <Compile Include="PagedList.cs" />
     <Compile Include="Models\TaiKhoanNV.cs" />

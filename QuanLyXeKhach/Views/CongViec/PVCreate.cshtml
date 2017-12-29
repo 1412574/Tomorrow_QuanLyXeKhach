@@ -1,0 +1,73 @@
+﻿@model DataModel.CongViec
+	
+
+@using (Html.BeginForm())
+{
+	@Html.AntiForgeryToken()
+	<form>
+		<div class="modal-body">
+			<div class="form-horizontal">
+
+				<div class="row">
+					@*<div class="col-md-4 item_img">
+							<img src="http://www.bvctch.vn/vnt_upload/about/thumbs/270_crop__Bsvoduylinh.jpg" class="img-responsive">
+						</div>*@
+					<div class="col-md-12 item_content">
+						@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+						@Html.HiddenFor(model => model.maCV)
+
+
+
+						<div class="col-md-12">
+							<div class="col-md-12">
+								<div class="row form-group"></div>
+							</div>
+							<div class="col-md-12">
+								<div class="form-group">
+									@Html.LabelFor(model => model.tenCV, htmlAttributes: new { @class = "col-md-12" })
+									<div class="col-md-12">
+										@Html.EditorFor(model => model.tenCV, new { htmlAttributes = new { @class = "form-control" } })
+										@Html.ValidationMessageFor(model => model.tenCV, "", new { @class = "text-danger" })
+									</div>
+								</div>
+							</div>
+
+							<div class="col-md-12">
+								<div class="form-group">
+									@Html.LabelFor(model => model.hanHoanThanh, htmlAttributes: new { @class = "col-md-12" })
+									<div class="col-md-12">
+										@Html.TextBoxFor(model => model.hanHoanThanh, null, new { @class = "form-control datepicker", @placeholder = "ngày/tháng/năm" })
+									</div>
+								</div>
+							</div>
+
+							<div class="col-md-12">
+								<div class="form-group">
+									@Html.LabelFor(model => model.yeuCauCV, htmlAttributes: new { @class = "col-md-12" })
+									<div class="col-md-12">
+										@Html.EditorFor(model => model.yeuCauCV, new { htmlAttributes = new { @class = "form-control" } })
+									</div>
+								</div>
+							</div>
+
+							<div class="col-md-12">
+								<div class="form-group">
+									@Html.LabelFor(model => model.moTaCV, htmlAttributes: new { @class = "col-md-12" })
+									<div class="col-md-12">
+										@Html.EditorFor(model => model.moTaCV, new { htmlAttributes = new { @class = "form-control" } })
+									</div>
+								</div>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="modal-footer">
+			<div class="text-center col-md-12" style="margin-top:15px;">
+				<button type="submit" class="btn btn-primary btn-sx sharp"><i class="glyphicon glyphicon-plus"></i> Thêm</button>
+			</div>
+		</div>
+	</form>
+}
