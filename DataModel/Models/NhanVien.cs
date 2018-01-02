@@ -55,5 +55,12 @@
 
         public virtual ICollection<PhanCong> PhanCongs { get; set; }
 
+        public string ShortString
+        {
+            get
+            {
+                return String.Format("{0} - {1}", maNV, hoTen);
+            }
+        }
     }
 }

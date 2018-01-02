@@ -37,5 +37,12 @@ namespace DataModel
 
         public int trangThai { get { return (hanHoanThanh > DateTime.Now) ? 2 : 1; } }
 
+        public string ShortString
+        {
+            get
+            {
+                return String.Format("{0} - {1}", maCV, tenCV);
+            }
+        }
     }
 }

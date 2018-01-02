@@ -32,7 +32,7 @@ namespace DataModel
 
         public virtual ICollection<UngVien> UngViens { get; set; }
 
-        public string displayName
+        public string shortString
         {
             get
             {

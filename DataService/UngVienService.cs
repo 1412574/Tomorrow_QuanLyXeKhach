@@ -11,6 +11,8 @@ namespace DataService
     {
         ILogger logger = LogManager.GetCurrentClassLogger();
         IUnitOfWork unitofWork = new GenericUnitOfWork();
+
+        //cập nhật ứng viên
         public int CapNhatThongTinUV(UngVien ungVien)
         {
             logger.Info("Bat dau cap nhat thong tin ung vien");
@@ -31,6 +33,7 @@ namespace DataService
             return ret;
         }
 
+        //thêm ung viên
         public int ThemUngVien(UngVien ungVien)
         {
             logger.Info("Bat dau them ung vien");
@@ -50,6 +53,7 @@ namespace DataService
             return ret;
         }
         
+        //tìm nhân viên bằng chuỗi tìm kiếm
          public IList<UngVien> XemThongTinUV(string filter)
         {
             IRepository<UngVien> repository = unitofWork.Repository<UngVien>();
@@ -57,19 +61,22 @@ namespace DataService
                                                             u.hoTen.Contains(filter)
                                                             ).ToList();
         }
-
+        
+        //lấy toàn bộ danh sách nhân viên
         public IList<UngVien> XemThongTinUV()
         {
             IRepository<UngVien> repository = unitofWork.Repository<UngVien>();
             return repository.GetAll().ToList();
         }
 
+        //tìm nhân viên bằng mã nhân viên
         public UngVien XemThongTinUV(int id)
         {
             IRepository<UngVien> repository = unitofWork.Repository<UngVien>();
             return repository.GetById(id);
         }
 
+        //xóa nhân viên
         public int XoaUngVien(int id)
         {
             IRepository<UngVien> repository = unitofWork.Repository<UngVien>();

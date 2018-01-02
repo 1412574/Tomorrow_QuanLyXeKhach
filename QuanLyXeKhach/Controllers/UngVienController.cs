@@ -183,7 +183,7 @@ namespace QuanLyXeKhach.Controllers
         {
             logger.Info("HttpGet recived. Contoller: UngVienController, ActionResult: PVCreate.");
 
-            ViewBag.LichPhongVans = new SelectList(lichPhongVanService.XemThongTinLPV(), "maLPV", "displayName");
+            ViewBag.LichPhongVans = new SelectList(lichPhongVanService.XemThongTinLPV(), "maLPV", "shortString");
             ViewBag.TrangThaiUVs = new SelectList(trangThaiUVService.XemTrangThaiUV(), "maTT", "tenTT");
 
             logger.Info("/tReturn partial view PVCreate.");
@@ -282,7 +282,7 @@ namespace QuanLyXeKhach.Controllers
             }
 
 
-            ViewBag.LichPhongVans = new SelectList(lichPhongVanService.XemThongTinLPV(), "maLPV", "displayName");
+            ViewBag.LichPhongVans = new SelectList(lichPhongVanService.XemThongTinLPV(), "maLPV", "shortString");
             ViewBag.TrangThaiUVs = new SelectList(trangThaiUVService.XemTrangThaiUV(), "maTT", "tenTT");
 
             logger.Info("/tReturn partial view PVEdit.");
@@ -345,42 +345,5 @@ namespace QuanLyXeKhach.Controllers
             return RedirectToAction("QuanLyUngVien");
         }
 
-        // GET: UngVien/Delete/5
-        //public ActionResult Delete(int? id)
-        //{
-        //    logger.Info("HttpGet recived. Contoller: UngVienController, ActionResult: PVEdit." +
-        //   if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    UngVien ungVien = ungVienService.XemThongTinUV(id);
-        //    if (ungVien == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(ungVien);
-        //}
-
-        // POST: UngVien/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            //UngVien ungVien = db.UngViens.Find(id);
-            //db.UngViens.Remove(ungVien);
-            //db.SaveChanges();
-            var view = QuanLyUngVien();
-
-            return view;
-        }
-
-        //protected override void Dispose(bool disposing)
-        //{
-        //    if (disposing)
-        //    {
-        //        db.Dispose();
-        //    }
-        //    base.Dispose(disposing);
-        //}
     }
 }

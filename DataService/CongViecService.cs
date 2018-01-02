@@ -55,14 +55,12 @@ namespace DataService
 
         public IList<CongViec> XemThongTinCV()
         {
-            IRepository<CongViec> repository = unitofWork.Repository<CongViec>();
-            return repository.GetAll().ToList();
+            return unitofWork.Repository<CongViec>().GetAll().ToList();
         }
 
         public CongViec XemThongTinCV(int id)
         {
-            IRepository<CongViec> repository = unitofWork.Repository<CongViec>();
-            return repository.GetById(id);
+            return unitofWork.Repository<CongViec>().GetById(id);
         }
 
         public IList<CongViec> XemThongTinCV(string filter)

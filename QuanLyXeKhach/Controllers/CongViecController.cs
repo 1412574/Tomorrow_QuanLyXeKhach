@@ -322,42 +322,5 @@ namespace QuanLyXeKhach.Controllers
             return RedirectToAction("QuanLyCongViec");
         }
 
-        // GET: CongViec/Delete/5
-        //public ActionResult Delete(int? id)
-        //{
-        //    logger.Info("HttpGet recived. Contoller: CongViecController, ActionResult: PVEdit." +
-        //   if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    CongViec congViec = congViecService.XemThongTinCV(id);
-        //    if (congViec == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(congViec);
-        //}
-
-        // POST: CongViec/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            //CongViec congViec = db.CongViecs.Find(id);
-            //db.CongViecs.Remove(congViec);
-            //db.SaveChanges();
-            var view = QuanLyCongViec();
-
-            return view;
-        }
-
-        //protected override void Dispose(bool disposing)
-        //{
-        //    if (disposing)
-        //    {
-        //        db.Dispose();
-        //    }
-        //    base.Dispose(disposing);
-        //}
     }
 }

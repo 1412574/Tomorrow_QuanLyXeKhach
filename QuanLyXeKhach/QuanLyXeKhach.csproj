@@ -179,6 +179,7 @@
     <Compile Include="Controllers\NhanVienController.cs" />
     <Compile Include="Controllers\DatVeController.cs" />
     <Compile Include="Controllers\KhachHangController.cs" />
+    <Compile Include="Controllers\PhanCongController.cs" />
     <Compile Include="Controllers\PhongBanController.cs" />
     <Compile Include="Controllers\TaiKhoanNVController.cs" />
     <Compile Include="Controllers\TramXeController.cs" />
@@ -656,6 +657,11 @@
     <Content Include="Views\CongViec\PVDetails.cshtml" />
     <Content Include="Views\CongViec\PVEdit.cshtml" />
     <Content Include="Views\CongViec\QuanLyCongViec.cshtml" />
+    <Content Include="Views\PhanCong\PVConfirmDelete.cshtml" />
+    <Content Include="Views\PhanCong\PVCreate.cshtml" />
+    <Content Include="Views\PhanCong\PVDetails.cshtml" />
+    <Content Include="Views\PhanCong\PVEdit.cshtml" />
+    <Content Include="Views\PhanCong\QuanLyPhanCong.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

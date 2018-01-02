@@ -13,6 +13,8 @@ namespace DataService
     {
         ILogger logger = LogManager.GetCurrentClassLogger();
         IUnitOfWork unitofWork = new GenericUnitOfWork();
+
+        //cập nhật lịch phỏng vấn theo mã phỏng vấn
         public int CapNhatThongTinLPV(LichPhongVan lichPhongVan)
         {
             logger.Info("Bat dau cap nhat thong tin lich phong van");
@@ -33,6 +35,7 @@ namespace DataService
             return ret;
         }
 
+        //thêm lịch phỏng vấn
         public int ThemLichPhongVan(LichPhongVan lichPhongVan)
         {
             logger.Info("Bat dau them ung vien");
@@ -52,18 +55,21 @@ namespace DataService
             return ret;
         }
 
+        //lấy toàn bộ danh sách lịch phỏng vấn
         public IList<LichPhongVan> XemThongTinLPV()
         {
             IRepository<LichPhongVan> repository = unitofWork.Repository<LichPhongVan>();
             return repository.GetAll().ToList();
         }
 
+        //tìm lịch phognr vấn bằng mã lịch phỏng vấn
         public LichPhongVan XemThongTinLPV(int id)
         {
             IRepository<LichPhongVan> repository = unitofWork.Repository<LichPhongVan>();
             return repository.GetById(id);
         }
 
+        //tìm kiếm lịch phỏng vấn bằng chuỗi tìm kiếm
         public IList<LichPhongVan> XemThongTinLPV(string filter)
         {
             IRepository<LichPhongVan> repository = unitofWork.Repository<LichPhongVan>();
@@ -71,6 +77,7 @@ namespace DataService
                                                             ).ToList();
         }
 
+        //xóa lịch phỏng vấn
         public int XoaLichPhongVan(int id)
         {
             IRepository<LichPhongVan> repository = unitofWork.Repository<LichPhongVan>();

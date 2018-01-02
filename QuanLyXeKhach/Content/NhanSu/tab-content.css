@@ -10,7 +10,7 @@
 	width: 100%;
 }
 
-.item_add .modal-dialog {
+.item_create .modal-dialog {
 	max-width: 800px;
 	width: 600px !important;
 	width: 100%;
@@ -500,6 +500,25 @@ ul {
 
 
 /********************************************************/
+#note .green {
+	color: #449d44;
+	border: none;
+}
+
+#note .blue {
+	color: #31b0d5;
+	border: none;
+}
+
+#note .orange {
+	color: #f0ad4e;
+	border: none;
+}
+
+#note .red {
+	color: #c9302c;
+	border: none;
+}
 
 #checkbutton .green {
 	color: #449d44;
@@ -559,11 +578,15 @@ ul {
 	color: transparent !important;
 }
 
-.btn.sharp, .label.sharp {
+.sharp {
 	-webkit-border-radius: 0px !important;
 	-moz-border-radius: 0px !important;
 	border-radius: 0px !important;
 }
+.no-border {
+	border: none !important;
+}
+
 .alert {
 	-webkit-border-radius: 0px !important;
 	-moz-border-radius: 0px !important;
@@ -575,6 +598,7 @@ ul {
 	-moz-border-radius: 0px !important;
 	border-radius: 0px !important;
 }
+
 .form-control {
 	-webkit-border-radius: 0px !important;
 	-moz-border-radius: 0px !important;
