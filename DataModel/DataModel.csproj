@@ -94,7 +94,20 @@
     <Compile Include="Migrations\201801011636515_themnhiemvuphancong.Designer.cs">
       <DependentUpon>201801011636515_themnhiemvuphancong.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201801021515448_themLopChamCong.cs" />
+    <Compile Include="Migrations\201801021515448_themLopChamCong.Designer.cs">
+      <DependentUpon>201801021515448_themLopChamCong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801030024378_capnhatLopChamCong.cs" />
+    <Compile Include="Migrations\201801030024378_capnhatLopChamCong.Designer.cs">
+      <DependentUpon>201801030024378_capnhatLopChamCong.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201801030447234_capnhatLopChamCong1.cs" />
+    <Compile Include="Migrations\201801030447234_capnhatLopChamCong1.Designer.cs">
+      <DependentUpon>201801030447234_capnhatLopChamCong1.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\BangChamCong.cs" />
     <Compile Include="Models\HanhTrinh.cs" />
     <Compile Include="Models\CongViec.cs" />
     <Compile Include="Models\LichPhongVan.cs" />
@@ -219,6 +232,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201801011636515_themnhiemvuphancong.resx">
       <DependentUpon>201801011636515_themnhiemvuphancong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801021515448_themLopChamCong.resx">
+      <DependentUpon>201801021515448_themLopChamCong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801030024378_capnhatLopChamCong.resx">
+      <DependentUpon>201801030024378_capnhatLopChamCong.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201801030447234_capnhatLopChamCong1.resx">
+      <DependentUpon>201801030447234_capnhatLopChamCong1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

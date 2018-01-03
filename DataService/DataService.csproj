@@ -43,11 +43,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BangChamCongService.cs" />
     <Compile Include="ChiTietDatVeService.cs" />
     <Compile Include="ChuyenXeService.cs" />
     <Compile Include="CongViecService.cs" />
     <Compile Include="DatVeService.cs" />
     <Compile Include="HanhTrinhService.cs" />
+    <Compile Include="IBangChamCongService.cs" />
     <Compile Include="IChiTietDatVeService.cs" />
     <Compile Include="BaoCaoService.cs" />
     <Compile Include="IBaoCaoService.cs" />

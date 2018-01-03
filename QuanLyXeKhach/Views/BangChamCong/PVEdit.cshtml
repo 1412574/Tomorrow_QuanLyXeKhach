@@ -1,0 +1,82 @@
+﻿@model DataModel.BangChamCong
+
+
+@using (Html.BeginForm())
+{
+	@Html.AntiForgeryToken()
+	<form>
+		<div class="modal-body">
+			<div class="form-horizontal">
+
+				<div class="row">
+					@*<div class="col-md-4 item_img">
+				<img src="http://www.bvctch.vn/vnt_upload/about/thumbs/270_crop__Bsvoduylinh.jpg" class="img-responsive">
+			</div>*@
+					<div class="col-md-12 item_content">
+						@Html.ValidationSummary(true, "", new { @class = "text-danger" })
+						@Html.HiddenFor(model => model.maCC)
+
+
+
+						<div class="col-md-12">
+							<div class="col-md-12">
+								<div class="col-md-12">
+									<div class="form-group">
+										@Html.LabelFor(model => model.maNV, htmlAttributes: new { @class = "col-md-12" })
+										<div class="col-md-12">
+											@Html.EditorFor(model => model.maNV, new { htmlAttributes = new { @class = "form-control" } })
+										</div>
+									</div>
+								</div>
+
+
+								<div class="col-md-12">
+									<div class="form-group">
+										@Html.LabelFor(model => model.ngay, htmlAttributes: new { @class = "col-md-12" })
+										<div class="col-md-12">
+											@Html.TextBoxFor(model => model.ngay, Model.ngay.ToShortDateString(), new { @class = "form-control datepicker", @placeholder = "ngày/tháng/năm" })
+										</div>
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<div class="form-group">
+										@Html.LabelFor(model => model.gioBatDau, htmlAttributes: new { @class = "col-md-12" })
+										<div class="col-md-12">
+											@Html.TextBoxFor(model => model.gioBatDau, Model.gioBatDau.ToShortTimeString(), new { @class = "form-control timepicker", @placeholder = "giờ:phút:giây" })
+										</div>
+									</div>
+								</div>
+
+								<div class="col-md-6">
+									<div class="form-group">
+										@Html.LabelFor(model => model.gioKetThuc, htmlAttributes: new { @class = "col-md-12" })
+										<div class="col-md-12">
+											@Html.TextBoxFor(model => model.gioKetThuc, Model.gioKetThuc.ToShortTimeString(), new { @class = "form-control timepicker", @placeholder = "giờ:phút:giây" })
+										</div>
+									</div>
+								</div>
+
+								<div class="col-md-12">
+									<div class="form-group">
+										@Html.LabelFor(model => model.ghiChu, htmlAttributes: new { @class = "col-md-12" })
+										<div class="col-md-12">
+											@Html.EditorFor(model => model.ghiChu, new { htmlAttributes = new { @class = "form-control" } })
+										</div>
+									</div>
+								</div>
+
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="modal-footer">
+			<div class="text-center col-md-12" style="margin-top:15px;">
+				<button type="submit" class="btn btn-primary btn-sx sharp"><i class="glyphicon glyphicon-save"></i> Lưu</button>
+			</div>
+		</div>
+	</form>
+}

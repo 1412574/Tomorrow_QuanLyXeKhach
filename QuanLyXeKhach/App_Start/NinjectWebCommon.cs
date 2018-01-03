@@ -82,6 +82,7 @@ namespace QuanLyXeKhach.App_Start
             kernel.Bind<IHanhTrinhService<HanhTrinh>>().To<HanhTrinhService>();
             kernel.Bind<ICongViecService<CongViec>>().To<CongViecService>();
             kernel.Bind<IPhanCongService<PhanCong, NhanVien, CongViec>>().To<PhanCongService>();
+            kernel.Bind<IBangChamCongService<BangChamCong>>().To<BangChamCongService>();
         }
     }
 }
