@@ -3,10 +3,24 @@ namespace DataModel.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class Initial : DbMigration
+    public partial class initall : DbMigration
     {
         public override void Up()
         {
+            CreateTable(
+                "dbo.BaoCao",
+                c => new
+                    {
+                        maBienBan = c.Int(nullable: false, identity: true),
+                        tenBienBan = c.String(maxLength: 50),
+                        noiDung = c.String(maxLength: 200),
+                        ngayLapBaoCao = c.DateTime(nullable: false),
+                        ngaySuaDoi = c.DateTime(nullable: false),
+                        lanSuaDoi = c.Int(nullable: false),
+                        ghiChu = c.String(maxLength: 200),
+                    })
+                .PrimaryKey(t => t.maBienBan);
+            
             CreateTable(
                 "dbo.ChiTietDatVes",
                 c => new
@@ -73,6 +87,46 @@ namespace DataModel.Migrations
                 .PrimaryKey(t => t.maKhachHang);
             
             CreateTable(
+                "dbo.LichPhongVan",
+                c => new
+                    {
+                        maLPV = c.Int(nullable: false, identity: true),
+                        ngay = c.DateTime(nullable: false),
+                        diaDiem = c.String(),
+                        tieuChi = c.String(),
+                        ghiChu = c.String(),
+                    })
+                .PrimaryKey(t => t.maLPV);
+            
+            CreateTable(
+                "dbo.UngVien",
+                c => new
+                    {
+                        maUV = c.Int(nullable: false, identity: true),
+                        hoTen = c.String(maxLength: 30),
+                        sDT = c.String(maxLength: 15),
+                        email = c.String(maxLength: 75),
+                        trangThai = c.Int(nullable: false),
+                        maLPV = c.Int(),
+                        TrangThaiUV_maTT = c.Int(),
+                    })
+                .PrimaryKey(t => t.maUV)
+                .ForeignKey("dbo.LichPhongVan", t => t.maLPV)
+                .ForeignKey("dbo.TrangThaiUV", t => t.TrangThaiUV_maTT)
+                .Index(t => t.maLPV)
+                .Index(t => t.TrangThaiUV_maTT);
+            
+            CreateTable(
+                "dbo.TrangThaiUV",
+                c => new
+                    {
+                        maTT = c.Int(nullable: false, identity: true),
+                        tenTT = c.String(),
+                        moTaTT = c.String(),
+                    })
+                .PrimaryKey(t => t.maTT);
+            
+            CreateTable(
                 "dbo.NhanVien",
                 c => new
                     {
@@ -134,6 +188,20 @@ namespace DataModel.Migrations
                     })
                 .PrimaryKey(t => t.maPB);
             
+            CreateTable(
+                "dbo.ThongKe",
+                c => new
+                    {
+                        maBienBan = c.Int(nullable: false, identity: true),
+                        tenBienBan = c.String(maxLength: 50),
+                        noiDung = c.String(maxLength: 200),
+                        ngayLapThongKe = c.DateTime(nullable: false),
+                        ngaySuaDoi = c.DateTime(nullable: false),
+                        lanSuaDoi = c.Int(nullable: false),
+                        ghiChu = c.String(maxLength: 200),
+                    })
+                .PrimaryKey(t => t.maBienBan);
+            
         }
         
         public override void Down()
@@ -141,6 +209,8 @@ namespace DataModel.Migrations
             DropForeignKey("dbo.NhanVien", "maVT", "dbo.VaiTro");
             DropForeignKey("dbo.NhanVien", "maTT", "dbo.TrangThaiNV");
             DropForeignKey("dbo.TaiKhoanNV", "maNV", "dbo.NhanVien");
+            DropForeignKey("dbo.UngVien", "TrangThaiUV_maTT", "dbo.TrangThaiUV");
+            DropForeignKey("dbo.UngVien", "maLPV", "dbo.LichPhongVan");
             DropForeignKey("dbo.DatVes", "maKhachHang", "dbo.KhachHangs");
             DropForeignKey("dbo.ChuyenXes", "MaTuyenXe", "dbo.TuyenXes");
             DropForeignKey("dbo.DatVes", "maChuyenXe", "dbo.ChuyenXes");
@@ -148,20 +218,27 @@ namespace DataModel.Migrations
             DropIndex("dbo.TaiKhoanNV", new[] { "maNV" });
             DropIndex("dbo.NhanVien", new[] { "maTT" });
             DropIndex("dbo.NhanVien", new[] { "maVT" });
+            DropIndex("dbo.UngVien", new[] { "TrangThaiUV_maTT" });
+            DropIndex("dbo.UngVien", new[] { "maLPV" });
             DropIndex("dbo.ChuyenXes", new[] { "MaTuyenXe" });
             DropIndex("dbo.DatVes", new[] { "maChuyenXe" });
             DropIndex("dbo.DatVes", new[] { "maKhachHang" });
             DropIndex("dbo.ChiTietDatVes", new[] { "maDatVe" });
+            DropTable("dbo.ThongKe");
             DropTable("dbo.PhongBan");
             DropTable("dbo.VaiTro");
             DropTable("dbo.TrangThaiNV");
             DropTable("dbo.TaiKhoanNV");
             DropTable("dbo.NhanVien");
+            DropTable("dbo.TrangThaiUV");
+            DropTable("dbo.UngVien");
+            DropTable("dbo.LichPhongVan");
             DropTable("dbo.KhachHangs");
             DropTable("dbo.TuyenXes");
             DropTable("dbo.ChuyenXes");
             DropTable("dbo.DatVes");
             DropTable("dbo.ChiTietDatVes");
+            DropTable("dbo.BaoCao");
         }
     }
 }

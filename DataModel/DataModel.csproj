@@ -78,9 +78,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomRequiredValidator.cs" />
-    <Compile Include="Migrations\201712251459200_Initial.cs" />
-    <Compile Include="Migrations\201712251459200_Initial.Designer.cs">
-      <DependentUpon>201712251459200_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201712270153416_initall.cs" />
+    <Compile Include="Migrations\201712270153416_initall.Designer.cs">
+      <DependentUpon>201712270153416_initall.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\LichPhongVan.cs" />
@@ -192,11 +192,6 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201712251459200_Initial.resx">
-      <DependentUpon>201712251459200_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -212,6 +207,11 @@
     <Content Include="Scripts\moment-with-locales.min.js" />
     <Content Include="Scripts\moment.js" />
     <Content Include="Scripts\moment.min.js" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201712270153416_initall.resx">
+      <DependentUpon>201712270153416_initall.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
