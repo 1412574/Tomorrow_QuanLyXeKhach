@@ -155,22 +155,41 @@
 					</table>
 				</div>
 			</div>
-			<div style="margin-top:17px;">
+			<div>
+				@if (((string)ViewBag.filter).IsEmpty())
+				{
+					if (Model.Count() == 0)
+					{
+						<div>
+							Hiện tại chưa có lịch phỏng vấn nào cả.
+						</div>
+					}
+					else
+					{
+						<div>
+							Có @Model.Count() lịch phỏng vấn.
+						</div>
+					}
+				}
+				else
+				{
+					if (Model.Count() == 0)
+					{
+						<div>
+							Không tìm thấy lịch phỏng vấn với từ khóa @ViewBag.filter.
+						</div>
+					}
+					else
+					{
+						<div>
+							Tìm thấy @Model.Count() lịch phỏng vấn với từ khóa @ViewBag.filter.
+						</div>
+					}
+				}
+
 
 
 			</div>
-			@*<div class="text-center">
-					<ul class="pagination">
-						<li class="disabled"><span>«</span></li>
-						<li class="active"><span>1</span></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">4</a></li>
-						<li class="disabled"><span>...</span></li>
-						<li><a href="#">5</a></li>
-						<li><a href="#" rel="next">»</a></li>
-					</ul>
-				</div>*@
 		</aside>
 	</div>
 

@@ -132,8 +132,8 @@
 										</td>
 										<td class="col-sm-1 no-pointer">
 											<span class="btn-group pull-right" style="margin-top: 5px">
-												<button class="btn btn-warning btn-xs sharp" data-toggle="modal" title="Cập nhật ứng viên" onclick="Edit(@item.maCV)"><i class="glyphicon glyphicon-edit"></i></button>
-												<button class="btn btn-danger btn-xs sharp" data-toggle="modal" title="Xóa ứng viên" onclick="ConfirmDelete(@item.maCV)"><i class="glyphicon glyphicon-remove"></i></button>
+												<button class="btn btn-warning btn-xs sharp" data-toggle="modal" title="Cập nhật công việc" onclick="Edit(@item.maCV)"><i class="glyphicon glyphicon-edit"></i></button>
+												<button class="btn btn-danger btn-xs sharp" data-toggle="modal" title="Xóa công việc" onclick="ConfirmDelete(@item.maCV)"><i class="glyphicon glyphicon-remove"></i></button>
 											</span>
 										</td>
 									</tr>
@@ -143,22 +143,41 @@
 					</table>
 				</div>
 			</div>
-			<div style="margin-top:17px;">
+			<div>
+				@if (((string)ViewBag.filter).IsEmpty())
+				{
+					if (Model.Count() == 0)
+					{
+						<div>
+							Hiện tại chưa có công việc nào cả.
+						</div>
+					}
+					else
+					{
+						<div>
+							Có @Model.Count() công việc.
+						</div>
+					}
+				}
+				else
+				{
+					if (Model.Count() == 0)
+					{
+						<div>
+							Không tìm thấy công việc với từ khóa @ViewBag.filter.
+						</div>
+					}
+					else
+					{
+						<div>
+							Tìm thấy @Model.Count() công việc với từ khóa @ViewBag.filter.
+						</div>
+					}
+				}
+
 
 
 			</div>
-			@*<div class="text-center">
-					<ul class="pagination">
-						<li class="disabled"><span>«</span></li>
-						<li class="active"><span>1</span></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">4</a></li>
-						<li class="disabled"><span>...</span></li>
-						<li><a href="#">5</a></li>
-						<li><a href="#" rel="next">»</a></li>
-					</ul>
-				</div>*@
 		</aside>
 	</div>
 
@@ -167,7 +186,7 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<a href="#" data-dismiss="modal" class="class pull-right"><span class="glyphicon glyphicon-remove"></span></a>
-					<h2 class="modal-title">Cập nhật thông tin ứng viên </h2>
+					<h2 class="modal-title">Cập nhật thông tin công việc </h2>
 				</div>
 				<div id="PVEdit">
 					@*PVEdit Partial View*@

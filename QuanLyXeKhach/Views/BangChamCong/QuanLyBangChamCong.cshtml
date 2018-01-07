@@ -105,7 +105,38 @@
 					</table>
 				</div>
 			</div>
-			<div style="margin-top:17px;">
+			<div>
+				@if (((string)ViewBag.filter).IsEmpty())
+				{
+					if (Model.Count() == 0)
+					{
+						<div>
+							Hiện tại chưa có bảng chấm công nào cả.
+						</div>
+					}
+					else
+					{
+						<div>
+							Có @Model.Count() bảng chấm công.
+						</div>
+					}
+				}
+				else
+				{
+					if (Model.Count() == 0)
+					{
+						<div>
+							Không tìm thấy bảng chấm công với từ khóa @ViewBag.filter.
+						</div>
+					}
+					else
+					{
+						<div>
+							Tìm thấy @Model.Count() bảng chấm công với từ khóa @ViewBag.filter.
+						</div>
+					}
+				}
+
 
 
 			</div>

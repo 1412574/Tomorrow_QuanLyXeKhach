@@ -42,11 +42,11 @@
 
 			<div class="" style="margin-top:20px;">
 				@*<div id="alert" class="alert alert-danger">
-						<a id="closeAlert" href="#" class="close" data-dismiss="alert">&times;</a>
-						<strong id="alertTitle">@ViewData["msgTitle"]</strong><span id="alertMsg">@ViewData["msg"]</span>
+				<a id="closeAlert" href="#" class="close" data-dismiss="alert">&times;</a>
+				<strong id="alertTitle">@ViewData["msgTitle"]</strong><span id="alertMsg">@ViewData["msg"]</span>
 
 
-					</div>*@
+			</div>*@
 				<div class="pull-right">
 					<button class="btn btn-default pull-right sharp" data-toggle="modal" onclick="Create()"><i class="glyphicon glyphicon-plus"></i> Thêm phân công</button>
 				</div>
@@ -63,13 +63,13 @@
 								<td class="col-sm-2">
 									<div @*class="text-center"*@>@Html.DisplayNameFor(model => model.ngayPC)</div>
 									@*<div class="text-center">
-											<div id="checkbutton" class="btn-group" data-toggle="buttons">
-												<label class="checkbutton btn btn-xs green active filter show sharp" data-target="3" onclick="filter(this)"><i class="glyphicon glyphicon-stop"></i></label>
-												<label class="checkbutton btn btn-xs blue active filter show sharp" data-target="2" onclick="filter(this)"><i class="glyphicon glyphicon-stop"></i></label>
-												<label class="checkbutton btn btn-xs orange active filter show sharp" data-target="1" onclick="filter(this)"><i class="glyphicon glyphicon-stop"></i></label>
-												<label class="checkbutton btn btn-xs red active filter show sharp" data-target="4" onclick="filter(this)"><i class="glyphicon glyphicon-stop"></i></label>
-											</div>
-										</div>*@
+									<div id="checkbutton" class="btn-group" data-toggle="buttons">
+										<label class="checkbutton btn btn-xs green active filter show sharp" data-target="3" onclick="filter(this)"><i class="glyphicon glyphicon-stop"></i></label>
+										<label class="checkbutton btn btn-xs blue active filter show sharp" data-target="2" onclick="filter(this)"><i class="glyphicon glyphicon-stop"></i></label>
+										<label class="checkbutton btn btn-xs orange active filter show sharp" data-target="1" onclick="filter(this)"><i class="glyphicon glyphicon-stop"></i></label>
+										<label class="checkbutton btn btn-xs red active filter show sharp" data-target="4" onclick="filter(this)"><i class="glyphicon glyphicon-stop"></i></label>
+									</div>
+								</div>*@
 								</td>
 								<td class="text-left col-sm-2">@Html.DisplayNameFor(model => model.nhiemVu)</td>
 
@@ -82,69 +82,88 @@
 
 						<tbody>
 							@if (Model != null)
-							{
-								int i = 1;
-								foreach (var item in Model)
-								{
-									<tr @*data-status="@item.trangThai"*@>
-										<td class="col-sm-1">
-											<h5>@i</h5>
-										</td>
-										@{i++; }
-										<td data-toggle="modal" class="col-sm-2" onclick="Details(@item.maPC)">
-											<h5>
-												@Html.DisplayFor(modelItem => item.NhanVien.ShortString)
-											</h5>
-										</td>
-										<td data-toggle="modal" class="col-sm-2" onclick="Details(@item.maPC)">
-											<h5>
-												@Html.DisplayFor(modelItem => item.CongViec.ShortString)
-											</h5>
-										</td>
-										<td data-toggle="modal" class="col-sm-2" onclick="Details(@item.maPC)">
-											<h5>
-												@Html.DisplayFor(modelItem => item.ngayPC)
-											</h5>
-										</td>
-										<td data-toggle="modal" class="col-sm-2 view-message  text-left" onclick="Details(@item.maPC)">
-											<h5>
-												@Html.DisplayFor(modelItem => item.nhiemVu)
-											</h5>
-										</td>
-										<td data-toggle="modal" class="col-sm-2 view-message  text-left" onclick="Details(@item.maPC)">
-											<h5>
-												@Html.DisplayFor(modelItem => item.danhGia)
-											</h5>
-										</td>
-										<td class="col-sm-1 no-pointer">
-											<span class="btn-group pull-right" style="margin-top: 5px">
-												<button class="btn btn-warning btn-xs sharp" data-toggle="modal" title="Cập nhật phân công" onclick="Edit(@item.maPC)"><i class="glyphicon glyphicon-edit"></i></button>
-												<button class="btn btn-danger btn-xs sharp" data-toggle="modal" title="Xóa phân công" onclick="ConfirmDelete(@item.maPC)"><i class="glyphicon glyphicon-remove"></i></button>
-											</span>
-										</td>
-									</tr>
-								}
-							}
+					{
+						int i = 1;
+						foreach (var item in Model)
+						{
+							<tr @*data-status="@item.trangThai"*@>
+								<td class="col-sm-1">
+									<h5>@i</h5>
+								</td>
+								@{i++; }
+								<td data-toggle="modal" class="col-sm-2" onclick="Details(@item.maPC)">
+									<h5>
+										@Html.DisplayFor(modelItem => item.NhanVien.ShortString)
+									</h5>
+								</td>
+								<td data-toggle="modal" class="col-sm-2" onclick="Details(@item.maPC)">
+									<h5>
+										@Html.DisplayFor(modelItem => item.CongViec.ShortString)
+									</h5>
+								</td>
+								<td data-toggle="modal" class="col-sm-2" onclick="Details(@item.maPC)">
+									<h5>
+										@Html.DisplayFor(modelItem => item.ngayPC)
+									</h5>
+								</td>
+								<td data-toggle="modal" class="col-sm-2 view-message  text-left" onclick="Details(@item.maPC)">
+									<h5>
+										@Html.DisplayFor(modelItem => item.nhiemVu)
+									</h5>
+								</td>
+								<td data-toggle="modal" class="col-sm-2 view-message  text-left" onclick="Details(@item.maPC)">
+									<h5>
+										@Html.DisplayFor(modelItem => item.danhGia)
+									</h5>
+								</td>
+								<td class="col-sm-1 no-pointer">
+									<span class="btn-group pull-right" style="margin-top: 5px">
+										<button class="btn btn-warning btn-xs sharp" data-toggle="modal" title="Cập nhật phân công" onclick="Edit(@item.maPC)"><i class="glyphicon glyphicon-edit"></i></button>
+										<button class="btn btn-danger btn-xs sharp" data-toggle="modal" title="Xóa phân công" onclick="ConfirmDelete(@item.maPC)"><i class="glyphicon glyphicon-remove"></i></button>
+									</span>
+								</td>
+							</tr>
+				}
+			}
 						</tbody>
 					</table>
 				</div>
 			</div>
-			<div style="margin-top:17px;">
+			<div>
+				@if (((string)ViewBag.filter).IsEmpty())
+		{
+			if (Model.Count() == 0)
+			{
+				<div>
+					Hiện tại chưa có phân công nào cả.
+				</div>
+	}
+	else
+	{
+		<div>
+			Có @Model.Count() phân công.
+		</div>
+}
+}
+else
+{
+if (Model.Count() == 0)
+{
+		<div>
+			Không tìm thấy phân công với từ khóa @ViewBag.filter.
+		</div>
+}
+else
+{
+		<div>
+			Tìm thấy @Model.Count() phân công với từ khóa @ViewBag.filter.
+		</div>
+}
+}
+
 
 
 			</div>
-			@*<div class="text-center">
-					<ul class="pagination">
-						<li class="disabled"><span>«</span></li>
-						<li class="active"><span>1</span></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">4</a></li>
-						<li class="disabled"><span>...</span></li>
-						<li><a href="#">5</a></li>
-						<li><a href="#" rel="next">»</a></li>
-					</ul>
-				</div>*@
 		</aside>
 	</div>
 
