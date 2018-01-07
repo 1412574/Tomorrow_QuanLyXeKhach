@@ -60,7 +60,7 @@ namespace DataService
             return ret;
         }
 
-        public IList<PhongBan> XemPhongBan(PhongBan phongBan)
+        public IList<PhongBan> XemPhongBan()
         {
             
             IRepository<PhongBan> repository = unitofWork.Repository<PhongBan>();

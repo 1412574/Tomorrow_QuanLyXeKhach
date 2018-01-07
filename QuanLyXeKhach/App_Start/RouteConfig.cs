@@ -16,7 +16,7 @@ namespace QuanLyXeKhach
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "PhongBan", action = "Home", id = UrlParameter.Optional }
+                defaults: new { controller = "TaiKhoanNV", action = "Login", id = UrlParameter.Optional }
             );
         }
     }

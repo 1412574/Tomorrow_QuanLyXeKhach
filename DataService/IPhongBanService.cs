@@ -10,7 +10,7 @@ namespace DataService
     public interface IPhongBanService<T> where T:class
     {
         int ThemPhongBan(T phongBan);
-        IList<PhongBan> XemPhongBan(T phongBan);
+        IList<PhongBan> XemPhongBan();
         int XoaPhongBan(int maPB);
         int CapNhatPhongBan(T phongBan);
         PhongBan GetPhongBan(int id);

@@ -57,13 +57,13 @@ namespace QuanLyXeKhach.Controllers
             records.CurrentPage = page;
             records.PageSize = pageSize;
 
-            foreach (var ungvien in records.Content)
+            foreach (var ungVien in records.Content)
             {
-                if (ungvien.maLPV == null)
-                    ungvien.LichPhongVan = null;
+                if (ungVien.maLPV == null)
+                    ungVien.LichPhongVan = null;
                 else
-                    ungvien.LichPhongVan = lichPhongVanService.XemThongTinLPV(ungvien.maLPV ?? default(int));
-                ungvien.TrangThaiUV = trangThaiUVService.XemTrangThaiUV(ungvien.trangThai);
+                    ungVien.LichPhongVan = lichPhongVanService.XemThongTinLPV(ungVien.maLPV ?? default(int));
+                ungVien.TrangThaiUV = trangThaiUVService.XemTrangThaiUV(ungVien.trangThai);
             }
             logger.Info("/Return to action QuanLyUngVien with list of UngVien as model.");
             if (notificationList != null)
@@ -93,7 +93,7 @@ namespace QuanLyXeKhach.Controllers
                 logger.Info("/tId not found.");
                 //return this.RedirectToAction(c => c.);
                 IList<Notify> notificationList = new List<Notify>();
-                notificationList.Add(new Notify("Ứng viên không tồn tại hoặc đã xóa.", NotificationType.ERROR));
+                notificationList.Add(new Notify(String.Format("Ứng viên không tồn tại hoặc đã xóa."), NotificationType.ERROR));
                 TempData["notificationList"] = notificationList;
                 return RedirectToAction("QuanLyUngVien");
             }
@@ -112,7 +112,7 @@ namespace QuanLyXeKhach.Controllers
             if (ungVien == null)
             {
                 logger.Info("/tId not found.");
-                notificationList.Add(new Notify("Ứng viên không tồn tại hoặc đã xóa.", NotificationType.ERROR));
+                notificationList.Add(new Notify(String.Format("Ứng viên không tồn tại hoặc đã xóa. Mã ứng viên {0}.", ungVien.maUV), NotificationType.ERROR));
                 TempData["notificationList"] = notificationList;
                 return RedirectToAction("QuanLyUngVien");
             }
@@ -122,21 +122,21 @@ namespace QuanLyXeKhach.Controllers
                 logger.Info("/t.Delete successfully.");
                 //ViewBag.msgType = "sussces";
                 //ViewBag.msg = "Xóa ứng viên thành công.";
-                notificationList.Add(new Notify("Xóa ứng viên thành công.", NotificationType.SUCCESS));
+                notificationList.Add(new Notify(String.Format("Xóa ứng viên thành công. Mã ứng viên {0}.", ungVien.maUV), NotificationType.SUCCESS));
             }
             else if (status < 0)
             {
                 logger.Info("/t.Delete unsuccessfully.");
                 //ViewBag.msgType = "warning"; ViewBag.msgTitle = "Lỗi!";
                 //ViewBag.msg = "Xóa ứng viên thất bại.";
-                notificationList.Add(new Notify("Xóa ứng viên thất bại.", NotificationType.ERROR));
+                notificationList.Add(new Notify(String.Format("Xóa ứng viên thất bại. Mã ứng viên {0}.", ungVien.maUV), NotificationType.ERROR));
             }
             else if (status > 0)
             {
                 logger.Info("/t.Deleted with warning.");
                 //ViewBag.msgType = "warning"; ViewBag.msgTitle = "Cảnh báo!";
                 //ViewBag.msg = "Ứng viên đã được xóa.";
-                notificationList.Add(new Notify("Ứng viên đã được xóa.", NotificationType.WARNING));
+                notificationList.Add(new Notify(String.Format("Ứng viên đã được xóa. Mã ứng viên {0}.", ungVien.maUV), NotificationType.WARNING));
             }
 
             logger.Info("/tRedirect to action QuanLyUngVien.");
@@ -169,11 +169,12 @@ namespace QuanLyXeKhach.Controllers
             {
                 logger.Info("/tId not found.");
                 IList<Notify> notificationList = new List<Notify>();
-                notificationList.Add(new Notify("Ứng viên không tồn tại hoặc đã xóa.", NotificationType.ERROR));
+                notificationList.Add(new Notify(String.Format("Ứng viên không tồn tại hoặc đã xóa. Mã ứng viên {0}.", ungVien.maUV), NotificationType.ERROR));
                 TempData["notificationList"] = notificationList;
                 return RedirectToAction("QuanLyUngVien");
             }
             logger.Info("/tReturn partial view PVDetails.");
+            ungVien.TrangThaiUV = trangThaiUVService.XemTrangThaiUV(ungVien.trangThai);
             return PartialView("PVDetails", ungVien);
         }
 
@@ -182,7 +183,7 @@ namespace QuanLyXeKhach.Controllers
         {
             logger.Info("HttpGet recived. Contoller: UngVienController, ActionResult: PVCreate.");
 
-            ViewBag.LichPhongVans = new SelectList(lichPhongVanService.XemThongTinLPV(), "maLPV", "displayName");
+            ViewBag.LichPhongVans = new SelectList(lichPhongVanService.XemThongTinLPV(), "maLPV", "shortString");
             ViewBag.TrangThaiUVs = new SelectList(trangThaiUVService.XemTrangThaiUV(), "maTT", "tenTT");
 
             logger.Info("/tReturn partial view PVCreate.");
@@ -226,7 +227,7 @@ namespace QuanLyXeKhach.Controllers
                 logger.Info("/t.Create successfully.");
                 //ViewBag.msgType = "sussces";
                 //ViewBag.msg = "Thêm ứng viên thành công.";
-                notificationList.Add(new Notify("Thêm ứng viên thành công.", NotificationType.SUCCESS));
+                notificationList.Add(new Notify(String.Format("Thêm ứng viên thành công. Mã ứng viên {0}.", ungVien.maUV), NotificationType.SUCCESS));
             }
             else if (status < 0)
             {
@@ -240,7 +241,7 @@ namespace QuanLyXeKhach.Controllers
                 logger.Info("/t.Deleted with warning.");
                 //ViewBag.msgType = "warning"; ViewBag.msgTitle = "Cảnh báo!";
                 //ViewBag.msg = "Ứng viên đã được thêm.";
-                notificationList.Add(new Notify("Ứng viên đã được thêm", NotificationType.WARNING));
+                notificationList.Add(new Notify(String.Format("Ứng viên đã được thêm. Mã ứng viên {0}.", ungVien.maUV), NotificationType.WARNING));
             }
             logger.Info("/tReturn QuanLyUngVien ActionResult.");
 
@@ -275,13 +276,13 @@ namespace QuanLyXeKhach.Controllers
             {
                 logger.Info("/tId not found.");
                 IList<Notify> notificationList = new List<Notify>();
-                notificationList.Add(new Notify("Ứng viên không tồn tại hoặc đã xóa.", NotificationType.ERROR));
+                notificationList.Add(new Notify(String.Format("Ứng viên không tồn tại hoặc đã xóa. Mã ứng viên {0}.", ungVien.maUV), NotificationType.ERROR));
                 TempData["notificationList"] = notificationList;
                 return RedirectToAction("QuanLyUngVien");
             }
 
 
-            ViewBag.LichPhongVans = new SelectList(lichPhongVanService.XemThongTinLPV(), "maLPV", "displayName");
+            ViewBag.LichPhongVans = new SelectList(lichPhongVanService.XemThongTinLPV(), "maLPV", "shortString");
             ViewBag.TrangThaiUVs = new SelectList(trangThaiUVService.XemTrangThaiUV(), "maTT", "tenTT");
 
             logger.Info("/tReturn partial view PVEdit.");
@@ -316,21 +317,21 @@ namespace QuanLyXeKhach.Controllers
                     logger.Info("/t.Update successfully.");
                     //ViewBag.msgType = "sussces";
                     //ViewBag.msg = "Cập nhật ứng viên thành công.";
-                    notificationList.Add(new Notify("Cập nhật ứng viên thành công.", NotificationType.SUCCESS));
+                    notificationList.Add(new Notify(String.Format("Cập ứng viên nhật thành công. Mã ứng viên {0}.", ungVien.maUV), NotificationType.SUCCESS));
                 }
                 else if (status < 0)
                 {
                     logger.Info("/t.Update unsuccessfully.");
                     //ViewBag.msgType = "warning"; ViewBag.msgTitle = "Lỗi!";
                     //ViewBag.msg = "Cập nhật ứng viên không thành công.";
-                    notificationList.Add(new Notify("Cập nhật ứng viên không thành công.", NotificationType.ERROR));
+                    notificationList.Add(new Notify(String.Format("Cập nhật ứng viên không thành công. Mã ứng viên {0}.", ungVien.maUV), NotificationType.ERROR));
                 }
                 else if (status > 0)
                 {
                     logger.Info("/t.Updated with warning.");
                     //ViewBag.msgType = "warning"; ViewBag.msgTitle = "Cảnh báo!";
                     //ViewBag.msg = "Ứng viên đã được cập nhật.";
-                    notificationList.Add(new Notify("Ứng viên đã được cập nhật.", NotificationType.WARNING));
+                    notificationList.Add(new Notify(String.Format("Ứng viên đã được cập nhật. Mã ứng viên {0}.", ungVien.maUV), NotificationType.WARNING));
                 }
 
                 logger.Info("/tReturn QuanLyUngVien ActionResult.");
@@ -344,42 +345,5 @@ namespace QuanLyXeKhach.Controllers
             return RedirectToAction("QuanLyUngVien");
         }
 
-        // GET: UngVien/Delete/5
-        //public ActionResult Delete(int? id)
-        //{
-        //    logger.Info("HttpGet recived. Contoller: UngVienController, ActionResult: PVEdit." +
-        //   if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    UngVien ungVien = ungVienService.XemThongTinUV(id);
-        //    if (ungVien == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(ungVien);
-        //}
-
-        // POST: UngVien/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            //UngVien ungVien = db.UngViens.Find(id);
-            //db.UngViens.Remove(ungVien);
-            //db.SaveChanges();
-            var view = QuanLyUngVien();
-
-            return view;
-        }
-
-        //protected override void Dispose(bool disposing)
-        //{
-        //    if (disposing)
-        //    {
-        //        db.Dispose();
-        //    }
-        //    base.Dispose(disposing);
-        //}
     }
 }

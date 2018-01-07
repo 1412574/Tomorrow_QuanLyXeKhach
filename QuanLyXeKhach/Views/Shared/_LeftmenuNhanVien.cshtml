@@ -14,6 +14,18 @@
                 </div>
                 <!-- /input-group -->
             </li>
+            <li>
+                <a href="#"><i class="fa fa-edit fa-fw"></i>Nhân Viên<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        @Html.ActionLink("Thêm Nhân Viên", "Create", "NhanVien")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Xem Nhân Viên", "XemNhanVien", "NhanVien")
+                    </li>
+                </ul>
+                <!-- /.nav-second-level -->
+            </li>
 
             <li>
                 <a href="#"><i class="fa fa-edit fa-fw"></i>Vai Trò<span class="fa arrow"></span></a>

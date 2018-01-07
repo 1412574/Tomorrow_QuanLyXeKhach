@@ -44,12 +44,12 @@ function openPage(pageName, elmnt) {
 
 
 $(document).on("click", ".open-RemoveDialog", function () {
-     var myId = $(this).data('id');
-     $(".modal-body #Id").val(myId);
+    var myId = $(this).data('id');
+    $(".modal-body #Id").val(myId);
 
-     // As pointed out in comments, 
-     // it is superfluous to have to manually call the modal.
-     //$('#item_edit').modal('show');
+    // As pointed out in comments, 
+    // it is superfluous to have to manually call the modal.
+    //$('#item_edit').modal('show');
 });
 
 $(document).on("click", ".open-AddBookDialog", function () {
@@ -84,3 +84,45 @@ function Delete(currentId) {
         }
     })
 }
+
+function NVPaging(x) {
+    var $target = $(x).data('target');
+    if ($(x).hasClass("btn-primary")) {
+        //$('.table-inside tr[data-status="' + $target + '"]').fadeOut('slow');
+        //$(x).removeClass("btn-primary");
+        //$(x).removeClass("active");
+    }
+    else {
+        var active = document.getElementsByClassName('NVPaging btn btn-xs filter sharp btn-primary');
+        $('.table-inside .NVtr').hide();
+        $('.pagination .NVPaging').removeClass("btn-primary");
+
+        $('.table-inside tr[data-status="' + $target + '"]').css('display', 'none').show();
+        $(x).addClass("btn-primary");
+    }
+};
+
+function CVPaging(x) {
+    var $target = $(x).data('target');
+    if ($(x).hasClass("btn-primary")) {
+        //$('.table-inside tr[data-status="' + $target + '"]').fadeOut('slow');
+        //$(x).removeClass("btn-primary");
+        //$(x).removeClass("active");
+    }
+    else {
+        var active = document.getElementsByClassName('CVPaging btn btn-xs filter sharp btn-primary');
+        $('.table-inside .CVtr').hide();
+        $('.pagination .CVPaging').removeClass("btn-primary");
+
+        $('.table-inside tr[data-status="' + $target + '"]').css('display', 'none').show();
+        $(x).addClass("btn-primary");
+    }
+};
+
+function ChonNV(maNV) {
+    $('#maNV').val(maNV);
+};
+
+function ChonCV(maCV) {
+    $('#maCV').val(maCV);
+};

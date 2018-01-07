@@ -43,6 +43,7 @@ namespace QuanLyXeKhach.Controllers
         public ActionResult Logout()
         {
             Session.Add(Common.CommonConstants.userName, null);
+            Session.Add(Common.CommonVaiTro.vaiTro, null);
             return View("Login");
         }
         //POST: Login
@@ -74,8 +75,11 @@ namespace QuanLyXeKhach.Controllers
                 {
                     var userSession = new Common.UserLogin();
                     userSession.UserID = taiKhoanNV.maNV;
+                    var vaiTroSession = new Common.VaiTroID();
+                    vaiTroSession.vaiTroID = nhanVien.maVT;
                     Session.Add(Common.CommonConstants.userName, userSession);
-                    return RedirectToAction("XemNhanVien", "NhanVien");
+                    Session.Add(Common.CommonVaiTro.vaiTro, vaiTroSession);
+                    return RedirectToAction("Home", "PhongBan");
                 }
             }
             return View("Login");

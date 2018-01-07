@@ -20,6 +20,8 @@ namespace DataModel
         [StringLength(100)]
         public string moTaPB { get; set; }
 
+        public virtual ICollection<NhanVien> NhanViens { get; set; }
+
         public PhongBan(int maPB, string tenPB, string moTaPB)
         {
             this.maPB = maPB;

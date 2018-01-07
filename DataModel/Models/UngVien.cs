@@ -33,7 +33,9 @@ namespace DataModel
 
         [Display(Name = "Lịch phỏng vấn", ShortName = "Lịch phỏng vấn")]
         public int? maLPV { get; set; }
+
         public virtual LichPhongVan LichPhongVan { get; set; }
+
         public virtual TrangThaiUV TrangThaiUV { get; set; }
 
     }

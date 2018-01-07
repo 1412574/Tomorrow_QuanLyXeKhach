@@ -32,6 +32,15 @@
 
 								<div class="col-md-12">
 									<div class="form-group">
+										@Html.LabelFor(model => model.diaDiem, htmlAttributes: new { @class = "col-md-12" })
+										<div class="col-md-12">
+											@Html.EditorFor(model => model.diaDiem, new { htmlAttributes = new { @class = "form-control" } })
+										</div>
+									</div>
+								</div>
+
+								<div class="col-md-12">
+									<div class="form-group">
 										@Html.LabelFor(model => model.tieuChi, htmlAttributes: new { @class = "col-md-12" })
 										<div class="col-md-12">
 											@Html.EditorFor(model => model.tieuChi, new { htmlAttributes = new { @class = "form-control" } })
@@ -55,7 +64,7 @@
 		</div>
 		<div class="modal-footer">
 			<div class="text-center col-md-12" style="margin-top:15px;">
-				<button type="submit" class="btn btn-primary btn-sx"><i class="glyphicon glyphicon-plus"></i> Thêm</button>
+				<button type="submit" class="btn btn-primary btn-sx sharp"><i class="glyphicon glyphicon-plus"></i> Thêm</button>
 			</div>
 		</div>
 	</form>

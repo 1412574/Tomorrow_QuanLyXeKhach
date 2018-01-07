@@ -1,0 +1,329 @@
+﻿@model DataModel.PagedList<DataModel.CongViec>
+
+@{
+	ViewBag.Title = "Quản Lý Công Việc";
+	Layout = "~/Views/NhanSu/Shared/_Layout.cshtml";
+}
+
+
+@Styles.Render("~/Content/NhanSu/css/side-bar")
+@Styles.Render("~/Content/NhanSu/css/tab-content")
+
+
+
+<!-------------------------------------------------------------------->
+<div id="QLNV" class="tabcontent">
+	<h3>Home</h3>
+	<p>Home is where the heart is..</p>
+</div>
+
+<div id="QLCV" class="tabcontent">
+	<div class="inbox-head">
+		<h3 class="col-md-4">Quản lý công việc</h3>
+		<form action="#" class="pull-right">
+			<div class="input-append">
+				<input type="text" class="sr-input" placeholder="Tìm kiếm">
+				<button class="btn sr-btn sharp" type="button"><i class="fa fa-search"></i></button>
+			</div>
+		</form>
+	</div>
+
+	<div>
+		@Html.Partial("_Notifications")
+	</div>
+
+	<div class="">
+		<aside class="lg-side">
+
+			<div class="" style="margin-top:20px;">
+				@*<div id="alert" class="alert alert-danger">
+						<a id="closeAlert" href="#" class="close" data-dismiss="alert">&times;</a>
+						<strong id="alertTitle">@ViewData["msgTitle"]</strong><span id="alertMsg">@ViewData["msg"]</span>
+
+
+					</div>*@
+				<div style="margin-top:10px;">
+					<div id="note" class="btn-group" data-toggle="buttons">
+						<span>
+							<label class="orange"><i class="glyphicon glyphicon-stop"></i></label>
+							<spa>
+								Đã qua hạn hoàn thành
+							</spa>
+						</span>
+						<span>
+							<label class="green"><i class="glyphicon glyphicon-stop"></i></label>
+							<spa>
+								Chưa đến hạn hoàn thành
+							</spa>
+						</span>
+					</div>
+					<div class="pull-right">
+						<button class="btn btn-default pull-right sharp" data-toggle="modal" onclick="Create()"><i class="glyphicon glyphicon-plus"></i> Thêm công việc</button>
+					</div>
+				</div>
+			</div>
+
+			<div class="">
+				<div class="mail-option">
+					<table class="table table-header">
+						<tbody style="background-color: #f0f0f0;">
+							<tr class="unread">
+								<td class="col-sm-2 align-top">@Html.DisplayNameFor(model => model.Content.First().maCV)</td>
+								<td class="col-sm-2">@Html.DisplayNameFor(model => model.Content.First().tenCV)</td>
+								<td class="col-sm-2">
+									<div class="text-center">@Html.DisplayNameFor(model => model.Content.First().hanHoanThanh)</div>
+									<div class="text-center">
+										<div id="checkbutton" class="btn-group" data-toggle="buttons">
+											<label class="checkbutton btn btn-xs orange active filter show sharp" data-target="1" onclick="filter(this)"><i class="glyphicon glyphicon-stop"></i></label>
+											@*<label class="checkbutton btn btn-xs blue active filter show sharp" data-target="2" onclick="filter(this)"><i class="glyphicon glyphicon-stop"></i></label>
+												<label class="checkbutton btn btn-xs orange active filter show sharp" data-target="1" onclick="filter(this)"><i class="glyphicon glyphicon-stop"></i></label>*@
+											<label class="checkbutton btn btn-xs green active filter show sharp" data-target="2" onclick="filter(this)"><i class="glyphicon glyphicon-stop"></i></label>
+										</div>
+									</div>
+								</td>
+								<td class="text-left col-sm-2">@Html.DisplayNameFor(model => model.Content.First().moTaCV)</td>
+								<td class="text-left col-sm-2">@Html.DisplayNameFor(model => model.Content.First().yeuCauCV)</td>
+								<td class="col-sm-1">Thao tác</td>
+							</tr>
+						</tbody>
+					</table>
+					<table class="table table-inbox table-hover table-inside" style="border: 1px solid #d3d3d3;">
+						<tbody>
+							@if (Model != null)
+							{
+								foreach (var item in Model.Content)
+								{
+									<tr data-status="@item.trangThai">
+										<td data-toggle="modal" class="col-sm-2" onclick="Details(@item.maCV)">
+											<h5>
+												@Html.DisplayFor(modelItem => item.maCV)
+											</h5>
+										</td>
+										<td data-toggle="modal" class="col-sm-2" onclick="Details(@item.maCV)">
+											<h5>
+												@Html.DisplayFor(modelItem => item.tenCV)
+											</h5>
+										</td>
+										<td data-toggle="modal" class="col-sm-2" onclick="Details(@item.maCV)">
+											<h4 style="margin-top: 5px;">
+												@if (item.trangThai == 1)
+												{
+													<span class="col-sm-12 label label-success sharp">
+														@Html.DisplayFor(modelItem => item.hanHoanThanh)
+													</span>
+
+												}
+												else if (item.trangThai == 2)
+												{
+													<span class="col-sm-12 label label-warning sharp">
+														@Html.DisplayFor(modelItem => item.hanHoanThanh)
+													</span>
+												}
+											</h4>
+										</td>
+										<td data-toggle="modal" class="col-sm-2 text-left" onclick="Details(@item.maCV)">
+											<h5>
+												@Html.DisplayFor(modelItem => item.moTaCV)
+											</h5>
+										</td>
+										<td data-toggle="modal" class="col-sm-2 text-left" onclick="Details(@item.maCV)">
+											<h5>
+												@Html.DisplayFor(modelItem => item.yeuCauCV)
+											</h5>
+										</td>
+										<td class="col-sm-1 no-pointer">
+											<span class="btn-group pull-right" style="margin-top: 5px">
+												<button class="btn btn-warning btn-xs sharp" data-toggle="modal" title="Cập nhật ứng viên" onclick="Edit(@item.maCV)"><i class="glyphicon glyphicon-edit"></i></button>
+												<button class="btn btn-danger btn-xs sharp" data-toggle="modal" title="Xóa ứng viên" onclick="ConfirmDelete(@item.maCV)"><i class="glyphicon glyphicon-remove"></i></button>
+											</span>
+										</td>
+									</tr>
+								}
+							}
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div style="margin-top:17px;">
+
+
+			</div>
+			@*<div class="text-center">
+					<ul class="pagination">
+						<li class="disabled"><span>«</span></li>
+						<li class="active"><span>1</span></li>
+						<li><a href="#">2</a></li>
+						<li><a href="#">3</a></li>
+						<li><a href="#">4</a></li>
+						<li class="disabled"><span>...</span></li>
+						<li><a href="#">5</a></li>
+						<li><a href="#" rel="next">»</a></li>
+					</ul>
+				</div>*@
+		</aside>
+	</div>
+
+	<div class="modal fade item_edit" id="item_edit">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<a href="#" data-dismiss="modal" class="class pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+					<h2 class="modal-title">Cập nhật thông tin ứng viên </h2>
+				</div>
+				<div id="PVEdit">
+					@*PVEdit Partial View*@
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade item_create" id="item_create">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<a class="class pull-right" href="#" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span></a>
+					<h2 class="modal-title">Thêm công việc </h2>
+				</div>
+				<div id="PVCreate">
+					@* PVCreate Partial View*@
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade item_view" id="item_view">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<a href="#" data-dismiss="modal" class="class pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+					<h2 class="modal-title">Thông tin chi tiết công việc </h2>
+				</div>
+				<div id="PVDetails">
+					@* PVDetails Partial View*@
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade item_remove" id="item_remove">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<a href="#" data-dismiss="modal" class="class pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+					<h3 class="modal-title">Xác nhận</h3>
+				</div>
+				<div id="PVConfirmDelete">
+					@*PVConfirmDelete Partial View*@
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="QLPC" class="tabcontent">
+	<h3>Contact</h3>
+	<p>Get in touch, or swing by for a cup of coffee.</p>
+</div>
+
+<div id="CC" class="tabcontent">
+	<h3>About</h3>
+	<p>Who we are and what we do.</p>
+</div>
+
+<div id="QLUV" class="tabcontent ">
+	<h3>News</h3>
+	<p>Some news this fine day!</p>
+</div>
+
+
+<div id="LPV" class="tabcontent">
+	<h3>About</h3>
+	<p>Who we are and what we do.</p>
+</div>
+@Scripts.Render("~/bundles/NhanSu/Scripts/tab-content")
+
+<script>
+	openPage("QLCV", document.getElementById("lQLCV"));
+	function ConfirmDelete(currentId) {
+		$.ajax({
+			type: "Get",
+			url: '@Url.Action("PVConfirmDelete", "CongViec")',
+			data: { id: currentId },
+			success: function (data) {
+				$('#PVConfirmDelete').html(data);
+				$('#item_remove').modal('show');
+			}
+		})
+	}
+
+	function Edit(currentId) {
+		$.ajax({
+			type: "Get",
+			url: '@Url.Action("PVEdit", "CongViec")',
+			data: { id: currentId },
+			success: function (data) {
+				$('#PVEdit').html(data);
+				$('#item_edit').modal('show');
+			}
+		})
+	}
+
+	function Details(currentId) {
+		$.ajax({
+			type: "Get",
+			url: '@Url.Action("PVDetails", "CongViec")',
+			data: { id: currentId },
+			success: function (data) {
+				$('#PVDetails').html(data);
+				$('#item_view').modal('show');
+			}
+		})
+	}
+
+	function Create() {
+		$.ajax({
+			type: "Get",
+			url: '@Url.Action("PVCreate", "CongViec")',
+			success: function (data) {
+				$('#PVCreate').html(data);
+				$('#item_create').modal('show');
+			}
+		})
+	}
+
+	//$(document).ready(function () {
+	//	$('#alert').show('fade');
+	//	$('#closeAlert').click(function () {
+	//		$('#alert').hide('fade');
+
+	//	});
+
+	//});
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

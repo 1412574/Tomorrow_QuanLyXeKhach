@@ -22,15 +22,17 @@ namespace DataModel
         [Display(Name = "Địa điểm", ShortName = "Địa điểm")]
         public string diaDiem { get; set; }
 
+        [DataType(DataType.MultilineText)]
         [Display(Name = "Tiêu chí", ShortName = "Tiêu chí")]
         public string tieuChi { get; set; }
 
+        [DataType(DataType.MultilineText)]
         [Display(Name = "Ghi chú", ShortName = "Ghi chú")]
         public string ghiChu { get; set; }
 
         public virtual ICollection<UngVien> UngViens { get; set; }
 
-        public string displayName
+        public string shortString
         {
             get
             {

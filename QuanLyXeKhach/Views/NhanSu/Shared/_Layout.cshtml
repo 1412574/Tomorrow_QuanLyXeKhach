@@ -3,10 +3,25 @@
 <head>
 	<meta charset="utf-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>@ViewBag.Title - Quản Lý Xe Khách</title>
 	@Styles.Render("~/Content/css")
 	@Styles.Render("~/bundles/NhanSu/css")
 	@Scripts.Render("~/bundles/modernizr")
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link href="/assets/css/custom.css" rel="stylesheet">
+
+    <script src="//use.edgefonts.net/bebas-neue.js"></script>
+
+    <!-- Custom Fonts & Icons -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600,800' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/assets/css/icomoon-social.css">
+    <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
+
+    <script src="/assets/js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
 </head>
 <body sstyle="background-color:#fafafa">
 	<nav class="navbar navbar-inverse navbar-fixed-top col-md-12" role="navigation">
@@ -18,32 +33,22 @@
 					<span class="icon-bar"></span>
 				</button>
 
-				<a class="navbar-brand" href="/">Quản lý xe khách</a>
+                <a class="navbar-brand"><img src="/assets/images/logo.png" alt="Basica"></a>
 			</div>
 
-			<div class="collapse navbar-inverse navbar-collapse navbarCollapse">
+			<div class="collapse navbar-collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li>
-						<a href="/">Trang chủ</a>
-					</li>
-
-					<li>
-						<a href="#">Đặt vé</a>
-					</li>
-
-					<li>
-						<a href="#">Tuyến xe</a>
-					</li>
-
-					<li>
-						<a href="#">Phòng ban</a>
-					</li>
-
-					<li class="active">
-						<a href="/NhanSu/ChucNang">Nhân sự</a>
-					</li>
-
-
+                    @{
+                        var session = (QuanLyXeKhach.Common.UserLogin)Session[QuanLyXeKhach.Common.CommonConstants.userName];
+                    }
+                    @if (session != null)
+                    {
+                        <li>@Html.ActionLink("Trang Chủ", "Home", "PhongBan")</li>
+                        <li>@Html.ActionLink("Nhân Sự", "ChucNang", "NhanSu")</li>
+                        <li>@Html.ActionLink("Phòng Ban", "Menu", "PhongBan")</li>
+                         <li><a>Online:@session.UserID</a></li>
+                         <li>@Html.ActionLink("Đăng Xuất", "Logout", "TaiKhoanNV")</li>
+                    }
 
 
 					@*<li class="dropdown">
@@ -80,18 +85,18 @@
 								NHÂN VIÊN
 							</h4>
 							<ul class="nav nav-pills nav-stacked">
-								<li><a id="lQLNV" class="tablink" href="#" onclick="openPage('QLNV', this)"><font color="black">Quản lý nhân viên</font></a></li>
-								<li><a id="lQLCV" class="tablink" href="#" onclick="openPage('QLCV', this)"><font color="black">Quản lý công việc</font></a></li>
-								<li><a id="lPC" class="tablink" href="#" onclick="openPage('PC', this)"><font color="black">Phân công</font></a></li>
-								<li><a id="lCC" class="tablink" href="#" onclick="openPage('CC', this)"><font color="black">Chấm công</font></a></li>
+								<li><a id="lQLNV" class="tablink sharp" href="~/NhanVien/XemNhanVien" onclick="openPage('QLNV', this)"><font color="black">Quản lý nhân viên</font></a></li>
+								<li><a id="lQLCV" class="tablink sharp" href="~/CongViec/QuanLyCongViec" onclick="openPage('QLCV', this)"><font color="black">Quản lý công việc</font></a></li>
+								<li><a id="lQLPC" class="tablink sharp" href="~/PhanCong/QuanLyPhanCong" onclick="openPage('QLPC', this)"><font color="black">Phân công</font></a></li>
+								<li><a id="lCC" class="tablink sharp" href="~/BangChamCong/QuanLyBangChamCong" onclick="openPage('QLBCC', this)"><font color="black">Chấm công</font></a></li>
 							</ul>
 							<br />
 							<h4>
 								ỨNG VIÊN
 							</h4>
 							<ul class="nav  nav-stacked ">
-								<li><a id="lQLUV" class="tablink" href="~/UngVien/QuanLyUngVien" onclick="openPage('QLUV', this)"><font color="black">Quản lý ứng viên</font></a></li>
-								<li><a id="lQLLPV" class="tablink" href="~/LichPhongVan/QuanLyLichPhongVan" onclick="openPage('QLLPV', this)"><font color="black">Lịch phỏng vấn</font></a></li>
+								<li><a id="lQLUV" class="tablink sharp" href="~/UngVien/QuanLyUngVien" onclick="openPage('QLUV', this)"><font color="black">Quản lý ứng viên</font></a></li>
+								<li><a id="lQLLPV" class="tablink sharp" href="~/LichPhongVan/QuanLyLichPhongVan" onclick="openPage('QLLPV', this)"><font color="black">Lịch phỏng vấn</font></a></li>
 							</ul>
 						</div>
 					</div>
@@ -114,10 +119,55 @@
 	</div>
 	<div class="">
 	</div>
-	<footer class="col-md-12 container-fluid">
-		<hr />
-		<p>&copy; @DateTime.Now.Year - TOMORROW TEAM</p>
-	</footer>
+<footer>
+        <div class="footer">
+            <div class="container">
+
+                <div class="row">
+
+                    <div class="col-footer col-md-4 col-xs-6">
+                        <h3>Contact Us</h3>
+                        <p class="contact-us-details">
+                            <b>Address:</b> 123 Downtown Avenue, Manhattan, New York, United States of America<br />
+                            <b>Phone:</b> +1 123 45678910<br />
+                            <b>Fax:</b> +1 123 45678910<br />
+                            <b>Email:</b> <a href="mailto:info@yourcompanydomain.com">info@yourcompanydomain.com</a>
+                        </p>
+                    </div>
+                    <div class="col-footer col-md-4 col-xs-6">
+                        <h3>Our Social Networks</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam.</p>
+                        <div>
+                            <img src="/assets/images/icons/facebook.png" width="32" alt="Facebook">
+                            <img src="/assets/images/icons/twitter.png" width="32" alt="Twitter">
+                            <img src="/assets/images/icons/linkedin.png" width="32" alt="LinkedIn">
+                            <img src="/assets/images/icons/rss.png" width="32" alt="RSS Feed">
+                        </div>
+                    </div>
+                    <div class="col-footer col-md-4 col-xs-6">
+                        <h3>About Our Company</h3>
+                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat</p>
+                    </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="footer-copyright">&copy; 2017 <a>Tomorrow</a> Quản lý xe khách</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </footer>
+
+    <!-- Javascripts -->
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="/assets/js/jquery-1.9.1.min.js"><\/script>')</script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+
+    <!-- Scrolling Nav JavaScript -->
+    <script src="/assets/js/jquery.easing.min.js"></script>
+    <script src="/assets/js/scrolling-nav.js"></script>
 
 	@Scripts.Render("~/bundles/jquery")
 	@Scripts.Render("~/bundles/bootstrap")

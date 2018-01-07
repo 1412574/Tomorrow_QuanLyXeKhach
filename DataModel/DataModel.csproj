@@ -78,13 +78,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomRequiredValidator.cs" />
-    <Compile Include="Migrations\201712270153416_initall.cs" />
-    <Compile Include="Migrations\201712270153416_initall.Designer.cs">
-      <DependentUpon>201712270153416_initall.cs</DependentUpon>
+    <Compile Include="Migrations\201801061639089_initall.cs" />
+    <Compile Include="Migrations\201801061639089_initall.Designer.cs">
+      <DependentUpon>201801061639089_initall.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\BangChamCong.cs" />
+    <Compile Include="Models\HanhTrinh.cs" />
+    <Compile Include="Models\CongViec.cs" />
     <Compile Include="Models\LichPhongVan.cs" />
     <Compile Include="Models\NhanVien.cs" />
+    <Compile Include="Models\TramXe.cs" />
+    <Compile Include="Models\PhanCong.cs" />
     <Compile Include="Notify.cs" />
     <Compile Include="PagedList.cs" />
     <Compile Include="Models\TaiKhoanNV.cs" />
@@ -209,8 +214,8 @@
     <Content Include="Scripts\moment.min.js" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201712270153416_initall.resx">
-      <DependentUpon>201712270153416_initall.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201801061639089_initall.resx">
+      <DependentUpon>201801061639089_initall.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

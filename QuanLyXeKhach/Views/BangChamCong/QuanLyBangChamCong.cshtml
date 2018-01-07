@@ -1,0 +1,274 @@
+﻿@model DataModel.PagedList<DataModel.BangChamCong>
+@*@model DataModel.PagedList<DataModel.UngVien>*@
+
+@{
+	ViewBag.Title = "Quản Lý Bảng Chấm Công";
+	Layout = "~/Views/NhanSu/Shared/_Layout.cshtml";
+}
+
+
+@Styles.Render("~/Content/NhanSu/css/side-bar")
+@Styles.Render("~/Content/NhanSu/css/tab-content")
+
+
+
+<!-------------------------------------------------------------------->
+<div id="QLNV" class="tabcontent">
+	<h3>Home</h3>
+	<p>Home is where the heart is..</p>
+</div>
+
+<div id="QLCV" class="tabcontent">
+	<h3>News</h3>
+	<p>Some news this fine day!</p>
+</div>
+
+<div id="QLPC" class="tabcontent">
+	<h3>Contact</h3>
+	<p>Get in touch, or swing by for a cup of coffee.</p>
+</div>
+
+<div id="QLBCC" class="tabcontent">
+	<div class="inbox-head">
+		<h3 class="col-md-4">Quản lý bảng chấm công</h3>
+		<form action="#" class="pull-right">
+			<div class="input-append">
+				<input type="text" class="sr-input" placeholder="Tìm kiếm">
+				<button class="btn sr-btn sharp" type="button"><i class="fa fa-search"></i></button>
+			</div>
+		</form>
+	</div>
+
+	<div>
+		@Html.Partial("_Notifications")
+	</div>
+
+	<div class="">
+		<aside class="lg-side">
+
+			<div class="" style="margin-top:20px;">
+				<div class="pull-right">
+					<button class="btn btn-default pull-right sharp" data-toggle="modal" onclick="Create()"><i class="glyphicon glyphicon-plus"></i> Thêm bảng chấm công</button>
+				</div>
+			</div>
+
+			<div class="inbox-body">
+				<div class="mail-option">
+					<table class="table table-header">
+						<tbody style="background-color: #f0f0f0;">
+							<tr class="unread">
+								<td class="col-sm-2 align-top">@Html.DisplayNameFor(model => model.Content.First().NhanVien)</td>
+								<td class="col-sm-2">@Html.DisplayNameFor(model => model.Content.First().ngay)</td>
+								<td class="col-sm-2">@Html.DisplayNameFor(model => model.Content.First().gioBatDau)</td>
+								<td class="col-sm-2">@Html.DisplayNameFor(model => model.Content.First().gioKetThuc)</td>
+								<td class="col-sm-2">@Html.DisplayNameFor(model => model.Content.First().ghiChu)</td>
+								<td class="col-sm-1">Thao tác</td>
+							</tr>
+						</tbody>
+					</table>
+					<table class="table table-inbox table-hover table-inside" style="border: 1px solid #d3d3d3;">
+						<tbody>
+							@foreach (var item in Model.Content)
+							{
+								<tr @*data-status="@item.trangThai"*@>
+									<td data-toggle="modal" class="col-sm-2" onclick="Details(@item.maCC)">
+										<h5>
+											@Html.DisplayFor(modelItem => item.NhanVien.ShortString)
+										</h5>
+									</td>
+									<td data-toggle="modal" class="col-sm-2" onclick="Details(@item.maCC)">
+										<h5>
+											@Html.DisplayFor(modelItem => item.ngay)
+										</h5>
+									</td>
+									<td data-toggle="modal" class="col-sm-2" onclick="Details(@item.maCC)">
+										<h5>
+											@Html.DisplayFor(modelItem => item.gioBatDau)
+										</h5>
+									</td>
+									<td data-toggle="modal" class="col-sm-2" onclick="Details(@item.maCC)">
+										<h5 class="text-left">
+											@Html.DisplayFor(modelItem => item.gioKetThuc)
+										</h5>
+									</td>
+									<td data-toggle="modal" class="col-sm-2" onclick="Details(@item.maCC)">
+										<h5>
+											@Html.DisplayFor(modelItem => item.ghiChu)
+										</h5>
+									</td>
+									<td class="col-sm-1 no-pointer">
+										<span class="btn-group pull-right" style="margin-top: 5px">
+											<button class="btn btn-warning btn-xs sharp" data-toggle="modal" title="Cập nhật bảng chấm công" onclick="Edit(@item.maCC)"><i class="glyphicon glyphicon-edit"></i></button>
+											<button class="btn btn-danger btn-xs sharp" data-toggle="modal" title="Xóa bảng chấm công" onclick="ConfirmDelete(@item.maCC)"><i class="glyphicon glyphicon-remove"></i></button>
+										</span>
+									</td>
+								</tr>
+							}
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div style="margin-top:17px;">
+
+
+			</div>
+		</aside>
+	</div>
+
+	<div class="modal fade item_edit" id="item_edit">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<a href="#" data-dismiss="modal" class="class pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+					<h2 class="modal-title">Cập nhật thông tin bảng chấm công </h2>
+				</div>
+				<div id="PVEdit">
+					@*PVEdit Partial View*@
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade item_create" id="item_create">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<a class="class pull-right" href="#" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span></a>
+					<h2 class="modal-title">Thêm bảng chấm công </h2>
+				</div>
+				<div id="PVCreate">
+					@* PVCreate Partial View*@
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade item_view" id="item_view">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<a href="#" data-dismiss="modal" class="class pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+					<h2 class="modal-title">Thông tin chi tiết bảng chấm công </h2>
+				</div>
+				<div id="PVDetails">
+					@* PVDetails Partial View*@
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="modal fade item_remove" id="item_remove">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header">
+					<a href="#" data-dismiss="modal" class="class pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+					<h3 class="modal-title">Xác nhận</h3>
+				</div>
+				<div id="PVConfirmDelete">
+					@*PVConfirmDelete Partial View*@
+				</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+<div id="QLUV" class="tabcontent ">
+	<h3>About</h3>
+	<p>Who we are and what we do.</p>
+
+</div>
+
+
+<div id="QLBCC" class="tabcontent">
+	<h3>About</h3>
+	<p>Who we are and what we do.</p>
+</div>
+@Scripts.Render("~/bundles/NhanSu/Scripts/tab-content")
+
+<script>
+	openPage("QLBCC", document.getElementById("lQLBCC"));
+	function ConfirmDelete(currentId) {
+		$.ajax({
+			type: "Get",
+			url: '@Url.Action("PVConfirmDelete", "BangChamCong")',
+			data: { id: currentId },
+			success: function (data) {
+				$('#PVConfirmDelete').html(data);
+				$('#item_remove').modal('show');
+			}
+		})
+	}
+
+	function Edit(currentId) {
+		$.ajax({
+			type: "Get",
+			url: '@Url.Action("PVEdit", "BangChamCong")',
+			data: { id: currentId },
+			success: function (data) {
+				$('#PVEdit').html(data);
+				$('#item_edit').modal('show');
+			}
+		})
+	}
+
+	function Details(currentId) {
+		$.ajax({
+			type: "Get",
+			url: '@Url.Action("PVDetails", "BangChamCong")',
+			data: { id: currentId },
+			success: function (data) {
+				$('#PVDetails').html(data);
+				$('#item_view').modal('show');
+			}
+		})
+	}
+
+	function Create() {
+		$.ajax({
+			type: "Get",
+			url: '@Url.Action("PVCreate", "BangChamCong")',
+			success: function (data) {
+				$('#PVCreate').html(data);
+				$('#item_create').modal('show');
+			}
+		})
+	}
+
+
+
+	//$(document).ready(function () {
+	//	$('#alert').show('fade');
+	//	$('#closeAlert').click(function () {
+	//		$('#alert').hide('fade');
+
+	//	});
+
+	//});
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

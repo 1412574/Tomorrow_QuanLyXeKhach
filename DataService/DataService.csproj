@@ -43,18 +43,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BangChamCongService.cs" />
     <Compile Include="ChiTietDatVeService.cs" />
     <Compile Include="ChuyenXeService.cs" />
+    <Compile Include="CongViecService.cs" />
     <Compile Include="DatVeService.cs" />
+    <Compile Include="HanhTrinhService.cs" />
+    <Compile Include="IBangChamCongService.cs" />
     <Compile Include="IChiTietDatVeService.cs" />
     <Compile Include="BaoCaoService.cs" />
     <Compile Include="IBaoCaoService.cs" />
     <Compile Include="IChuyenXeService.cs" />
+    <Compile Include="IHanhTrinhService.cs" />
+    <Compile Include="ICongViecService.cs" />
     <Compile Include="ILichPhongVanService.cs" />
     <Compile Include="INhanVienService.cs" />
     <Compile Include="IDatVeService.cs" />
     <Compile Include="IKhachHangService.cs" />
+    <Compile Include="IPhanCongService.cs" />
     <Compile Include="IPhongBanService.cs" />
+    <Compile Include="ITramXeService.cs" />
     <Compile Include="ITrangThaiNVService.cs" />
     <Compile Include="ITaiKhoanNVService.cs" />
     <Compile Include="IThongKeService.cs" />
@@ -65,9 +73,11 @@
     <Compile Include="LichPhongVanService.cs" />
     <Compile Include="NhanVienService.cs" />
     <Compile Include="KhachHangService.cs" />
+    <Compile Include="PhanCongService.cs" />
     <Compile Include="PhongBanService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TaiKhoanNVService.cs" />
+    <Compile Include="TramXeService.cs" />
     <Compile Include="TrangThaiNVService.cs" />
     <Compile Include="ThongKeService.cs" />
     <Compile Include="TrangThaiUVService.cs" />

@@ -56,9 +56,9 @@ namespace QuanLyXeKhach.Controllers
       
         }
         //GET:
-        public ActionResult Menu(PhongBan phongBan)
+        public ActionResult Menu()
         {
-            var listPhong = service.XemPhongBan(phongBan);
+            var listPhong = service.XemPhongBan();
             return View(listPhong);
         }
         //POST:

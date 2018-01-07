@@ -15,12 +15,26 @@ namespace DataService
         IUnitOfWork unitofWork = new GenericUnitOfWork();
         public int CapNhatTuyenXe(TuyenXe tuyenXe)
         {
-            throw new NotImplementedException();
+            logger.Info("Start cap nhat tuyen xe method");
+            int ret = 0;
+            try
+            {
+                IRepository<TuyenXe> repository = unitofWork.Repository<TuyenXe>();
+                repository.Update(tuyenXe);
+                unitofWork.SaveChange();
+                logger.Info("Status: Success");
+            }
+            catch
+            {
+                logger.Info("Status: Fail");
+                ret = -1;
+            }
+            return ret;
         }
 
         public int ThemTuyenXe(TuyenXe tuyenXe)
         {
-            logger.Info("Start them chuyen xe method");
+            logger.Info("Start them tuyen xe method");
             int ret = 0;
             try
             {
@@ -37,15 +51,24 @@ namespace DataService
             return ret;
         }
 
-        public IEnumerable<TuyenXe> XemTuyenXe()
+        public IList<TuyenXe> XemTuyenXe()
         {
             IRepository<TuyenXe> repository = unitofWork.Repository<TuyenXe>();
-            return repository.GetAll();
+            return repository.GetAll().ToList();
         }
 
         public int XoaTuyenXe(int id)
         {
-            throw new NotImplementedException();
+            IRepository<TuyenXe> repository = unitofWork.Repository<TuyenXe>();
+            repository.Delete(repository.GetById(id));
+            unitofWork.SaveChange();
+            return 0;
+        }
+
+        public TuyenXe LayTuyenXe(int id)
+        {
+            IRepository<TuyenXe> repository = unitofWork.Repository<TuyenXe>();
+            return repository.GetById(id);
         }
     }
 }

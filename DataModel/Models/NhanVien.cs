@@ -12,7 +12,7 @@
 
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Key]
-        [Display(Name = "Mã nhân viên", ShortName = "Mã")]
+        [Display(Name = "Mã nhân viên", ShortName = "Mã số")]
         public int maNV { get; set; }
 
         [StringLength(30)]
@@ -42,14 +42,31 @@
         [Display(Name = "Vai trò", ShortName = "Vai trò")]
         public int maVT { get; set; }
 
+        [Display(Name = "Vai trò", ShortName = "Vai trò")]
         public virtual VaiTro VaiTro { get; set; }
 
         [Display(Name = "Trạng thái", ShortName = "Trạng thái")]
         public int maTT { get; set; }
 
+        [Display(Name = "Trạng thái", ShortName = "Trạng thái")]
         public virtual TrangThaiNV TrangThai { get; set; }
+
+        [Display(Name = "Phòng ban", ShortName = "Phòng ban")]
+        public int maPB { get; set; }
+
+        [Display(Name = "Phòng ban", ShortName = "Phòng ban")]
+        public virtual PhongBan phongBan { get; set; }
 
         public virtual ICollection<TaiKhoanNV> TaiKhoanNVs { get; set; }
 
+        public virtual ICollection<PhanCong> PhanCongs { get; set; }
+
+        public string ShortString
+        {
+            get
+            {
+                return String.Format("{0} - {1}", maNV, hoTen);
+            }
+        }
     }
 }

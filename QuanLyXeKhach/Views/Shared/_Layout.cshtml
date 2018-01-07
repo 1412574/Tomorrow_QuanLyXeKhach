@@ -1,20 +1,53 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - TOMORRROW</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-    @Styles.Render("~/Assets/datvecss")
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <!-- select 2-->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/css/select2.min.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.6-rc.0/js/select2.min.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css" rel="stylesheet" />
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+    <title>BASICA! A Free Bootstrap3 HTML5 CSS3 Template by Vactual Art</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/assets/css/bootstrap.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/assets/css/main.css">
+    <link href="/assets/css/custom.css" rel="stylesheet">
+
+    <script src="//use.edgefonts.net/bebas-neue.js"></script>
+
+    <!-- Custom Fonts & Icons -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,600,800' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="/assets/css/icomoon-social.css">
+    <link rel="stylesheet" href="/assets/css/font-awesome.min.css">
+
+    <script src="/assets/js/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+    @* @Styles.Render("~/Content/css")*@
+    <!-- Bootstrap Core CSS -->
+    <link href="/assets/AssetsDatve/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="/assets/AssetsDatve/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/assets/AssetsDatve/dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="/assets/AssetsDatve/vendor/morrisjs/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="/assets/AssetsDatve/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <!-- DataTables CSS -->
+    <link href="/assets/AssetsDatve/vendor/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="/assets/AssetsDatve/vendor/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="/assets/AssetsLogin/css/style.css">
+
+
 </head>
 <body>
     <header class="navbar navbar-inverse navbar-fixed-top" role="banner">
@@ -26,36 +59,45 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html"><img src="/assets/images/logo.png" alt="Basica"></a>
+                <a class="navbar-brand"><img src="/assets/images/logo.png" alt="Basica"></a>
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-right">
-                    @{ 
+                    @{
                         var session = (QuanLyXeKhach.Common.UserLogin)Session[QuanLyXeKhach.Common.CommonConstants.userName];
+                        var sessionVT = (QuanLyXeKhach.Common.VaiTroID)Session[QuanLyXeKhach.Common.CommonVaiTro.vaiTro];
                     }
-
                     @if (session != null)
                     {
-                        <li class="active">@Html.ActionLink("Trang Chủ", "Home", "PhongBan")</li>
-                        <li>@Html.ActionLink("Đặt vé", "#", "PhongBan")</li>
-                        <li>@Html.ActionLink("Nhân Viên", "XemNhanVien", "NhanVien")</li>
-                        <li>@Html.ActionLink("Phòng Ban", "Menu", "PhongBan")</li>
-                        <li><a>Online:@session.UserID</a></li>
-                        <li>@Html.ActionLink("Đăng Xuất", "Logout", "TaiKhoanNV")</li>
+                        if (sessionVT.vaiTroID == 1)
+                        {
+                            <li class="active">@Html.ActionLink("Trang Chủ", "Home", "PhongBan")</li>
+                            <li>@Html.ActionLink("Nhân Sự", "ChucNang", "NhanSu")</li>
+                            <li>@Html.ActionLink("Phòng Ban", "Menu", "PhongBan")</li>
+                            <li><a>Online:@session.UserID</a></li>
+                            <li>@Html.ActionLink("Đăng Xuất", "Logout", "TaiKhoanNV")</li>
+                        }
+                        else if (sessionVT.vaiTroID == 2)
+                        {
+                            <li class="active">@Html.ActionLink("Trang Chủ", "Home", "PhongBan")</li>
+                            <li>@Html.ActionLink("Tuyến xe", "Index", "TuyenXe")</li>
+                            <li>@Html.ActionLink("Chuyến xe", "index", "ChuyenXes")</li>
+                            <li>@Html.ActionLink("Thống kê", "Index", "ThongKe")</li>
+                            <li><a>Online:@session.UserID</a></li>
+                            <li>@Html.ActionLink("Đăng Xuất", "Logout", "TaiKhoanNV")</li>
+                        }
+                        else
+                        {
+                            <li class="active">@Html.ActionLink("Trang Chủ", "Home", "PhongBan")</li>
+                            <li>@Html.ActionLink("Đặt vé", "Index", "KhachHang")</li>
+                            <li><a>Online:@session.UserID</a></li>
+                            <li>@Html.ActionLink("Đăng Xuất", "Logout", "TaiKhoanNV")</li>
+                        }
                     }
-                    else{ 
-                        <li class="active">@Html.ActionLink("Trang Chủ", "Home", "PhongBan")</li>
-                        <li>@Html.ActionLink("Đặt vé", "#", "PhongBan")</li>
-                        <li>@Html.ActionLink("Nhân Viên", "XemNhanVien", "NhanVien")</li>
-                        <li>@Html.ActionLink("Phòng Ban", "Menu", "PhongBan")</li>
-                        <li>@Html.ActionLink("Đăng Nhập", "Login", "TaiKhoanNV")</li>
-                        <li>@Html.ActionLink("Trang Chủ", "Home", "PhongBan")</li>
-                        <li>@Html.ActionLink("Đặt vé", "index", "KhachHang")s</li>
-                        <li>@Html.ActionLink("Tuyến xe", "index", "ChuyenXes")</li>
-                        <li>@Html.ActionLink("Phòng ban", "Menu", "PhongBan")</li>
-                        <li>@Html.ActionLink("Thống kê", "#", "PhongBan")</li>
+                    else
+                    {
+                       
                     }
-                    
                 </ul>
             </div>
         </div>
@@ -112,10 +154,10 @@
 
     <!-- Scrolling Nav JavaScript -->
     <script src="/assets/js/jquery.easing.min.js"></script>
-    <script src="/assets/js/scrolling-nav.js"></script>		
+    <script src="/assets/js/scrolling-nav.js"></script>
     @*@Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
-    @RenderSection("scripts", required: false)*@
+        @Scripts.Render("~/bundles/bootstrap")
+        @RenderSection("scripts", required: false)*@
 
     <!-- jQuery -->
     <script src="/assets/AssetsDatve/vendor/jquery/jquery.min.js"></script>
@@ -149,5 +191,6 @@
             });
         });
     </script>
+    @RenderSection("scripts", required: false)
 </body>
 </html>

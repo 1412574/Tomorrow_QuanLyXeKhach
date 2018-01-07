@@ -26,9 +26,12 @@ namespace DataModel
         public virtual DbSet<KhachHang> KhachHangs { get; set; }
         public virtual DbSet<DatVe> DatVes { get; set; }
         public virtual DbSet<ChiTietDatVe> ChiTietDatVes { get; set; }
+        public virtual DbSet<LichPhongVan> LichPhongVans { get; set; }
         public virtual DbSet<TrangThaiUV> TrangThaiUVs { get; set; }
         public virtual DbSet<UngVien> UngViens { get; set; }
-        public virtual DbSet<LichPhongVan> LichPhongVans { get; set; }
+        public virtual DbSet<PhanCong> PhanCongs { get; set; }
+        public virtual DbSet<CongViec> CongViecs { get; set; }
+        public virtual DbSet<BangChamCong> BangChamCongs { get; set; }
 
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

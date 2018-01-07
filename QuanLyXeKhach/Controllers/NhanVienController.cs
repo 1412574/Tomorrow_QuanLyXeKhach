@@ -17,14 +17,16 @@ namespace QuanLyXeKhach.Controllers
         ITrangThaiNVService<TrangThaiNV> trangThaiNVService;
         IVaiTroService<VaiTro> vaiTroService;
         ITaiKhoanNVService<TaiKhoanNV> taiKhoanNVService;
+        IPhongBanService<PhongBan> phongBanService;
         MD5 md5Hash;
 
-        public NhanVienController(INhanVienService<NhanVien> nhanVienService, ITrangThaiNVService<TrangThaiNV> trangThaiNVService, IVaiTroService<VaiTro> vaiTroService, ITaiKhoanNVService<TaiKhoanNV> taiKhoanNVService)
+        public NhanVienController(INhanVienService<NhanVien> nhanVienService, ITrangThaiNVService<TrangThaiNV> trangThaiNVService, IVaiTroService<VaiTro> vaiTroService, ITaiKhoanNVService<TaiKhoanNV> taiKhoanNVService, IPhongBanService<PhongBan> phongBanService)
         {
             this.nhanVienService = nhanVienService;
             this.vaiTroService = vaiTroService;
             this.trangThaiNVService = trangThaiNVService;
             this.taiKhoanNVService = taiKhoanNVService;
+            this.phongBanService = phongBanService;
             md5Hash = MD5.Create();
         }
         // GET: NhanVien
@@ -39,6 +41,7 @@ namespace QuanLyXeKhach.Controllers
         {
             ViewBag.maVT = new SelectList(vaiTroService.XemVaiTro(), "maVT", "tenVT");
             ViewBag.maTT = new SelectList(trangThaiNVService.XemTrangThai(), "maTT", "tenTT");
+            ViewBag.maPB = new SelectList(phongBanService.XemPhongBan(), "maPB", "tenPB");
             return View();
         }
         //POST: Lấy thông tin nhân viên từ giao diện
@@ -81,6 +84,7 @@ namespace QuanLyXeKhach.Controllers
         {
             ViewBag.maVT = new SelectList(vaiTroService.XemVaiTro(), "maVT", "tenVT");
             ViewBag.maTT = new SelectList(trangThaiNVService.XemTrangThai(), "maTT", "tenTT");
+            ViewBag.maPB = new SelectList(phongBanService.XemPhongBan(), "maPB", "tenPB");
             return View(nhanVienService.XemNhanVienNV(id));
         }
         //POST:

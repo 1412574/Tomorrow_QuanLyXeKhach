@@ -11,6 +11,7 @@ namespace DataService
         int ThemTuyenXe(T tuyenXe);
         int XoaTuyenXe(int id);
         int CapNhatTuyenXe(T tuyenXe);
-        IEnumerable<T> XemTuyenXe();
+        IList<T> XemTuyenXe();
+        T LayTuyenXe(int id);
     }
 }
