@@ -15,7 +15,7 @@
 		<div class="modal-body">
 			<div class="form-horizontal">
 				<div class="row">
-					<div class="col-md-7 item_content">
+					<div class="col-md-7 item_content modal-body">
 						<table class="table table-header">
 							<tbody style="background-color: #f0f0f0;">
 								<tr class="unread">
@@ -126,7 +126,7 @@
 
 					</div>
 
-					<div class="col-md-5 item_content" style="float:right">
+					<div class="col-md-5 item_content modal-body" style="float:right">
 						@Html.ValidationSummary(true, "", new { @class = "text-danger" })
 						@Html.HiddenFor(model => model.maPC)
 						<div class="text-center col-md-12">
@@ -181,7 +181,7 @@
 						</div>
 					</div>
 
-					<div class="col-md-7 item_content">
+					<div class="col-md-7 item_content modal-body">
 						<table class="table table-header">
 							<tbody style="background-color: #f0f0f0;">
 								<tr class="unread">
