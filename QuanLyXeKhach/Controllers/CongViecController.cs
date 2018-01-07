@@ -24,8 +24,7 @@ namespace QuanLyXeKhach.Controllers
         }
 
 
-        public ActionResult QuanLyCongViec(string filter = null, int page = 1,
-         int pageSize = 5, string sort = "maCV", string sortdir = "DESC")
+        public ActionResult QuanLyCongViec(string filter = null)
         {
             logger.Info("HttpGet recived. Contoller: CongViecController, ActionResult: QuanLyCongViec.");
             //ViewBag.LichPhongVans = new SelectList(lichPhongVanService.XemLichPhongVan(), "maCV", "maCV");
@@ -42,17 +41,9 @@ namespace QuanLyXeKhach.Controllers
             //}
             //logger.Info("/Return to action QuanLyCongViec with list of CongViec as model.");
             //return View(congViecs.ToList());
-            var records = new PagedList<CongViec>();
+            var records = new List<CongViec>();
             var notificationList = TempData["notificationList"] as IList<Notify>;
             ViewBag.filter = filter;
-            records.Content = congViecService.XemThongTinCV(filter).ToList();
-
-            // Count
-            records.TotalRecords = records.Content.Count();
-
-            records.CurrentPage = page;
-            records.PageSize = pageSize;
-
             logger.Info("/Return to action QuanLyCongViec with list of CongViec as model.");
             if (notificationList != null)
             {

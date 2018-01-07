@@ -28,8 +28,7 @@ namespace QuanLyXeKhach.Controllers
         }
 
 
-        public ActionResult QuanLyUngVien(string filter = null, int page = 1,
-         int pageSize = 5, string sort = "maUV", string sortdir = "DESC")
+        public ActionResult QuanLyUngVien(string filter = null)
         {
             logger.Info("HttpGet recived. Contoller: UngVienController, ActionResult: QuanLyUngVien.");
             //ViewBag.LichPhongVans = new SelectList(lichPhongVanService.XemLichPhongVan(), "maLPV", "maLPV");
@@ -46,18 +45,12 @@ namespace QuanLyXeKhach.Controllers
             //}
             //logger.Info("/Return to action QuanLyUngVien with list of UngVien as model.");
             //return View(ungViens.ToList());
-            var records = new PagedList<UngVien>();
+            var records = new List<UngVien>();
             var notificationList = TempData["notificationList"] as IList<Notify>;
             ViewBag.filter = filter;
-            records.Content = ungVienService.XemThongTinUV(filter).ToList();
+            records = ungVienService.XemThongTinUV(filter).ToList();
 
-            // Count
-            records.TotalRecords = records.Content.Count();
-
-            records.CurrentPage = page;
-            records.PageSize = pageSize;
-
-            foreach (var ungVien in records.Content)
+            foreach (var ungVien in records)
             {
                 if (ungVien.maLPV == null)
                     ungVien.LichPhongVan = null;

@@ -1,4 +1,4 @@
-﻿@model DataModel.PagedList<DataModel.BangChamCong>
+﻿@model IEnumerable<DataModel.BangChamCong>
 @*@model DataModel.PagedList<DataModel.UngVien>*@
 
 @{
@@ -14,29 +14,26 @@
 
 <!-------------------------------------------------------------------->
 <div id="QLNV" class="tabcontent">
-	<h3>Home</h3>
-	<p>Home is where the heart is..</p>
+
 </div>
 
 <div id="QLCV" class="tabcontent">
-	<h3>News</h3>
-	<p>Some news this fine day!</p>
+
 </div>
 
 <div id="QLPC" class="tabcontent">
-	<h3>Contact</h3>
-	<p>Get in touch, or swing by for a cup of coffee.</p>
+
 </div>
 
 <div id="QLBCC" class="tabcontent">
 	<div class="inbox-head">
 		<h3 class="col-md-4">Quản lý bảng chấm công</h3>
-		<form action="#" class="pull-right">
+		<div class="pull-right">
 			<div class="input-append">
-				<input type="text" class="sr-input" placeholder="Tìm kiếm">
-				<button class="btn sr-btn sharp" type="button"><i class="fa fa-search"></i></button>
+				<input id="search_string" type="text" class="sr-input" placeholder="Tìm kiếm" value="@ViewBag.filter">
+				<button class="btn sr-btn sharp" onclick="Search()"><i class="fa fa-search"></i></button>
 			</div>
-		</form>
+		</div>
 	</div>
 
 	<div>
@@ -57,18 +54,18 @@
 					<table class="table table-header">
 						<tbody style="background-color: #f0f0f0;">
 							<tr class="unread">
-								<td class="col-sm-2 align-top">@Html.DisplayNameFor(model => model.Content.First().NhanVien)</td>
-								<td class="col-sm-2">@Html.DisplayNameFor(model => model.Content.First().ngay)</td>
-								<td class="col-sm-2">@Html.DisplayNameFor(model => model.Content.First().gioBatDau)</td>
-								<td class="col-sm-2">@Html.DisplayNameFor(model => model.Content.First().gioKetThuc)</td>
-								<td class="col-sm-2">@Html.DisplayNameFor(model => model.Content.First().ghiChu)</td>
+								<td class="col-sm-2 align-top">@Html.DisplayNameFor(model => model.NhanVien)</td>
+								<td class="col-sm-2">@Html.DisplayNameFor(model => model.ngay)</td>
+								<td class="col-sm-2">@Html.DisplayNameFor(model => model.gioBatDau)</td>
+								<td class="col-sm-2">@Html.DisplayNameFor(model => model.gioKetThuc)</td>
+								<td class="col-sm-2">@Html.DisplayNameFor(model => model.ghiChu)</td>
 								<td class="col-sm-1">Thao tác</td>
 							</tr>
 						</tbody>
 					</table>
 					<table class="table table-inbox table-hover table-inside" style="border: 1px solid #d3d3d3;">
 						<tbody>
-							@foreach (var item in Model.Content)
+							@foreach (var item in Model)
 							{
 								<tr @*data-status="@item.trangThai"*@>
 									<td data-toggle="modal" class="col-sm-2" onclick="Details(@item.maCC)">
@@ -174,15 +171,12 @@
 </div>
 
 <div id="QLUV" class="tabcontent ">
-	<h3>About</h3>
-	<p>Who we are and what we do.</p>
 
 </div>
 
 
 <div id="QLBCC" class="tabcontent">
-	<h3>About</h3>
-	<p>Who we are and what we do.</p>
+
 </div>
 @Scripts.Render("~/bundles/NhanSu/Scripts/tab-content")
 
@@ -235,7 +229,17 @@
 		})
 	}
 
-
+	function Search() {
+		var filter = $('#search_string').val();
+		if (filter == "") {
+			var url = '@Url.Action("QuanLyBangChamCong", "BangChamCong")';
+			window.location.href = url;
+		}
+		else {
+			var url = '@Url.Action("QuanLyBangChamCong", "BangChamCong", new { filter = "__filter__" })';
+			window.location.href = url.replace('__filter__', $('#search_string').val());
+		}
+	}
 
 	//$(document).ready(function () {
 	//	$('#alert').show('fade');

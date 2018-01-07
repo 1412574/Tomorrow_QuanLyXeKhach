@@ -39,7 +39,7 @@ namespace DAO
         {
             if (predicate != null)
             {
-                _context.Set<T>().Where(predicate);
+                return _context.Set<T>().Where(predicate);
             }
             return _context.Set<T>().AsEnumerable<T>();
         }

@@ -1,4 +1,4 @@
-﻿@model DataModel.PagedList<DataModel.CongViec>
+﻿@model IEnumerable<DataModel.CongViec>
 
 @{
 	ViewBag.Title = "Quản Lý Công Việc";
@@ -13,19 +13,18 @@
 
 <!-------------------------------------------------------------------->
 <div id="QLNV" class="tabcontent">
-	<h3>Home</h3>
-	<p>Home is where the heart is..</p>
+
 </div>
 
 <div id="QLCV" class="tabcontent">
 	<div class="inbox-head">
 		<h3 class="col-md-4">Quản lý công việc</h3>
-		<form action="#" class="pull-right">
+		<div class="pull-right">
 			<div class="input-append">
-				<input type="text" class="sr-input" placeholder="Tìm kiếm">
-				<button class="btn sr-btn sharp" type="button"><i class="fa fa-search"></i></button>
+				<input id="search_string" type="text" class="sr-input" placeholder="Tìm kiếm" value="@ViewBag.filter">
+				<button class="btn sr-btn sharp" onclick="Search()"><i class="fa fa-search"></i></button>
 			</div>
-		</form>
+		</div>
 	</div>
 
 	<div>
@@ -68,10 +67,10 @@
 					<table class="table table-header">
 						<tbody style="background-color: #f0f0f0;">
 							<tr class="unread">
-								<td class="col-sm-2 align-top">@Html.DisplayNameFor(model => model.Content.First().maCV)</td>
-								<td class="col-sm-2">@Html.DisplayNameFor(model => model.Content.First().tenCV)</td>
+								<td class="col-sm-2 align-top">@Html.DisplayNameFor(model => model.maCV)</td>
+								<td class="col-sm-2">@Html.DisplayNameFor(model => model.tenCV)</td>
 								<td class="col-sm-2">
-									<div class="text-center">@Html.DisplayNameFor(model => model.Content.First().hanHoanThanh)</div>
+									<div class="text-center">@Html.DisplayNameFor(model => model.hanHoanThanh)</div>
 									<div class="text-center">
 										<div id="checkbutton" class="btn-group" data-toggle="buttons">
 											<label class="checkbutton btn btn-xs orange active filter show sharp" data-target="1" onclick="filter(this)"><i class="glyphicon glyphicon-stop"></i></label>
@@ -81,8 +80,8 @@
 										</div>
 									</div>
 								</td>
-								<td class="text-left col-sm-2">@Html.DisplayNameFor(model => model.Content.First().moTaCV)</td>
-								<td class="text-left col-sm-2">@Html.DisplayNameFor(model => model.Content.First().yeuCauCV)</td>
+								<td class="text-left col-sm-2">@Html.DisplayNameFor(model => model.moTaCV)</td>
+								<td class="text-left col-sm-2">@Html.DisplayNameFor(model => model.yeuCauCV)</td>
 								<td class="col-sm-1">Thao tác</td>
 							</tr>
 						</tbody>
@@ -91,7 +90,7 @@
 						<tbody>
 							@if (Model != null)
 							{
-								foreach (var item in Model.Content)
+								foreach (var item in Model)
 								{
 									<tr data-status="@item.trangThai">
 										<td data-toggle="modal" class="col-sm-2" onclick="Details(@item.maCV)">
@@ -222,24 +221,19 @@
 </div>
 
 <div id="QLPC" class="tabcontent">
-	<h3>Contact</h3>
-	<p>Get in touch, or swing by for a cup of coffee.</p>
+
 </div>
 
 <div id="CC" class="tabcontent">
-	<h3>About</h3>
-	<p>Who we are and what we do.</p>
+
 </div>
 
 <div id="QLUV" class="tabcontent ">
-	<h3>News</h3>
-	<p>Some news this fine day!</p>
+
 </div>
 
-
 <div id="LPV" class="tabcontent">
-	<h3>About</h3>
-	<p>Who we are and what we do.</p>
+
 </div>
 @Scripts.Render("~/bundles/NhanSu/Scripts/tab-content")
 
@@ -290,6 +284,18 @@
 				$('#item_create').modal('show');
 			}
 		})
+	}
+
+	function Search() {
+		var filter = $('#search_string').val();
+		if (filter == "") {
+			var url = '@Url.Action("QuanLyCongViec", "CongViec")';
+			window.location.href = url;
+		}
+		else {
+			var url = '@Url.Action("QuanLyCongViec", "CongViec", new { filter = "__filter__" })';
+			window.location.href = url.replace('__filter__', $('#search_string').val());
+		}
 	}
 
 	//$(document).ready(function () {

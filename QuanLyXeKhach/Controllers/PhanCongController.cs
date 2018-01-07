@@ -33,22 +33,15 @@ namespace QuanLyXeKhach.Controllers
         }
 
 
-        public ActionResult QuanLyPhanCong(string filter = null, int page = 1,
-         int pageSize = 5, string sort = "maPC", string sortdir = "DESC")
+        public ActionResult QuanLyPhanCong(string filter = null)
         {
             logger.Info("HttpGet recived. Contoller: PhanCongController, ActionResult: QuanLyPC.");
-            var records = new PagedList<PhanCong>();
+            var records = new List<PhanCong>();
             var notificationList = TempData["notificationList"] as IList<Notify>;
             ViewBag.filter = filter;
-            records.Content = phanCongService.XemThongTinPC(filter).ToList();
+            records = phanCongService.XemThongTinPC(filter).ToList();
 
-            // Count
-            records.TotalRecords = records.Content.Count();
-
-            records.CurrentPage = page;
-            records.PageSize = pageSize;
-
-            foreach (var phanCong in records.Content)
+            foreach (var phanCong in records)
             {
                 phanCong.NhanVien = nhanVienService.XemNhanVienNV(phanCong.maNV);
                 phanCong.CongViec = congViecService.XemThongTinCV(phanCong.maCV);

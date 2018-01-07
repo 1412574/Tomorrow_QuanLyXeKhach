@@ -1,4 +1,4 @@
-﻿@model DataModel.PagedList<DataModel.PhanCong>
+﻿@model IEnumerable<DataModel.PhanCong>
 @*@model DataModel.PagedList<DataModel.UngVien>*@
 
 @{
@@ -14,24 +14,23 @@
 
 <!-------------------------------------------------------------------->
 <div id="QLNV" class="tabcontent">
-	<h3>Home</h3>
-	<p>Home is where the heart is..</p>
+	@*<h3>Đang xử lý</h3>
+		<p>Chúng tôi đang xử lý yêu cầu. Vui lòng đợi...</p>*@
 </div>
 
 <div id="QLCV" class="tabcontent">
-	<h3>News</h3>
-	<p>Some news this fine day!</p>
+
 </div>
 
 <div id="QLPC" class="tabcontent">
 	<div class="inbox-head">
 		<h3 class="col-md-4">Quản lý phân công</h3>
-		<form action="#" class="pull-right">
+		<div class="pull-right">
 			<div class="input-append">
-				<input type="text" class="sr-input" placeholder="Tìm kiếm">
-				<button class="btn sr-btn sharp" type="button"><i class="fa fa-search"></i></button>
+				<input id="search_string" type="text" class="sr-input" placeholder="Tìm kiếm" value="@ViewBag.filter">
+				<button class="btn sr-btn sharp" onclick="Search()"><i class="fa fa-search"></i></button>
 			</div>
-		</form>
+		</div>
 	</div>
 
 	<div>
@@ -55,13 +54,14 @@
 
 			<div class="inbox-body">
 				<div class="mail-option">
-					<table class="table table-header">
-						<tbody style="background-color: #f0f0f0;">
+					<table class="table table-header table-striped table-bordered table-hover" id="dataTables-example">
+						<thead style="background-color: #f0f0f0;">
 							<tr class="unread">
-								<td class="col-sm-2 align-top">@Html.DisplayNameFor(model => model.Content.First().NhanVien)</td>
-								<td class="col-sm-2">@Html.DisplayNameFor(model => model.Content.First().CongViec)</td>
+								<td class="col-sm-1 align-top">STT</td>
+								<td class="col-sm-2 align-top">@Html.DisplayNameFor(model => model.NhanVien)</td>
+								<td class="col-sm-2">@Html.DisplayNameFor(model => model.CongViec)</td>
 								<td class="col-sm-2">
-									<div @*class="text-center"*@>@Html.DisplayNameFor(model => model.Content.First().ngayPC)</div>
+									<div @*class="text-center"*@>@Html.DisplayNameFor(model => model.ngayPC)</div>
 									@*<div class="text-center">
 											<div id="checkbutton" class="btn-group" data-toggle="buttons">
 												<label class="checkbutton btn btn-xs green active filter show sharp" data-target="3" onclick="filter(this)"><i class="glyphicon glyphicon-stop"></i></label>
@@ -71,21 +71,26 @@
 											</div>
 										</div>*@
 								</td>
-								<td class="text-left col-sm-2">@Html.DisplayNameFor(model => model.Content.First().nhiemVu)</td>
+								<td class="text-left col-sm-2">@Html.DisplayNameFor(model => model.nhiemVu)</td>
 
-								<td class="text-left col-sm-2">@Html.DisplayNameFor(model => model.Content.First().danhGia)</td>
+								<td class="text-left col-sm-2">@Html.DisplayNameFor(model => model.danhGia)</td>
 								<td class="col-sm-1">Thao tác</td>
 							</tr>
-						</tbody>
+							</tbody>
 					</table>
 					<table class="table table-inbox table-hover table-inside" style="border: 1px solid #d3d3d3;">
 
 						<tbody>
 							@if (Model != null)
 							{
-								foreach (var item in Model.Content)
+								int i = 1;
+								foreach (var item in Model)
 								{
 									<tr @*data-status="@item.trangThai"*@>
+										<td class="col-sm-1">
+											<h5>@i</h5>
+										</td>
+										@{i++; }
 										<td data-toggle="modal" class="col-sm-2" onclick="Details(@item.maPC)">
 											<h5>
 												@Html.DisplayFor(modelItem => item.NhanVien.ShortString)
@@ -144,15 +149,15 @@
 	</div>
 
 	<div class="modal fade" id="item_edit">
-			<div class="modal-content">
-				<div class="modal-header">
-					<a href="#" data-dismiss="modal" class="class pull-right"><span class="glyphicon glyphicon-remove"></span></a>
-					<h2 class="modal-title">Cập nhật thông tin phân công </h2>
-				</div>
-				<div id="PVEdit">
-					@*PVEdit Partial View*@
-				</div>
+		<div class="modal-content">
+			<div class="modal-header">
+				<a href="#" data-dismiss="modal" class="class pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+				<h2 class="modal-title">Cập nhật thông tin phân công </h2>
 			</div>
+			<div id="PVEdit">
+				@*PVEdit Partial View*@
+			</div>
+		</div>
 	</div>
 
 	<div class="modal fade " id="item_create">
@@ -198,19 +203,16 @@
 </div>
 
 <div id="CC" class="tabcontent">
-	<h3>About</h3>
-	<p>Who we are and what we do.</p>
+
 </div>
 
 <div id="QLUV" class="tabcontent ">
-	<h3>Contact</h3>
-	<p>Get in touch, or swing by for a cup of coffee.</p>
+
 </div>
 
 
 <div id="LPV" class="tabcontent">
-	<h3>About</h3>
-	<p>Who we are and what we do.</p>
+
 </div>
 @Scripts.Render("~/bundles/NhanSu/Scripts/tab-content")
 
@@ -262,6 +264,18 @@
 				$('#item_create').modal('show');
 			}
 		})
+	}
+
+	function Search() {
+		var filter = $('#search_string').val();
+		if (filter == "") {
+			var url = '@Url.Action("QuanLyPhanCong", "PhanCong")';
+			window.location.href = url;
+		}
+		else {
+			var url = '@Url.Action("QuanLyPhanCong", "PhanCong", new { filter = "__filter__" })';
+			window.location.href = url.replace('__filter__', $('#search_string').val());
+		}
 	}
 
 	//$(document).ready(function () {

@@ -1,4 +1,4 @@
-﻿@model DataModel.PagedList<DataModel.UngVien>
+﻿@model IEnumerable<DataModel.UngVien>
 @*@model DataModel.PagedList<DataModel.UngVien>*@
 
 @{
@@ -14,34 +14,30 @@
 
 <!-------------------------------------------------------------------->
 <div id="QLNV" class="tabcontent">
-	<h3>Home</h3>
-	<p>Home is where the heart is..</p>
+
 </div>
 
 <div id="QLCV" class="tabcontent">
-	<h3>News</h3>
-	<p>Some news this fine day!</p>
+
 </div>
 
 <div id="QLPC" class="tabcontent">
-	<h3>Contact</h3>
-	<p>Get in touch, or swing by for a cup of coffee.</p>
+
 </div>
 
 <div id="CC" class="tabcontent">
-	<h3>About</h3>
-	<p>Who we are and what we do.</p>
+
 </div>
 
 <div id="QLUV" class="tabcontent ">
 	<div class="inbox-head">
 		<h3 class="col-md-4">Quản lý ứng viên</h3>
-		<form action="#" class="pull-right">
+		<div class="pull-right">
 			<div class="input-append">
-				<input type="text" class="sr-input" placeholder="Tìm kiếm">
-				<button class="btn sr-btn sharp" type="button"><i class="fa fa-search"></i></button>
+				<input id="search_string" type="text" class="sr-input" placeholder="Tìm kiếm" value="@ViewBag.filter">
+				<button class="btn sr-btn sharp" onclick="Search()"><i class="fa fa-search"></i></button>
 			</div>
-		</form>
+		</div>
 	</div>
 
 	<div>
@@ -52,12 +48,6 @@
 		<aside class="lg-side">
 
 			<div class="" style="margin-top:20px;">
-				@*<div id="alert" class="alert alert-danger">
-						<a id="closeAlert" href="#" class="close" data-dismiss="alert">&times;</a>
-						<strong id="alertTitle">@ViewData["msgTitle"]</strong><span id="alertMsg">@ViewData["msg"]</span>
-
-
-					</div>*@
 				<div class="pull-right">
 					<button class="btn btn-default pull-right sharp" data-toggle="modal" onclick="Create()"><i class="glyphicon glyphicon-plus"></i> Thêm ứng viên</button>
 				</div>
@@ -65,13 +55,14 @@
 
 			<div class="inbox-body">
 				<div class="mail-option">
-					<table class="table table-header">
-						<tbody style="background-color: #f0f0f0;">
+					<table class="table table-header table-striped table-bordered table-hover" id="dataTables-example">
+						<thead style="background-color: #f0f0f0;">
 							<tr class="unread">
-								<td class="col-sm-2 align-top">@Html.DisplayNameFor(model => model.Content.First().maUV)</td>
-								<td class="view-message col-sm-3">@Html.DisplayNameFor(model => model.Content.First().hoTen)</td>
+								<td class="col-sm-1 align-top">STT</td>
+								<td class="col-sm-2 align-top">@Html.DisplayNameFor(model => model.maUV)</td>
+								<td class="view-message col-sm-3">@Html.DisplayNameFor(model => model.hoTen)</td>
 								<td class="col-sm-2">
-									<div class="text-center">@Html.DisplayNameFor(model => model.Content.First().trangThai)</div>
+									<div class="text-center">@Html.DisplayNameFor(model => model.trangThai)</div>
 									<div class="text-center">
 										<div id="checkbutton" class="btn-group" data-toggle="buttons">
 											<label class="checkbutton btn btn-xs green active filter show sharp" data-target="3" onclick="filter(this)"><i class="glyphicon glyphicon-stop"></i></label>
@@ -81,53 +72,24 @@
 										</div>
 									</div>
 								</td>
-								<td class="view-message  text-left col-sm-2">@Html.DisplayNameFor(model => model.Content.First().maLPV)</td>
+								<td class="view-message  text-left col-sm-2">@Html.DisplayNameFor(model => model.maLPV)</td>
 								<td class="col-sm-1">Thao tác</td>
 							</tr>
-						</tbody>
+						</thead>
 					</table>
 					<table class="table table-inbox table-hover table-inside" style="border: 1px solid #d3d3d3;">
-						@*@{
-							var grid = new WebGrid(
-										canPage: true,
-										rowsPerPage: Model.PageSize,
-										canSort: true,
-										ajaxUpdateContainerId: "grid");
-
-							grid.Bind(Model.Content, rowCount: Model.TotalRecords, autoSortAndPage: false);
-							grid.Pager(WebGridPagerModes.Numeric);
-
-											@grid.GetHtml(htmlAttributes: new { id = "grid" },   // id for ajaxUpdateContainerId parameter
-								   displayHeader: false,
-
-							fillEmptyRows: false,
-							tableStyle: "table table-bordered  table-hover",
-							mode: WebGridPagerModes.All,
-							columns: grid.Columns(
-							  grid.Column("maUV", "Mã ứng viên", style: "col-lg-2"),
-							  grid.Column("hoTen", "Họ và tên", style: "col-lg-3"),
-							  grid.Column("trangThai", "Trạng Thái", style: "col-lg-2"),
-							  grid.Column("maLPV", header: "Lịch phỏng vấn", style: "col-lg-2"),
-							  grid.Column(header: "Action", canSort: false, style: "col-lg-1", /*style: "action",*/
-
-
-								format: @<text>
-										<span class="btn-group pull-right" style="margin-top: 5px">
-											<button class="btn btn-warning btn-xs sharp" data-toggle="modal" title="Cập nhật ứng viên" onclick="Edit(@item.maUV)"><i class="glyphicon glyphicon-edit"></i></button>
-											<button class="btn btn-danger btn-xs sharp" data-toggle="modal" title="Xóa ứng viên" onclick="ConfirmDelete(@item.maUV)"><i class="glyphicon glyphicon-remove"></i></button>
-										</span>
-									</text>)
-
-							));
-										}*@
-
-
 						<tbody>
 							@if (Model != null)
 							{
-								foreach (var item in Model.Content)
+								int i = 1;
+
+								foreach (var item in Model)
 								{
 									<tr data-status="@item.trangThai">
+										<td class="col-sm-1">
+											<h5>@i</h5>
+										</td>
+										@{i++; }
 										<td data-toggle="modal" class="col-sm-2 view-message  dont-show" onclick="Details(@item.maUV)">
 											<h5>
 												@Html.DisplayFor(modelItem => item.maUV)
@@ -264,8 +226,7 @@
 
 
 <div id="LPV" class="tabcontent">
-	<h3>About</h3>
-	<p>Who we are and what we do.</p>
+
 </div>
 @Scripts.Render("~/bundles/NhanSu/Scripts/tab-content")
 
@@ -317,6 +278,20 @@
 			}
 		})
 	}
+
+
+	function Search() {
+		var filter = $('#search_string').val();
+		if (filter == "") {
+			var url = '@Url.Action("QuanLyUngVien", "UngVien")';
+			window.location.href = url;
+		}
+		else {
+			var url = '@Url.Action("QuanLyUngVien", "UngVien", new { filter = "__filter__" })';
+			window.location.href = url.replace('__filter__', $('#search_string').val());
+		}
+	}
+
 
 	//$(document).ready(function () {
 	//	$('#alert').show('fade');
