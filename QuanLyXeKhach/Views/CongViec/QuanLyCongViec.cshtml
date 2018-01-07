@@ -64,9 +64,10 @@
 
 			<div class="">
 				<div class="mail-option">
-					<table class="table table-header">
-						<tbody style="background-color: #f0f0f0;">
+					<table class="table table-header table-striped table-bordered table-hover" id="dataTables-example">
+						<thead style="background-color: #f0f0f0;">
 							<tr class="unread">
+								<td class="col-sm-1 align-top">STT</td>
 								<td class="col-sm-2 align-top">@Html.DisplayNameFor(model => model.maCV)</td>
 								<td class="col-sm-2">@Html.DisplayNameFor(model => model.tenCV)</td>
 								<td class="col-sm-2">
@@ -84,7 +85,7 @@
 								<td class="text-left col-sm-2">@Html.DisplayNameFor(model => model.yeuCauCV)</td>
 								<td class="col-sm-1">Thao tác</td>
 							</tr>
-						</tbody>
+							</thead>
 					</table>
 					<table class="table table-inbox table-hover table-inside" style="border: 1px solid #d3d3d3;">
 						<tbody>
@@ -92,7 +93,12 @@
 							{
 								foreach (var item in Model)
 								{
+									int i = 1;
 									<tr data-status="@item.trangThai">
+										<td class="col-sm-1">
+											<h5>@i</h5>
+										</td>
+										@{i++; }
 										<td data-toggle="modal" class="col-sm-2" onclick="Details(@item.maCV)">
 											<h5>
 												@Html.DisplayFor(modelItem => item.maCV)

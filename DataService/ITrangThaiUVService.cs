@@ -8,6 +8,7 @@ namespace DataService
         int XoaTrangThaiUV(int id);
         int CapNhatTrangThaiUV(T trangThai);
         IList<T> XemTrangThaiUV();
+        IList<T> XemTrangThaiUV(string filter);
         T XemTrangThaiUV(int id);
     }
 }

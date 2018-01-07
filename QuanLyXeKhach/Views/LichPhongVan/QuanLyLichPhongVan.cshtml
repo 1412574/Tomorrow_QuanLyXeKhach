@@ -66,9 +66,10 @@
 
 			<div class="inbox-body">
 				<div class="mail-option">
-					<table class="table table-header">
-						<tbody style="background-color: #f0f0f0;">
+					<table class="table table-header table-striped table-bordered table-hover" id="dataTables-example">
+						<thead style="background-color: #f0f0f0;">
 							<tr class="unread">
+								<td class="col-sm-1 align-top">STT</td>
 								<td class="col-sm-2 align-top">@Html.DisplayNameFor(model => model.maLPV)</td>
 								<td class="col-sm-2">@Html.DisplayNameFor(model => model.ngay)</td>
 								<td class="col-sm-2">@Html.DisplayNameFor(model => model.diaDiem)</td>
@@ -76,7 +77,7 @@
 								<td class="col-sm-2">@Html.DisplayNameFor(model => model.ghiChu)</td>
 								<td class="col-sm-1">Thao tác</td>
 							</tr>
-						</tbody>
+						</thead>
 					</table>
 					<table class="table table-inbox table-hover table-inside" style="border: 1px solid #d3d3d3;">
 						@*@{
@@ -115,41 +116,49 @@
 
 
 						<tbody>
-							@foreach (var item in Model)
+							@if (Model != null)
 							{
-								<tr @*data-status="@item.trangThai"*@>
-									<td data-toggle="modal" class="col-sm-2" onclick="Details(@item.maLPV)">
-										<h5>
-											@Html.DisplayFor(modelItem => item.maLPV)
-										</h5>
-									</td>
-									<td data-toggle="modal" class="col-sm-2" onclick="Details(@item.maLPV)">
-										<h5>
-											@Html.DisplayFor(modelItem => item.ngay)
-										</h5>
-									</td>
-									<td data-toggle="modal" class="col-sm-2" onclick="Details(@item.maLPV)">
-										<h5>
-											@Html.DisplayFor(modelItem => item.diaDiem)
-										</h5>
-									</td>
-									<td data-toggle="modal" class="col-sm-2" onclick="Details(@item.maLPV)">
-										<h5 class="text-left">
-											@Html.DisplayFor(modelItem => item.tieuChi)
-										</h5>
-									</td>
-									<td data-toggle="modal" class="col-sm-2" onclick="Details(@item.maLPV)">
-										<h5>
-											@Html.DisplayFor(modelItem => item.ghiChu)
-										</h5>
-									</td>
-									<td class="col-sm-1 no-pointer">
-										<span class="btn-group pull-right" style="margin-top: 5px">
-											<button class="btn btn-warning btn-xs sharp" data-toggle="modal" title="Cập nhật lịch phỏng vấn" onclick="Edit(@item.maLPV)"><i class="glyphicon glyphicon-edit"></i></button>
-											<button class="btn btn-danger btn-xs sharp" data-toggle="modal" title="Xóa lịch phỏng vấn" onclick="ConfirmDelete(@item.maLPV)"><i class="glyphicon glyphicon-remove"></i></button>
-										</span>
-									</td>
-								</tr>
+								int i = 1;
+								foreach (var item in Model)
+								{
+									<tr @*data-status="@item.trangThai"*@>
+										<td class="col-sm-1">
+											<h5>@i</h5>
+										</td>
+										@{i++; }
+										<td data-toggle="modal" class="col-sm-2" onclick="Details(@item.maLPV)">
+											<h5>
+												@Html.DisplayFor(modelItem => item.maLPV)
+											</h5>
+										</td>
+										<td data-toggle="modal" class="col-sm-2" onclick="Details(@item.maLPV)">
+											<h5>
+												@Html.DisplayFor(modelItem => item.ngay)
+											</h5>
+										</td>
+										<td data-toggle="modal" class="col-sm-2" onclick="Details(@item.maLPV)">
+											<h5>
+												@Html.DisplayFor(modelItem => item.diaDiem)
+											</h5>
+										</td>
+										<td data-toggle="modal" class="col-sm-2" onclick="Details(@item.maLPV)">
+											<h5 class="text-left">
+												@Html.DisplayFor(modelItem => item.tieuChi)
+											</h5>
+										</td>
+										<td data-toggle="modal" class="col-sm-2" onclick="Details(@item.maLPV)">
+											<h5>
+												@Html.DisplayFor(modelItem => item.ghiChu)
+											</h5>
+										</td>
+										<td class="col-sm-1 no-pointer">
+											<span class="btn-group pull-right" style="margin-top: 5px">
+												<button class="btn btn-warning btn-xs sharp" data-toggle="modal" title="Cập nhật lịch phỏng vấn" onclick="Edit(@item.maLPV)"><i class="glyphicon glyphicon-edit"></i></button>
+												<button class="btn btn-danger btn-xs sharp" data-toggle="modal" title="Xóa lịch phỏng vấn" onclick="ConfirmDelete(@item.maLPV)"><i class="glyphicon glyphicon-remove"></i></button>
+											</span>
+										</td>
+									</tr>
+								}
 							}
 						</tbody>
 					</table>
