@@ -26,48 +26,15 @@
 							</tbody>
 						</table>
 
-						@if (nhanViens != null && nhanViens.Count() <= 5)
-						{
-							<table class="table table-inbox table-hover table-inside" style="border: 1px solid #d3d3d3;">
-								<tbody>
-									@{int i = 0; }
-									@foreach (DataModel.NhanVien nhanVien in nhanViens)
-									{
-										<tr>
-											<td data-toggle="modal" class="col-sm-4 view-message  dont-show" onclick="ChonNV(@nhanVien.maNV)">
-												<h5>
-													@nhanVien.ShortString
-												</h5>
-											</td>
-
-											<td data-toggle="modal" class="col-sm-3 view-message  dont-show" onclick="ChonNV(@nhanVien.maNV)">
-												<h5>
-													@nhanVien.VaiTro.tenVT
-												</h5>
-											</td>
-
-											<td data-toggle="modal" class="col-sm-3 view-message  dont-show" onclick="ChonNV(@nhanVien.maNV)">
-												<h5>
-													@nhanVien.TrangThai.tenTT
-												</h5>
-											</td>
-										</tr>
-
-										++i;
-									}
-								</tbody>
-							</table>
-						}
-						else
-						{
-							<table class="table table-inbox table-hover table-inside" style="border: 1px solid #d3d3d3;">
-								<tbody>
-									@{int i = 5; }
-									@foreach (DataModel.NhanVien nhanVien in nhanViens)
-									{
-										if (i < 10)
+						<div>
+							@if (nhanViens != null && nhanViens.Count() <= 5)
+							{
+								<table class="table table-inbox table-hover table-inside" style="border: 1px solid #d3d3d3;">
+									<tbody>
+										@{int i = 0; }
+										@foreach (DataModel.NhanVien nhanVien in nhanViens)
 										{
-											<tr class="NVtr" data-status="NV-@(i / 5)">
+											<tr>
 												<td data-toggle="modal" class="col-sm-4 view-message  dont-show" onclick="ChonNV(@nhanVien.maNV)">
 													<h5>
 														@nhanVien.ShortString
@@ -87,43 +54,93 @@
 												</td>
 											</tr>
 
+											++i;
 										}
-										else
+									</tbody>
+								</table>
+							}
+							else
+							{
+								<table class="table table-inbox table-hover table-inside" style="border: 1px solid #d3d3d3;">
+									<tbody>
+										@{int i = 5; }
+										@foreach (DataModel.NhanVien nhanVien in nhanViens)
 										{
-											<tr class="NVtr" data-status="NV-@(i / 5)" style="display:none;">
-												<td data-toggle="modal" class="col-sm-4 view-message  dont-show" onclick="ChonNV(@nhanVien.maNV)">
-													<h5>
-														@nhanVien.ShortString
-													</h5>
-												</td>
+											if (i < 10)
+											{
+												<tr class="NVtr" data-status="NV-@(i / 5)">
+													<td data-toggle="modal" class="col-sm-4 view-message  dont-show" onclick="ChonNV(@nhanVien.maNV)">
+														<h5>
+															@nhanVien.ShortString
+														</h5>
+													</td>
 
-												<td data-toggle="modal" class="col-sm-3 view-message  dont-show" onclick="ChonNV(@nhanVien.maNV)">
-													<h5>
-														@nhanVien.VaiTro.tenVT
-													</h5>
-												</td>
+													<td data-toggle="modal" class="col-sm-3 view-message  dont-show" onclick="ChonNV(@nhanVien.maNV)">
+														<h5>
+															@nhanVien.VaiTro.tenVT
+														</h5>
+													</td>
 
-												<td data-toggle="modal" class="col-sm-3 view-message  dont-show" onclick="ChonNV(@nhanVien.maNV)">
-													<h5>
-														@nhanVien.TrangThai.tenTT
-													</h5>
-												</td>
-											</tr>
+													<td data-toggle="modal" class="col-sm-3 view-message  dont-show" onclick="ChonNV(@nhanVien.maNV)">
+														<h5>
+															@nhanVien.TrangThai.tenTT
+														</h5>
+													</td>
+												</tr>
+
+											}
+											else
+											{
+												<tr class="NVtr" data-status="NV-@(i / 5)" style="display:none;">
+													<td data-toggle="modal" class="col-sm-4 view-message  dont-show" onclick="ChonNV(@nhanVien.maNV)">
+														<h5>
+															@nhanVien.ShortString
+														</h5>
+													</td>
+
+													<td data-toggle="modal" class="col-sm-3 view-message  dont-show" onclick="ChonNV(@nhanVien.maNV)">
+														<h5>
+															@nhanVien.VaiTro.tenVT
+														</h5>
+													</td>
+
+													<td data-toggle="modal" class="col-sm-3 view-message  dont-show" onclick="ChonNV(@nhanVien.maNV)">
+														<h5>
+															@nhanVien.TrangThai.tenTT
+														</h5>
+													</td>
+												</tr>
+											}
+											++i;
 										}
-										++i;
+									</tbody>
+								</table>
+
+								<ul class="pagination pull-right">
+									<li><label class="NVPaging btn btn-xs no-border filter sharp btn-primary" data-target="NV-1" onclick="NVPaging(this)">1</label></li>
+									@for (int p = 2; p <= (nhanViens.Count() + 4) / 5; ++p)
+									{
+										<li><label class="NVPaging btn btn-xs no-border filter sharp" data-target="NV-@p" onclick="NVPaging(this)">@p</label></li>
 									}
-								</tbody>
-							</table>
+								</ul>
+							}
+						</div>
 
-							<ul class="pagination pull-right">
-								<li><label class="NVPaging btn btn-xs no-border filter sharp btn-primary" data-target="NV-1" onclick="NVPaging(this)">1</label></li>
-								@for (int p = 2; p <= (nhanViens.Count() + 4) / 5; ++p)
-								{
-									<li><label class="NVPaging btn btn-xs no-border filter sharp" data-target="NV-@p" onclick="NVPaging(this)">@p</label></li>
-								}
-							</ul>
-						}
+						<div style="margin-top:15px;">
+							@if (nhanViens.Count() == 0)
+							{
+								<div>
+									Hiện tại chưa có nhân viên nào cả.
+								</div>
+							}
+							else
+							{
+								<div>
+									Có @nhanViens.Count() nhân viên.
+								</div>
+							}
 
+						</div>
 					</div>
 
 					<div class="col-md-5 item_content modal-body" style="float:right">
@@ -191,48 +208,15 @@
 								</tr>
 							</tbody>
 						</table>
-						@if (congViecs != null && congViecs.Count() <= 5)
-						{
-							<table class="table table-inbox table-hover table-inside" style="border: 1px solid #d3d3d3;">
-								<tbody>
-									@{int i = 0; }
-									@foreach (DataModel.CongViec congViec in congViecs)
-									{
-										<tr>
-											<td data-toggle="modal" class="col-sm-4 view-message  dont-show" onclick="ChonCV(@congViec.maCV)">
-												<h5>
-													@congViec.ShortString
-												</h5>
-											</td>
-
-											<td data-toggle="modal" class="col-sm-3 view-message  dont-show" onclick="ChonCV(@congViec.maCV)">
-												<h5>
-													@congViec.hanHoanThanh
-												</h5>
-											</td>
-
-											<td data-toggle="modal" class="col-sm-3 view-message  dont-show" onclick="ChonCV(@congViec.maCV)">
-												<h5>
-													@congViec.yeuCauCV
-												</h5>
-											</td>
-										</tr>
-
-										++i;
-									}
-								</tbody>
-							</table>
-						}
-						else
-						{
-							<table class="table table-inbox table-hover table-inside" style="border: 1px solid #d3d3d3;">
-								<tbody>
-									@{int i = 5; }
-									@foreach (DataModel.CongViec congViec in congViecs)
-									{
-										if (i < 10)
+						<div>
+							@if (congViecs != null && congViecs.Count() <= 5)
+							{
+								<table class="table table-inbox table-hover table-inside" style="border: 1px solid #d3d3d3;">
+									<tbody>
+										@{int i = 0; }
+										@foreach (DataModel.CongViec congViec in congViecs)
 										{
-											<tr class="CVtr" data-status="CV-@(i / 5)">
+											<tr>
 												<td data-toggle="modal" class="col-sm-4 view-message  dont-show" onclick="ChonCV(@congViec.maCV)">
 													<h5>
 														@congViec.ShortString
@@ -251,50 +235,100 @@
 													</h5>
 												</td>
 											</tr>
+
+											++i;
 										}
-										else
+									</tbody>
+								</table>
+							}
+							else
+							{
+								<table class="table table-inbox table-hover table-inside" style="border: 1px solid #d3d3d3;">
+									<tbody>
+										@{int i = 5; }
+										@foreach (DataModel.CongViec congViec in congViecs)
 										{
-											<tr class="CVtr" data-status="CV-@(i / 5)" style="display:none;">
-												<td data-toggle="modal" class="col-sm-4 view-message  dont-show" onclick="ChonCV(@congViec.maCV)">
-													<h5>
-														@congViec.ShortString
-													</h5>
-												</td>
+											if (i < 10)
+											{
+												<tr class="CVtr" data-status="CV-@(i / 5)">
+													<td data-toggle="modal" class="col-sm-4 view-message  dont-show" onclick="ChonCV(@congViec.maCV)">
+														<h5>
+															@congViec.ShortString
+														</h5>
+													</td>
 
-												<td data-toggle="modal" class="col-sm-3 view-message  dont-show" onclick="ChonCV(@congViec.maCV)">
-													<h5>
-														@congViec.hanHoanThanh
-													</h5>
-												</td>
+													<td data-toggle="modal" class="col-sm-3 view-message  dont-show" onclick="ChonCV(@congViec.maCV)">
+														<h5>
+															@congViec.hanHoanThanh
+														</h5>
+													</td>
 
-												<td data-toggle="modal" class="col-sm-3 view-message  dont-show" onclick="ChonCV(@congViec.maCV)">
-													<h5>
-														@congViec.yeuCauCV
-													</h5>
-												</td>
-											</tr>
+													<td data-toggle="modal" class="col-sm-3 view-message  dont-show" onclick="ChonCV(@congViec.maCV)">
+														<h5>
+															@congViec.yeuCauCV
+														</h5>
+													</td>
+												</tr>
+											}
+											else
+											{
+												<tr class="CVtr" data-status="CV-@(i / 5)" style="display:none;">
+													<td data-toggle="modal" class="col-sm-4 view-message  dont-show" onclick="ChonCV(@congViec.maCV)">
+														<h5>
+															@congViec.ShortString
+														</h5>
+													</td>
+
+													<td data-toggle="modal" class="col-sm-3 view-message  dont-show" onclick="ChonCV(@congViec.maCV)">
+														<h5>
+															@congViec.hanHoanThanh
+														</h5>
+													</td>
+
+													<td data-toggle="modal" class="col-sm-3 view-message  dont-show" onclick="ChonCV(@congViec.maCV)">
+														<h5>
+															@congViec.yeuCauCV
+														</h5>
+													</td>
+												</tr>
+											}
+											++i;
 										}
-										++i;
-									}
-								</tbody>
-							</table>
+									</tbody>
+								</table>
 
-							<ul class="pagination pull-right">
-								<li><label class="CVPaging btn btn-xs no-border filter sharp btn-primary" data-target="CV-1" onclick="CVPaging(this)">1</label></li>
-								@for (int p = 2; p <= (nhanViens.Count() + 4) / 5; ++p)
-								{
-									<li><label class="CVPaging btn btn-xs no-border filter sharp" data-target="CV-@p" onclick="CVPaging(this)">@p</label></li>
-								}
-							</ul>
-						}
+								<ul class="pagination pull-right">
+									<li><label class="CVPaging btn btn-xs no-border filter sharp btn-primary" data-target="CV-1" onclick="CVPaging(this)">1</label></li>
+									@for (int p = 2; p <= (nhanViens.Count() + 4) / 5; ++p)
+									{
+										<li><label class="CVPaging btn btn-xs no-border filter sharp" data-target="CV-@p" onclick="CVPaging(this)">@p</label></li>
+									}
+								</ul>
+							}
+						</div>
+						<div style="margin-top:15px;">
+							@if (congViecs.Count() == 0)
+							{
+								<div>
+									Hiện tại chưa có công việc nào cả.
+								</div>
+							}
+							else
+							{
+								<div>
+									Có @congViecs.Count() công việc.
+								</div>
+							}
+
+
+						</div>
 					</div>
 				</div>
 			</div>
-		</div>
-		<div class="modal-footer">
-			<div class="text-center col-md-12" style="margin-top:15px;">
-				<button type="submit" class="btn btn-primary btn-sx sharp"><i class="glyphicon glyphicon-save"></i> Lưu</button>
+			<div class="modal-footer">
+				<div class="text-center col-md-12" style="margin-top:15px;">
+					<button type="submit" class="btn btn-primary btn-sx sharp"><i class="glyphicon glyphicon-save"></i> Lưu</button>
+				</div>
 			</div>
-		</div>
 	</form>
 }
