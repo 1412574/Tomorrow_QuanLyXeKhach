@@ -75,7 +75,7 @@
 		</div>
 	</nav>
 
-	<div class="container-fluid">
+	<div class="container-fluid main-content">
 		<div class="btn-group-vertical col-md-3 col-sm-12 col-xs-12">
 				<!---------------------------------------------------------------------------->
 				<div class="container-fluid" style="">
@@ -96,6 +96,7 @@
 							</h4>
 							<ul class="nav  nav-stacked ">
 								<li><a id="lQLUV" class="tablink sharp" href="~/UngVien/QuanLyUngVien" onclick="openPage('QLUV', this)"><font color="black">Quản lý ứng viên</font></a></li>
+								@*<li><a id="lQLTTUV" class="tablink sharp" href="~/TrangThaiUV/QuanLyTrangThaiUV" onclick="openPage('QLTTUV', this)"><font color="black">Quản lý trạng thái ứng viên</font></a></li>*@
 								<li><a id="lQLLPV" class="tablink sharp" href="~/LichPhongVan/QuanLyLichPhongVan" onclick="openPage('QLLPV', this)"><font color="black">Lịch phỏng vấn</font></a></li>
 							</ul>
 						</div>
@@ -110,7 +111,7 @@
 
 			<!------------------------------------------->
 			@RenderSection("scripts", required: false)
-			<section class="content-wrapper main-content clear-fix">
+			<section class="content-wrapper clear-fix">
 				@RenderBody()
 			</section>
 

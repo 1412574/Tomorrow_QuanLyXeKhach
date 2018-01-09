@@ -1,8 +1,8 @@
-﻿@model IEnumerable<DataModel.BangChamCong>
+﻿@model IEnumerable<DataModel.TrangThaiUV>
 @*@model DataModel.PagedList<DataModel.UngVien>*@
 
 @{
-	ViewBag.Title = "Quản Lý Bảng Chấm Công";
+	ViewBag.Title = "Quản Lý Lịch Phỏng Vấn";
 	Layout = "~/Views/NhanSu/Shared/_Layout.cshtml";
 }
 
@@ -25,9 +25,18 @@
 
 </div>
 
-<div id="QLBCC" class="tabcontent">
+<div id="CC" class="tabcontent">
+
+</div>
+
+<div id="QLUV" class="tabcontent ">
+
+</div>
+
+
+<div id="QLTTUV" class="tabcontent">
 	<div class="inbox-head">
-		<h3 class="col-md-4">Quản lý bảng chấm công</h3>
+		<h3 class="col-md-4">Quản lý trạng thái ứng viên</h3>
 		<div class="pull-right">
 			<div class="input-append">
 				<input id="search_string" type="text" class="sr-input" placeholder="Tìm kiếm" value="@ViewBag.filter">
@@ -44,8 +53,14 @@
 		<aside class="lg-side">
 
 			<div class="" style="margin-top:20px;">
+				@*<div id="alert" class="alert alert-danger">
+						<a id="closeAlert" href="#" class="close" data-dismiss="alert">&times;</a>
+						<strong id="alertTitle">@ViewData["msgTitle"]</strong><span id="alertMsg">@ViewData["msg"]</span>
+
+
+					</div>*@
 				<div class="pull-right">
-					<button class="btn btn-default pull-right sharp" data-toggle="modal" onclick="Create()"><i class="glyphicon glyphicon-plus"></i> Thêm bảng chấm công</button>
+					<button class="btn btn-default pull-right sharp" data-toggle="modal" onclick="Create()"><i class="glyphicon glyphicon-plus"></i> Thêm trạng thái ứng viên</button>
 				</div>
 			</div>
 
@@ -55,62 +70,51 @@
 						<thead style="background-color: #f0f0f0;">
 							<tr class="unread">
 								<td class="col-sm-1 align-top">STT</td>
-								<td class="col-sm-2 align-top">@Html.DisplayNameFor(model => model.NhanVien)</td>
-								<td class="col-sm-2">@Html.DisplayNameFor(model => model.ngay)</td>
-								<td class="col-sm-2">@Html.DisplayNameFor(model => model.gioBatDau)</td>
-								<td class="col-sm-2">@Html.DisplayNameFor(model => model.gioKetThuc)</td>
-								<td class="col-sm-2">@Html.DisplayNameFor(model => model.ghiChu)</td>
+								<td class="col-sm-2 align-top">@Html.DisplayNameFor(model => model.maTT)</td>
+								<td class="col-sm-3">@Html.DisplayNameFor(model => model.tenTT)</td>
+								<td class="col-sm-5">@Html.DisplayNameFor(model => model.moTaTT)</td>
 								<td class="col-sm-1">Thao tác</td>
 							</tr>
 						</thead>
 					</table>
 					<table class="table table-inbox table-hover table-inside" style="border: 1px solid #d3d3d3;">
-						<tbody>
 
+
+						<tbody>
 							@if (Model != null)
-			{
-				int i = 1;
-				foreach (var item in Model)
-				{
-					<tr @*data-status="@item.trangThai"*@>
-						<td class="col-sm-1">
-							<h5>@i</h5>
-						</td>
-						@{i++; }
-						<td data-toggle="modal" class="col-sm-2" onclick="Details(@item.maCC)">
-							<h5>
-								@Html.DisplayFor(modelItem => item.NhanVien.ShortString)
-							</h5>
-						</td>
-						<td data-toggle="modal" class="col-sm-2" onclick="Details(@item.maCC)">
-							<h5>
-								@Html.DisplayFor(modelItem => item.ngay)
-							</h5>
-						</td>
-						<td data-toggle="modal" class="col-sm-2" onclick="Details(@item.maCC)">
-							<h5>
-								@Html.DisplayFor(modelItem => item.gioBatDau)
-							</h5>
-						</td>
-						<td data-toggle="modal" class="col-sm-2" onclick="Details(@item.maCC)">
-							<h5 class="text-left">
-								@Html.DisplayFor(modelItem => item.gioKetThuc)
-							</h5>
-						</td>
-						<td data-toggle="modal" class="col-sm-2" onclick="Details(@item.maCC)">
-							<h5>
-								@Html.DisplayFor(modelItem => item.ghiChu)
-							</h5>
-						</td>
-						<td class="col-sm-1 no-pointer">
-							<span class="btn-group pull-right" style="margin-top: 5px">
-								<button class="btn btn-warning btn-xs sharp" data-toggle="modal" title="Cập nhật bảng chấm công" onclick="Edit(@item.maCC)"><i class="glyphicon glyphicon-edit"></i></button>
-								<button class="btn btn-danger btn-xs sharp" data-toggle="modal" title="Xóa bảng chấm công" onclick="ConfirmDelete(@item.maCC)"><i class="glyphicon glyphicon-remove"></i></button>
-							</span>
-						</td>
-					</tr>
-}
-}
+							{
+								int i = 1;
+								foreach (var item in Model)
+								{
+									<tr @*data-status="@item.trangThai"*@>
+										<td class="col-sm-1">
+											<h5>@i</h5>
+										</td>
+										@{i++; }
+										<td data-toggle="modal" class="col-sm-2" onclick="Details(@item.maTT)">
+											<h5>
+												@Html.DisplayFor(modelItem => item.maTT)
+											</h5>
+										</td>
+										<td data-toggle="modal" class="col-sm-3" onclick="Details(@item.maTT)">
+											<h5>
+												@Html.DisplayFor(modelItem => item.tenTT)
+											</h5>
+										</td>
+										<td data-toggle="modal" class="col-sm-5" onclick="Details(@item.maTT)">
+											<h5>
+												@Html.DisplayFor(modelItem => item.moTaTT)
+											</h5>
+										</td>
+										<td class="col-sm-1 no-pointer">
+											<span class="btn-group pull-right" style="margin-top: 5px">
+												<button class="btn btn-warning btn-xs sharp" data-toggle="modal" title="Cập nhật trạng thái ứng viên" onclick="Edit(@item.maTT)"><i class="glyphicon glyphicon-edit"></i></button>
+												<button class="btn btn-danger btn-xs sharp" data-toggle="modal" title="Xóa trạng thái ứng viên" onclick="ConfirmDelete(@item.maTT)"><i class="glyphicon glyphicon-remove"></i></button>
+											</span>
+										</td>
+									</tr>
+								}
+							}
 						</tbody>
 					</table>
 				</div>
@@ -121,13 +125,13 @@
 					if (Model.Count() == 0)
 					{
 						<div>
-							Hiện tại chưa có bảng chấm công nào cả.
+							Hiện tại chưa có trạng thái ứng viên nào cả.
 						</div>
 					}
 					else
 					{
 						<div>
-							Có @Model.Count() bảng chấm công.
+							Có @Model.Count() trạng thái ứng viên.
 						</div>
 					}
 				}
@@ -136,13 +140,13 @@
 					if (Model.Count() == 0)
 					{
 						<div>
-							Không tìm thấy bảng chấm công với từ khóa @ViewBag.filter.
+							Không tìm thấy trạng thái ứng viên với từ khóa @ViewBag.filter.
 						</div>
 					}
 					else
 					{
 						<div>
-							Tìm thấy @Model.Count() bảng chấm công với từ khóa @ViewBag.filter.
+							Tìm thấy @Model.Count() trạng thái ứng viên với từ khóa @ViewBag.filter.
 						</div>
 					}
 				}
@@ -158,7 +162,7 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<a href="#" data-dismiss="modal" class="class pull-right"><span class="glyphicon glyphicon-remove"></span></a>
-					<h2 class="modal-title">Cập nhật thông tin bảng chấm công </h2>
+					<h2 class="modal-title">Cập nhật thông tin trạng thái ứng viên </h2>
 				</div>
 				<div id="PVEdit">
 					@*PVEdit Partial View*@
@@ -172,7 +176,7 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<a class="class pull-right" href="#" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span></a>
-					<h2 class="modal-title">Thêm bảng chấm công </h2>
+					<h2 class="modal-title">Thêm trạng thái ứng viên </h2>
 				</div>
 				<div id="PVCreate">
 					@* PVCreate Partial View*@
@@ -186,7 +190,7 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<a href="#" data-dismiss="modal" class="class pull-right"><span class="glyphicon glyphicon-remove"></span></a>
-					<h2 class="modal-title">Thông tin chi tiết bảng chấm công </h2>
+					<h2 class="modal-title">Thông tin chi tiết trạng thái ứng viên </h2>
 				</div>
 				<div id="PVDetails">
 					@* PVDetails Partial View*@
@@ -210,23 +214,16 @@
 		</div>
 	</div>
 </div>
-
-<div id="QLUV" class="tabcontent ">
-
-</div>
-
-
-<div id="QLBCC" class="tabcontent">
-
+<div id="QLLPV" class="tabcontent">
 </div>
 @Scripts.Render("~/bundles/NhanSu/Scripts/tab-content")
 
 <script>
-	openPage("QLBCC", document.getElementById("lQLBCC"));
+	openPage("QLTTUV", document.getElementById("lQLTTUV"));
 	function ConfirmDelete(currentId) {
 		$.ajax({
 			type: "Get",
-			url: '@Url.Action("PVConfirmDelete", "BangChamCong")',
+			url: '@Url.Action("PVConfirmDelete", "TrangThaiUV")',
 			data: { id: currentId },
 			success: function (data) {
 				$('#PVConfirmDelete').html(data);
@@ -238,7 +235,7 @@
 	function Edit(currentId) {
 		$.ajax({
 			type: "Get",
-			url: '@Url.Action("PVEdit", "BangChamCong")',
+			url: '@Url.Action("PVEdit", "TrangThaiUV")',
 			data: { id: currentId },
 			success: function (data) {
 				$('#PVEdit').html(data);
@@ -250,7 +247,7 @@
 	function Details(currentId) {
 		$.ajax({
 			type: "Get",
-			url: '@Url.Action("PVDetails", "BangChamCong")',
+			url: '@Url.Action("PVDetails", "TrangThaiUV")',
 			data: { id: currentId },
 			success: function (data) {
 				$('#PVDetails').html(data);
@@ -262,7 +259,7 @@
 	function Create() {
 		$.ajax({
 			type: "Get",
-			url: '@Url.Action("PVCreate", "BangChamCong")',
+			url: '@Url.Action("PVCreate", "TrangThaiUV")',
 			success: function (data) {
 				$('#PVCreate').html(data);
 				$('#item_create').modal('show');
@@ -270,17 +267,19 @@
 		})
 	}
 
+
 	function Search() {
 		var filter = $('#search_string').val();
 		if (filter == "") {
-			var url = '@Url.Action("QuanLyBangChamCong", "BangChamCong")';
+			var url = '@Url.Action("QuanLyTrangThaiUV", "TrangThaiUV")';
 			window.location.href = url;
 		}
 		else {
-			var url = '@Url.Action("QuanLyBangChamCong", "BangChamCong", new { filter = "__filter__" })';
+			var url = '@Url.Action("QuanLyTrangThaiUV", "TrangThaiUV", new { filter = "__filter__" })';
 			window.location.href = url.replace('__filter__', $('#search_string').val());
 		}
 	}
+
 
 	//$(document).ready(function () {
 	//	$('#alert').show('fade');

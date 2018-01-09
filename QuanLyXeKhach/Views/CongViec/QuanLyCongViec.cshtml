@@ -1,4 +1,4 @@
-﻿@model DataModel.PagedList<DataModel.CongViec>
+﻿@model IEnumerable<DataModel.CongViec>
 
 @{
 	ViewBag.Title = "Quản Lý Công Việc";
@@ -13,19 +13,18 @@
 
 <!-------------------------------------------------------------------->
 <div id="QLNV" class="tabcontent">
-	<h3>Home</h3>
-	<p>Home is where the heart is..</p>
+
 </div>
 
 <div id="QLCV" class="tabcontent">
 	<div class="inbox-head">
 		<h3 class="col-md-4">Quản lý công việc</h3>
-		<form action="#" class="pull-right">
+		<div class="pull-right">
 			<div class="input-append">
-				<input type="text" class="sr-input" placeholder="Tìm kiếm">
-				<button class="btn sr-btn sharp" type="button"><i class="fa fa-search"></i></button>
+				<input id="search_string" type="text" class="sr-input" placeholder="Tìm kiếm" value="@ViewBag.filter">
+				<button class="btn sr-btn sharp" onclick="Search()"><i class="fa fa-search"></i></button>
 			</div>
-		</form>
+		</div>
 	</div>
 
 	<div>
@@ -65,13 +64,14 @@
 
 			<div class="">
 				<div class="mail-option">
-					<table class="table table-header">
-						<tbody style="background-color: #f0f0f0;">
+					<table class="table table-header table-striped table-bordered table-hover" id="dataTables-example">
+						<thead style="background-color: #f0f0f0;">
 							<tr class="unread">
-								<td class="col-sm-2 align-top">@Html.DisplayNameFor(model => model.Content.First().maCV)</td>
-								<td class="col-sm-2">@Html.DisplayNameFor(model => model.Content.First().tenCV)</td>
+								<td class="col-sm-1 align-top">STT</td>
+								<td class="col-sm-2 align-top">@Html.DisplayNameFor(model => model.maCV)</td>
+								<td class="col-sm-2">@Html.DisplayNameFor(model => model.tenCV)</td>
 								<td class="col-sm-2">
-									<div class="text-center">@Html.DisplayNameFor(model => model.Content.First().hanHoanThanh)</div>
+									<div class="text-center">@Html.DisplayNameFor(model => model.hanHoanThanh)</div>
 									<div class="text-center">
 										<div id="checkbutton" class="btn-group" data-toggle="buttons">
 											<label class="checkbutton btn btn-xs orange active filter show sharp" data-target="1" onclick="filter(this)"><i class="glyphicon glyphicon-stop"></i></label>
@@ -81,19 +81,24 @@
 										</div>
 									</div>
 								</td>
-								<td class="text-left col-sm-2">@Html.DisplayNameFor(model => model.Content.First().moTaCV)</td>
-								<td class="text-left col-sm-2">@Html.DisplayNameFor(model => model.Content.First().yeuCauCV)</td>
+								<td class="text-left col-sm-2">@Html.DisplayNameFor(model => model.moTaCV)</td>
+								<td class="text-left col-sm-2">@Html.DisplayNameFor(model => model.yeuCauCV)</td>
 								<td class="col-sm-1">Thao tác</td>
 							</tr>
-						</tbody>
+							</thead>
 					</table>
 					<table class="table table-inbox table-hover table-inside" style="border: 1px solid #d3d3d3;">
 						<tbody>
 							@if (Model != null)
 							{
-								foreach (var item in Model.Content)
+								foreach (var item in Model)
 								{
+									int i = 1;
 									<tr data-status="@item.trangThai">
+										<td class="col-sm-1">
+											<h5>@i</h5>
+										</td>
+										@{i++; }
 										<td data-toggle="modal" class="col-sm-2" onclick="Details(@item.maCV)">
 											<h5>
 												@Html.DisplayFor(modelItem => item.maCV)
@@ -133,8 +138,8 @@
 										</td>
 										<td class="col-sm-1 no-pointer">
 											<span class="btn-group pull-right" style="margin-top: 5px">
-												<button class="btn btn-warning btn-xs sharp" data-toggle="modal" title="Cập nhật ứng viên" onclick="Edit(@item.maCV)"><i class="glyphicon glyphicon-edit"></i></button>
-												<button class="btn btn-danger btn-xs sharp" data-toggle="modal" title="Xóa ứng viên" onclick="ConfirmDelete(@item.maCV)"><i class="glyphicon glyphicon-remove"></i></button>
+												<button class="btn btn-warning btn-xs sharp" data-toggle="modal" title="Cập nhật công việc" onclick="Edit(@item.maCV)"><i class="glyphicon glyphicon-edit"></i></button>
+												<button class="btn btn-danger btn-xs sharp" data-toggle="modal" title="Xóa công việc" onclick="ConfirmDelete(@item.maCV)"><i class="glyphicon glyphicon-remove"></i></button>
 											</span>
 										</td>
 									</tr>
@@ -144,22 +149,41 @@
 					</table>
 				</div>
 			</div>
-			<div style="margin-top:17px;">
+			<div>
+				@if (((string)ViewBag.filter).IsEmpty())
+				{
+					if (Model.Count() == 0)
+					{
+						<div>
+							Hiện tại chưa có công việc nào cả.
+						</div>
+					}
+					else
+					{
+						<div>
+							Có @Model.Count() công việc.
+						</div>
+					}
+				}
+				else
+				{
+					if (Model.Count() == 0)
+					{
+						<div>
+							Không tìm thấy công việc với từ khóa @ViewBag.filter.
+						</div>
+					}
+					else
+					{
+						<div>
+							Tìm thấy @Model.Count() công việc với từ khóa @ViewBag.filter.
+						</div>
+					}
+				}
+
 
 
 			</div>
-			@*<div class="text-center">
-					<ul class="pagination">
-						<li class="disabled"><span>«</span></li>
-						<li class="active"><span>1</span></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">4</a></li>
-						<li class="disabled"><span>...</span></li>
-						<li><a href="#">5</a></li>
-						<li><a href="#" rel="next">»</a></li>
-					</ul>
-				</div>*@
 		</aside>
 	</div>
 
@@ -168,7 +192,7 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<a href="#" data-dismiss="modal" class="class pull-right"><span class="glyphicon glyphicon-remove"></span></a>
-					<h2 class="modal-title">Cập nhật thông tin ứng viên </h2>
+					<h2 class="modal-title">Cập nhật thông tin công việc </h2>
 				</div>
 				<div id="PVEdit">
 					@*PVEdit Partial View*@
@@ -222,24 +246,19 @@
 </div>
 
 <div id="QLPC" class="tabcontent">
-	<h3>Contact</h3>
-	<p>Get in touch, or swing by for a cup of coffee.</p>
+
 </div>
 
 <div id="CC" class="tabcontent">
-	<h3>About</h3>
-	<p>Who we are and what we do.</p>
+
 </div>
 
 <div id="QLUV" class="tabcontent ">
-	<h3>News</h3>
-	<p>Some news this fine day!</p>
+
 </div>
 
-
 <div id="LPV" class="tabcontent">
-	<h3>About</h3>
-	<p>Who we are and what we do.</p>
+
 </div>
 @Scripts.Render("~/bundles/NhanSu/Scripts/tab-content")
 
@@ -290,6 +309,18 @@
 				$('#item_create').modal('show');
 			}
 		})
+	}
+
+	function Search() {
+		var filter = $('#search_string').val();
+		if (filter == "") {
+			var url = '@Url.Action("QuanLyCongViec", "CongViec")';
+			window.location.href = url;
+		}
+		else {
+			var url = '@Url.Action("QuanLyCongViec", "CongViec", new { filter = "__filter__" })';
+			window.location.href = url.replace('__filter__', $('#search_string').val());
+		}
 	}
 
 	//$(document).ready(function () {

@@ -1,4 +1,4 @@
-﻿@model DataModel.PagedList<DataModel.LichPhongVan>
+﻿@model IEnumerable<DataModel.LichPhongVan>
 @*@model DataModel.PagedList<DataModel.UngVien>*@
 
 @{
@@ -14,28 +14,22 @@
 
 <!-------------------------------------------------------------------->
 <div id="QLNV" class="tabcontent">
-	<h3>Home</h3>
-	<p>Home is where the heart is..</p>
+
 </div>
 
 <div id="QLCV" class="tabcontent">
-	<h3>News</h3>
-	<p>Some news this fine day!</p>
+
 </div>
 
 <div id="QLPC" class="tabcontent">
-	<h3>Contact</h3>
-	<p>Get in touch, or swing by for a cup of coffee.</p>
+
 </div>
 
 <div id="CC" class="tabcontent">
-	<h3>About</h3>
-	<p>Who we are and what we do.</p>
+
 </div>
 
 <div id="QLUV" class="tabcontent ">
-	<h3>About</h3>
-	<p>Who we are and what we do.</p>
 
 </div>
 
@@ -43,12 +37,12 @@
 <div id="QLLPV" class="tabcontent">
 	<div class="inbox-head">
 		<h3 class="col-md-4">Quản lý lịch phỏng vấn</h3>
-		<form action="#" class="pull-right">
+		<div class="pull-right">
 			<div class="input-append">
-				<input type="text" class="sr-input" placeholder="Tìm kiếm">
-				<button class="btn sr-btn sharp" type="button"><i class="fa fa-search"></i></button>
+				<input id="search_string" type="text" class="sr-input" placeholder="Tìm kiếm" value="@ViewBag.filter">
+				<button class="btn sr-btn sharp" onclick="Search()"><i class="fa fa-search"></i></button>
 			</div>
-		</form>
+		</div>
 	</div>
 
 	<div>
@@ -72,17 +66,18 @@
 
 			<div class="inbox-body">
 				<div class="mail-option">
-					<table class="table table-header">
-						<tbody style="background-color: #f0f0f0;">
+					<table class="table table-header table-striped table-bordered table-hover" id="dataTables-example">
+						<thead style="background-color: #f0f0f0;">
 							<tr class="unread">
-								<td class="col-sm-2 align-top">@Html.DisplayNameFor(model => model.Content.First().maLPV)</td>
-								<td class="col-sm-2">@Html.DisplayNameFor(model => model.Content.First().ngay)</td>
-								<td class="col-sm-2">@Html.DisplayNameFor(model => model.Content.First().diaDiem)</td>
-								<td class="col-sm-2">@Html.DisplayNameFor(model => model.Content.First().tieuChi)</td>
-								<td class="col-sm-2">@Html.DisplayNameFor(model => model.Content.First().ghiChu)</td>
+								<td class="col-sm-1 align-top">STT</td>
+								<td class="col-sm-2 align-top">@Html.DisplayNameFor(model => model.maLPV)</td>
+								<td class="col-sm-2">@Html.DisplayNameFor(model => model.ngay)</td>
+								<td class="col-sm-2">@Html.DisplayNameFor(model => model.diaDiem)</td>
+								<td class="col-sm-2">@Html.DisplayNameFor(model => model.tieuChi)</td>
+								<td class="col-sm-2">@Html.DisplayNameFor(model => model.ghiChu)</td>
 								<td class="col-sm-1">Thao tác</td>
 							</tr>
-						</tbody>
+						</thead>
 					</table>
 					<table class="table table-inbox table-hover table-inside" style="border: 1px solid #d3d3d3;">
 						@*@{
@@ -121,62 +116,89 @@
 
 
 						<tbody>
-							@foreach (var item in Model.Content)
+							@if (Model != null)
 							{
-							<tr @*data-status="@item.trangThai"*@>
-								<td data-toggle="modal" class="col-sm-2" onclick="Details(@item.maLPV)">
-									<h5>
-										@Html.DisplayFor(modelItem => item.maLPV)
-									</h5>
-								</td>
-								<td data-toggle="modal" class="col-sm-2" onclick="Details(@item.maLPV)">
-									<h5>
-										@Html.DisplayFor(modelItem => item.ngay)
-									</h5>
-								</td>
-								<td data-toggle="modal" class="col-sm-2" onclick="Details(@item.maLPV)">
-									<h5>
-										@Html.DisplayFor(modelItem => item.diaDiem)
-									</h5>
-								</td>
-								<td data-toggle="modal" class="col-sm-2" onclick="Details(@item.maLPV)">
-									<h5 class="text-left">
-										@Html.DisplayFor(modelItem => item.tieuChi)
-									</h5>
-								</td>
-								<td data-toggle="modal" class="col-sm-2" onclick="Details(@item.maLPV)">
-									<h5>
-										@Html.DisplayFor(modelItem => item.ghiChu)
-									</h5>
-								</td>
-								<td class="col-sm-1 no-pointer">
-									<span class="btn-group pull-right" style="margin-top: 5px">
-										<button class="btn btn-warning btn-xs sharp" data-toggle="modal" title="Cập nhật lịch phỏng vấn" onclick="Edit(@item.maLPV)"><i class="glyphicon glyphicon-edit"></i></button>
-										<button class="btn btn-danger btn-xs sharp" data-toggle="modal" title="Xóa lịch phỏng vấn" onclick="ConfirmDelete(@item.maLPV)"><i class="glyphicon glyphicon-remove"></i></button>
-									</span>
-								</td>
-							</tr>
+								int i = 1;
+								foreach (var item in Model)
+								{
+									<tr @*data-status="@item.trangThai"*@>
+										<td class="col-sm-1">
+											<h5>@i</h5>
+										</td>
+										@{i++; }
+										<td data-toggle="modal" class="col-sm-2" onclick="Details(@item.maLPV)">
+											<h5>
+												@Html.DisplayFor(modelItem => item.maLPV)
+											</h5>
+										</td>
+										<td data-toggle="modal" class="col-sm-2" onclick="Details(@item.maLPV)">
+											<h5>
+												@Html.DisplayFor(modelItem => item.ngay)
+											</h5>
+										</td>
+										<td data-toggle="modal" class="col-sm-2" onclick="Details(@item.maLPV)">
+											<h5>
+												@Html.DisplayFor(modelItem => item.diaDiem)
+											</h5>
+										</td>
+										<td data-toggle="modal" class="col-sm-2" onclick="Details(@item.maLPV)">
+											<h5 class="text-left">
+												@Html.DisplayFor(modelItem => item.tieuChi)
+											</h5>
+										</td>
+										<td data-toggle="modal" class="col-sm-2" onclick="Details(@item.maLPV)">
+											<h5>
+												@Html.DisplayFor(modelItem => item.ghiChu)
+											</h5>
+										</td>
+										<td class="col-sm-1 no-pointer">
+											<span class="btn-group pull-right" style="margin-top: 5px">
+												<button class="btn btn-warning btn-xs sharp" data-toggle="modal" title="Cập nhật lịch phỏng vấn" onclick="Edit(@item.maLPV)"><i class="glyphicon glyphicon-edit"></i></button>
+												<button class="btn btn-danger btn-xs sharp" data-toggle="modal" title="Xóa lịch phỏng vấn" onclick="ConfirmDelete(@item.maLPV)"><i class="glyphicon glyphicon-remove"></i></button>
+											</span>
+										</td>
+									</tr>
+								}
 							}
 						</tbody>
 					</table>
 				</div>
 			</div>
-			<div style="margin-top:17px;">
+			<div>
+				@if (((string)ViewBag.filter).IsEmpty())
+				{
+					if (Model.Count() == 0)
+					{
+						<div>
+							Hiện tại chưa có lịch phỏng vấn nào cả.
+						</div>
+					}
+					else
+					{
+						<div>
+							Có @Model.Count() lịch phỏng vấn.
+						</div>
+					}
+				}
+				else
+				{
+					if (Model.Count() == 0)
+					{
+						<div>
+							Không tìm thấy lịch phỏng vấn với từ khóa @ViewBag.filter.
+						</div>
+					}
+					else
+					{
+						<div>
+							Tìm thấy @Model.Count() lịch phỏng vấn với từ khóa @ViewBag.filter.
+						</div>
+					}
+				}
+
 
 
 			</div>
-			@*<div class="text-center">
-					<ul class="pagination">
-						<li class="disabled"><span>«</span></li>
-						<li class="active"><span>1</span></li>
-						<li><a href="#">2</a></li>
-						<li><a href="#">3</a></li>
-						<li><a href="#">4</a></li>
-						<li class="disabled"><span>...</span></li>
-						<li><a href="#">5</a></li>
-						<li><a href="#" rel="next">»</a></li>
-					</ul>
-				</div>*@
 		</aside>
 	</div>
 
@@ -288,6 +310,18 @@
 		})
 	}
 
+
+	function Search() {
+		var filter = $('#search_string').val();
+		if (filter == "") {
+			var url = '@Url.Action("QuanLyLichPhongVan", "LichPhongVan")';
+			window.location.href = url;
+		}
+		else {
+			var url = '@Url.Action("QuanLyLichPhongVan", "LichPhongVan", new { filter = "__filter__" })';
+			window.location.href = url.replace('__filter__', $('#search_string').val());
+		}
+	}
 
 
 	//$(document).ready(function () {

@@ -28,36 +28,18 @@ namespace QuanLyXeKhach.Controllers
         }
 
 
-        public ActionResult QuanLyUngVien(string filter = null, int page = 1,
-         int pageSize = 5, string sort = "maUV", string sortdir = "DESC")
+        public ActionResult QuanLyUngVien(string filter = null)
         {
             logger.Info("HttpGet recived. Contoller: UngVienController, ActionResult: QuanLyUngVien.");
-            //ViewBag.LichPhongVans = new SelectList(lichPhongVanService.XemLichPhongVan(), "maLPV", "maLPV");
-            //ViewBag.TrangThaiUVs = new SelectList(trangThaiUVService.XemTrangThaiUV(), "maTT", "tenTT");
-            //var ungViens = ungVienService.XemThongTinUV();
 
-            //foreach (var ungvien in ungViens)
-            //{
-            //    if (ungvien.maLPV == null)
-            //        ungvien.LichPhongVan = null;
-            //    else
-            //        ungvien.LichPhongVan = lichPhongVanService.XemLichPhongVan(ungvien.maLPV ?? default(int));
-            //    ungvien.TrangThaiUV = trangThaiUVService.XemTrangThaiUV(ungvien.trangThai);
-            //}
-            //logger.Info("/Return to action QuanLyUngVien with list of UngVien as model.");
-            //return View(ungViens.ToList());
-            var records = new PagedList<UngVien>();
+            ViewBag.TrangThaiUVs = trangThaiUVService.XemTrangThaiUV().ToList();
+
+            var records = new List<UngVien>();
             var notificationList = TempData["notificationList"] as IList<Notify>;
             ViewBag.filter = filter;
-            records.Content = ungVienService.XemThongTinUV(filter).ToList();
+            records = ungVienService.XemThongTinUV(filter).ToList();
 
-            // Count
-            records.TotalRecords = records.Content.Count();
-
-            records.CurrentPage = page;
-            records.PageSize = pageSize;
-
-            foreach (var ungVien in records.Content)
+            foreach (var ungVien in records)
             {
                 if (ungVien.maLPV == null)
                     ungVien.LichPhongVan = null;

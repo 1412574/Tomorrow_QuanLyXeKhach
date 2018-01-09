@@ -10,11 +10,14 @@ namespace DataModel
     public class TrangThaiUV
     {
         [Key]
+        [Display(Name = "Mã trạng thái", ShortName = "Mã trạng thái")]
         public int maTT { get; set; }
 
         [CustomRequiredValidator]
+        [Display(Name = "Tên trạng thái", ShortName = "Tên trạng thái")]
         public string tenTT { get; set; }
 
+        [Display(Name = "Mô tả trạng thái", ShortName = "Mô tả trạng thái")]
         public string moTaTT { get; set; }
     }
 }

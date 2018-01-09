@@ -56,6 +56,14 @@ namespace DataService
             return repository.GetAll().ToList();
         }
 
+        public IList<TrangThaiUV> XemTrangThaiUV(string filter)
+        {
+            IRepository<TrangThaiUV> repository = unitofWork.Repository<TrangThaiUV>();
+            return repository.GetAll(u => filter == null || (u.maTT.ToString().Contains(filter)) ||
+                                                            u.tenTT.Contains(filter)
+                                                            ).ToList();
+        }
+
         public TrangThaiUV XemTrangThaiUV(int id)
         {
             IRepository<TrangThaiUV> repository = unitofWork.Repository<TrangThaiUV>();

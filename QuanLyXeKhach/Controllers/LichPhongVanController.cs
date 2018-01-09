@@ -28,8 +28,7 @@ namespace QuanLyXeKhach.Controllers
         }
 
 
-        public ActionResult QuanLyLichPhongVan(string filter = null, int page = 1,
-         int pageSize = 5, string sort = "maLPV", string sortdir = "DESC")
+        public ActionResult QuanLyLichPhongVan(string filter = null)
         {
             logger.Info("HttpGet recived. Contoller: LichPhongVanController, ActionResult: QuanLyLPV.");
             //ViewBag.LichPhongVans = new SelectList(lichPhongVanService.XemLichPhongVan(), "maLPV", "maLPV");
@@ -46,18 +45,12 @@ namespace QuanLyXeKhach.Controllers
             //}
             //logger.Info("/Return to action QuanLyLichPhongVan with list of LichPhongVan as model.");
             //return View(lichPhongVans.ToList());
-            var records = new PagedList<LichPhongVan>();
+            var records = new List<LichPhongVan>();
             var notificationList = TempData["notificationList"] as IList<Notify>;
             ViewBag.filter = filter;
-            records.Content = lichPhongVanService.XemThongTinLPV(filter).ToList();
+            records = lichPhongVanService.XemThongTinLPV(filter).ToList();
 
-            // Count
-            records.TotalRecords = records.Content.Count();
-
-            records.CurrentPage = page;
-            records.PageSize = pageSize;
-
-            foreach (var lPV in records.Content)
+            foreach (var lPV in records)
             {
                 
             }

@@ -78,10 +78,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomRequiredValidator.cs" />
-    <Compile Include="Migrations\201801081401109_initall.cs" />
-    <Compile Include="Migrations\201801081401109_initall.Designer.cs">
-      <DependentUpon>201801081401109_initall.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BangChamCong.cs" />
     <Compile Include="Models\HanhTrinh.cs" />
@@ -212,11 +208,7 @@
     <Content Include="Scripts\moment-with-locales.min.js" />
     <Content Include="Scripts\moment.js" />
     <Content Include="Scripts\moment.min.js" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201801081401109_initall.resx">
-      <DependentUpon>201801081401109_initall.cs</DependentUpon>
-    </EmbeddedResource>
+    <Content Include="Trung.sql" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

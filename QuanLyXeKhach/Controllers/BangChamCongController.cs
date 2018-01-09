@@ -26,22 +26,14 @@ namespace QuanLyXeKhach.Controllers
         }
 
 
-        public ActionResult QuanLyBangChamCong(string filter = null, int page = 1,
-         int pageSize = 5, string sort = "maCC", string sortdir = "DESC")
+        public ActionResult QuanLyBangChamCong(string filter = null)
         {
             logger.Info("HttpGet recived. Contoller: BangChamCongController, ActionResult: QuanLyBCC.");
-            var records = new PagedList<BangChamCong>();
+            var records = new List<BangChamCong>();
             var notificationList = TempData["notificationList"] as IList<Notify>;
             ViewBag.filter = filter;
-            records.Content = bangChamCongService.XemThongTinBCC(filter).ToList();
 
-            // Count
-            records.TotalRecords = records.Content.Count();
-
-            records.CurrentPage = page;
-            records.PageSize = pageSize;
-
-            foreach (var bCC in records.Content)
+            foreach (var bCC in records)
             {
                 bCC.NhanVien = nhanVienService.XemNhanVienNV(bCC.maNV);
             }
@@ -55,6 +47,7 @@ namespace QuanLyXeKhach.Controllers
             }
             return View(records);
         }
+
         public ActionResult PVConfirmDelete(int? id)
         {
             logger.Info("HttpGet recived. Contoller: BangChamCongController, ActionResult: PVConfirmDelete, Id: " + id.ToString() + ".");

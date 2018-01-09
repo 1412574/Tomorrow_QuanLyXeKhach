@@ -187,6 +187,7 @@
     <Compile Include="Controllers\TaiKhoanNVController.cs" />
     <Compile Include="Controllers\TramXeController.cs" />
     <Compile Include="Controllers\TrangThaiNVController.cs" />
+    <Compile Include="Controllers\TrangThaiUVController.cs" />
     <Compile Include="Controllers\TuyenXeController.cs" />
     <Compile Include="Controllers\UngVienController.cs" />
     <Compile Include="Controllers\VaiTroController.cs" />
@@ -670,6 +671,11 @@
     <Content Include="Views\BangChamCong\PVDetails.cshtml" />
     <Content Include="Views\BangChamCong\PVEdit.cshtml" />
     <Content Include="Views\BangChamCong\QuanLyBangChamCong.cshtml" />
+    <Content Include="Views\TrangThaiUV\PVConfirmDelete.cshtml" />
+    <Content Include="Views\TrangThaiUV\PVCreate.cshtml" />
+    <Content Include="Views\TrangThaiUV\PVDetails.cshtml" />
+    <Content Include="Views\TrangThaiUV\PVEdit.cshtml" />
+    <Content Include="Views\TrangThaiUV\QuanLyTrangThaiUV.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
