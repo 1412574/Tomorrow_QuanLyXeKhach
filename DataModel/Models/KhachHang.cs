@@ -19,9 +19,12 @@ namespace DataModel
         [StringLength(100)]
         public string tenKhachHang { get; set; }
 
+        [Phone]
+        [Required(ErrorMessage ="SĐT không được bỏ trống")]
         [StringLength(15)]
         public string soDienThoai { get; set; }
 
+        [DataType(DataType.EmailAddress)]
         [StringLength(60)]
         public string taiKhoan { get; set; }
 

@@ -56,9 +56,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201712210729011_initall.cs" />
-    <Compile Include="Migrations\201712210729011_initall.Designer.cs">
-      <DependentUpon>201712210729011_initall.cs</DependentUpon>
+    <Compile Include="Migrations\201712210941365_initall.cs" />
+    <Compile Include="Migrations\201712210941365_initall.Designer.cs">
+      <DependentUpon>201712210941365_initall.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201712211553406_initall2.cs" />
+    <Compile Include="Migrations\201712211553406_initall2.Designer.cs">
+      <DependentUpon>201712211553406_initall2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ChiTietDatVe.cs" />
@@ -80,8 +84,11 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201712210729011_initall.resx">
-      <DependentUpon>201712210729011_initall.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201712210941365_initall.resx">
+      <DependentUpon>201712210941365_initall.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201712211553406_initall2.resx">
+      <DependentUpon>201712211553406_initall2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -21,33 +21,41 @@
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-6">
-                            @using (Html.BeginForm("XoaKhachHang", "KhachHang", FormMethod.Get))
+                            @using (Html.BeginForm("XoaKhachHang", "KhachHang", FormMethod.Post))
+    {
+                        @Html.AntiForgeryToken()
+
+                            <form role="form">
+                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                @Html.HiddenFor(model => model.maKhachHang)
+
+                                <div class="form-group">
+                                    <label>Họ và tên:</label>
+                                    @Html.TextBoxFor(model => model.tenKhachHang, new { @class = "form-control", @disabled = "disabled" })
+
+                                </div>
+                                <div class="form-group">
+                                    <label>Số điện thoại:</label>
+                                    @Html.TextBoxFor(model => model.soDienThoai, new { @class = "form-control", @disabled = "disabled" })
+
+                                </div>
+                                <div class="form-group">
+                                    <label>Email tài khoản:</label>
+                                    @Html.TextBoxFor(model => model.taiKhoan, new { @class = "form-control", @disabled = "disabled" })
+
+                                </div>
+                                <button type="submit" class="btn btn-lg btn-danger">Xác nhận xóa</button>
+                                <input type="button" class="btn btn-lg btn-info" value="Hủy bỏ" onclick="location.href='@Url.Action("HuyxoaKhachHang","KhachHang")'" />
+
+                            </form>
+                        }          
+                          
+
+                            @*@using (Html.BeginForm("HuyxoaKhachHang", "KhachHang", FormMethod.Post))
                             {
-                                @Html.AntiForgeryToken()
+                                <button type="submit" class="btn btn-lg btn-danger">Hủy bỏ</button>
+                            }*@
 
-                                <form role="form">
-                                    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                                    @Html.HiddenFor(model => model.maKhachHang)
-
-                                    <div class="form-group">
-                                        <label>Họ và tên:</label>
-                                        @Html.TextBoxFor(model => model.tenKhachHang, new { @class = "form-control", @disabled = "disabled" })
-
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Số điện thoại:</label>
-                                        @Html.TextBoxFor(model => model.soDienThoai, new { @class = "form-control", @disabled = "disabled" })
-                                       
-                                    </div>
-                                    <div class="form-group">
-                                        <label>Email tài khoản:</label>
-                                        @Html.TextBoxFor(model => model.taiKhoan, new { @class = "form-control", @disabled = "disabled" })
-
-                                    </div>
-                                    <button type="submit" class="btn btn-lg btn-danger">Xác nhận xóa</button>
-
-                                </form>
-                            }
                         </div>
 
                     </div>

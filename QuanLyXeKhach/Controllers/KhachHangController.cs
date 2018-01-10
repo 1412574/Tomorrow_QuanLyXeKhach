@@ -65,7 +65,10 @@ namespace QuanLyXeKhach.Controllers
                 return Content("Xóa thất bại");
             }
         }
-
+        public ActionResult Huyxoakhachhang()
+        {
+            return RedirectToAction("index", "KhachHang");
+        }
         public ActionResult CapNhatKhachHang(KhachHang kh)
         {
             logger.Info("Start controller....");
