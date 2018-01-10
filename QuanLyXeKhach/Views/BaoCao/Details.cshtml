@@ -1,58 +1,59 @@
 ﻿@model DataModel.BaoCao
+<div class="main-content">
+    <div>
+        <h4>Chi tiết Báo cáo</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                Tên Biên bản
+            </dt>
 
-<div>
-    <h4>Chi tiết Báo cáo</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            Tên Biên bản
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.tenBienBan)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.tenBienBan)
-        </dd>
+            <dt>
+                Nội dung
+            </dt>
 
-        <dt>
-            Nội dung
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.noiDung)
+            </dd>
+            <dt>
+                Ngày lập Báo cáo
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ngayLapBaoCao)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.noiDung)
-        </dd>
-        <dt>
-           Ngày lập Báo cáo
-        </dt>
-        <dd>
-            @Html.DisplayFor(model => model.ngayLapBaoCao)
-        </dd>
+            <dt>
+                Ngày sửa đổi
+            </dt>
 
-        <dt>
-            Ngày sửa đổi
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ngaySuaDoi)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.ngaySuaDoi)
-        </dd>
+            <dt>
+                Lần sửa đổi
+            </dt>
 
-        <dt>
-            Lần sửa đổi
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.lanSuaDoi)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.lanSuaDoi)
-        </dd>
+            <dt>
+                Ghi chú
+            </dt>
 
-        <dt>
-            Ghi chú
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ghiChu)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.ghiChu)
-        </dd>
-
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Sửa", "Edit", new { id = Model.maBienBan }) |
-    @Html.ActionLink("Trở về", "Menu")
-</p>
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Sửa", "Edit", new { id = Model.maBienBan }) |
+        @Html.ActionLink("Trở về", "Menu")
+    </p>
+    </div>

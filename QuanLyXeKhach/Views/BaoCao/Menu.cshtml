@@ -1,57 +1,58 @@
 ﻿@model IEnumerable<DataModel.BaoCao>
-
-<p>
-    <h5>
-        @Html.ActionLink("Thêm mới", "Index")
-    </h5>
-</p>
-<table class="table">
-    <tr>
-        <th>
-            Tên biên bản
-        </th>
-      
-        <th>
-            Ngày lập báo cáo
-        </th>
-        <th>
-            Ngày sửa đổi
-        </th>
-        <th>
-            Lần sửa đổi
-        </th>
-        <th>
-            Ghi chú
-        </th>
-        <th>
-
-        </th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+<div class="main-content">
+    <p>
+        <h5>
+            @Html.ActionLink("Thêm mới", "Index")
+        </h5>
+    </p>
+    <table class="table">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.tenBienBan)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ngayLapBaoCao)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ngaySuaDoi)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.lanSuaDoi)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ghiChu)
-            </td>
-            <td>
-                @Html.ActionLink("Sửa", "Edit", new { id = item.maBienBan }) |
-                @Html.ActionLink("Chi tiết", "Details", new { id = item.maBienBan }) |
-                @Html.ActionLink("Xóa", "XacNhanXoa", new { id = item.maBienBan })
-            </td>
-        </tr>
-    }
+            <th>
+                Tên biên bản
+            </th>
 
-</table>
+            <th>
+                Ngày lập báo cáo
+            </th>
+            <th>
+                Ngày sửa đổi
+            </th>
+            <th>
+                Lần sửa đổi
+            </th>
+            <th>
+                Ghi chú
+            </th>
+            <th>
+
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.tenBienBan)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ngayLapBaoCao)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ngaySuaDoi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.lanSuaDoi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ghiChu)
+                </td>
+                <td>
+                    @Html.ActionLink("Sửa", "Edit", new { id = item.maBienBan }) |
+                    @Html.ActionLink("Chi tiết", "Details", new { id = item.maBienBan }) |
+                    @Html.ActionLink("Xóa", "XacNhanXoa", new { id = item.maBienBan })
+                </td>
+            </tr>
+        }
+
+    </table>
+    </div>
