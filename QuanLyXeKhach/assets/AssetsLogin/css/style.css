@@ -85,9 +85,6 @@ fieldset {
 }
 
 input {
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
   border: none;
   font: inherit;
   margin: 0;

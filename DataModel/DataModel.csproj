@@ -78,9 +78,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomRequiredValidator.cs" />
-    <Compile Include="Migrations\201801061639089_initall.cs" />
-    <Compile Include="Migrations\201801061639089_initall.Designer.cs">
-      <DependentUpon>201801061639089_initall.cs</DependentUpon>
+    <Compile Include="Migrations\201801091408480_initall.cs" />
+    <Compile Include="Migrations\201801091408480_initall.Designer.cs">
+      <DependentUpon>201801091408480_initall.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\BangChamCong.cs" />
@@ -236,8 +236,8 @@
     <Content Include="Trung.sql" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201801061639089_initall.resx">
-      <DependentUpon>201801061639089_initall.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201801091408480_initall.resx">
+      <DependentUpon>201801091408480_initall.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

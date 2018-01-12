@@ -1,74 +1,75 @@
 ﻿@model DataModel.BaoCao
+<div class="main-content">
+    <h3>Bạn có chắc là muốn xóa Báo cáo này không?</h3>
 
-<h3>Bạn có chắc là muốn xóa Báo cáo này không?</h3>
+    <div>
+        <h4>Báo cáo</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                Tên biên bản
+            </dt>
 
-<div>
-    <h4>Báo cáo</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            Tên biên bản
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.tenBienBan)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.tenBienBan)
-        </dd>
+            <dt>
+                Nội dung
+            </dt>
 
-        <dt>
-            Nội dung
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.noiDung)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.noiDung)
-        </dd>
+            <dt>
+                Ngày lập Báo cáo
+            </dt>
 
-        <dt>
-            Ngày lập Báo cáo
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ngayLapBaoCao)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.ngayLapBaoCao)
-        </dd>
+            <dt>
+                Ngày sửa đổi
+            </dt>
 
-        <dt>
-            Ngày sửa đổi
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ngaySuaDoi)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.ngaySuaDoi)
-        </dd>
+            <dt>
+                Lần sửa đổi
+            </dt>
 
-        <dt>
-            Lần sửa đổi
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.lanSuaDoi)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.lanSuaDoi)
-        </dd>
+            <dt>
+                Ghi chú
+            </dt>
 
-        <dt>
-            Ghi chú
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ghiChu)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.ghiChu)
-        </dd>
+        </dl>
 
-    </dl>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
 
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
+            <div class="form-actions no-color">
+                <input type="submit" value="Xóa" class="btn btn-default" /> |
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Xóa" class="btn btn-default" /> |
+            </div>
+        }
 
-        </div>
-    }
-
-</div>
+    </div>
 
 
-<div>
-    @Html.ActionLink("Trở về", "Menu")
-</div>
+    <div>
+        @Html.ActionLink("Trở về", "Menu")
+    </div>
+    </div>

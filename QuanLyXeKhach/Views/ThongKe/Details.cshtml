@@ -1,60 +1,61 @@
 ﻿@model DataModel.ThongKe
+<div class="main-content">
+    <div>
+        <h4>ThongKe</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.tenBienBan)
+            </dt>
 
-<div>
-    <h4>ThongKe</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.tenBienBan)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.tenBienBan)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.tenBienBan)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.noiDung)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.noiDung)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.noiDung)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.noiDung)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ngayLapThongKe)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ngayLapThongKe)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ngayLapThongKe)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.ngayLapThongKe)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ngaySuaDoi)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ngaySuaDoi)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ngaySuaDoi)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.ngaySuaDoi)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.lanSuaDoi)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.lanSuaDoi)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.lanSuaDoi)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.lanSuaDoi)
-        </dd>
+            <dt>
+                @Html.DisplayNameFor(model => model.ghiChu)
+            </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ghiChu)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.ghiChu)
+            </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.ghiChu)
-        </dd>
-
-    </dl>
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.maBienBan }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.maBienBan }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

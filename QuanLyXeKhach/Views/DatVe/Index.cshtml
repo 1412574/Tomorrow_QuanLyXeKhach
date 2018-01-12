@@ -3,6 +3,8 @@
 }
 @model IEnumerable<DataModel.DatVe>
 
+
+
 <div id="page-wrapper">
     <div class="row">
         <div class="col-lg-12">
@@ -68,6 +70,7 @@
         </div>
         <!-- /.col-lg-12 -->
     </div>
+    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
     <script>
         @{
             string message = TempData["Message"] as string;
@@ -76,6 +79,7 @@
                <text>toastr.info('@message');</text>
             }
         }
+        $('#dataTables-example').DataTable();
     </script>
     <!-- /.row -->
 </div>
