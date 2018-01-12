@@ -2,49 +2,68 @@
 
 @{
     ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutDashboard.cshtml";
 }
 
-<h2>Details</h2>
+<div id="page-wrapper">
+    <div class="row">
+        <div class="col-lg-12">
+            <h1 class="page-header">CHI TIẾT CHUYẾN XE</h1>
+        </div>
+        <!-- /.col-lg-12 -->
+    </div>
+    <!-- /.row -->
+    <div class="row">
+        <div class="col-lg-12">
+            <div class="panel panel-danger">
+                <div class="panel-heading">
+                    Thông tin chi tiết chuyến xe
+                </div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-lg-10">
+                            <dl class="dl-horizontal">
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.TuyenXe.TenTuyenXe)
+                                </dt>
 
-<div>
-    <h4>ChuyenXe</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.TuyenXe.TenTuyenXe)
-        </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.TuyenXe.TenTuyenXe)
+                                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.TuyenXe.TenTuyenXe)
-        </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.TenChuyenXe)
+                                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TenChuyenXe)
-        </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.TenChuyenXe)
+                                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.TenChuyenXe)
-        </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.NgayGioChay)
+                                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.NgayGioChay)
-        </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.NgayGioChay)
+                                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.NgayGioChay)
-        </dd>
+                                <dt>
+                                    @Html.DisplayNameFor(model => model.TaiXe)
+                                </dt>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TaiXe)
-        </dt>
+                                <dd>
+                                    @Html.DisplayFor(model => model.TaiXe)
+                                </dd>
 
-        <dd>
-            @Html.DisplayFor(model => model.TaiXe)
-        </dd>
-
-    </dl>
+                            </dl>
+                        </div>
+                        <div>
+                            @Html.ActionLink("Chỉnh sửa", "Edit", new { id = Model.MaChuyenXe }) |
+                            @Html.ActionLink("Trở lại danh sách", "Index")
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.MaChuyenXe }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>

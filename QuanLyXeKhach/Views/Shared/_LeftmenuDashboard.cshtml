@@ -35,7 +35,7 @@
                         @Html.ActionLink("Thêm Trạm xe", "Create", "TramXe")
                     </li>
                     <li>
-                       @Html.ActionLink("Xem Trạm xe","Index", "TramXe")
+                        @Html.ActionLink("Xem Trạm xe", "Index", "TramXe")
                     </li>
                 </ul>
                 <!-- /.nav-second-level -->
@@ -52,7 +52,18 @@
                 </ul>
                 <!-- /.nav-second-level -->
             </li>
-
+            <li>
+                <a href="#"><i class="fa fa-edit fa-fw"></i>Chuyến Xe<span class="fa arrow"></span></a>
+                <ul class="nav nav-second-level">
+                    <li>
+                        @Html.ActionLink("Thêm chuyến xe", "Create", "ChuyenXes")
+                    </li>
+                    <li>
+                        @Html.ActionLink("Xem chuyến xe", "Index", "ChuyenXes")
+                    </li>
+                </ul>
+                <!-- /.nav-second-level -->
+            </li>
 
         </ul>
     </div>

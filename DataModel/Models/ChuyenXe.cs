@@ -16,12 +16,12 @@ namespace DataModel
         }
 
         [Key]
-        public int MaChuyenXe { get; set; }   
-
+        public int MaChuyenXe { get; set; }
+        [Display(Name = "Tên chuyến xe")]
         public string TenChuyenXe { get; set; }
-
+        [Display(Name = "Ngày giờ chạy")]
         public DateTime NgayGioChay { get; set; }
-
+        [Display(Name = "Tài xế")]
         public int TaiXe { get; set; }
 
         public virtual ICollection<DatVe> DatVes { get; set; }

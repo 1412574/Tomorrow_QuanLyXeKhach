@@ -654,8 +654,8 @@
     <Content Include="Views\TuyenXe\Details.cshtml" />
     <Content Include="Views\TuyenXe\Edit.cshtml" />
     <Content Include="Views\TuyenXe\Index.cshtml" />
-    <Content Include="Views\Shared\_LayoutTuyenXe.cshtml" />
-    <Content Include="Views\Shared\_LeftmenuTuyenXe.cshtml" />
+    <Content Include="Views\Shared\_LayoutDashboard.cshtml" />
+    <Content Include="Views\Shared\_LeftmenuDashboard.cshtml" />
     <Content Include="Views\CongViec\PVConfirmDelete.cshtml" />
     <Content Include="Views\CongViec\PVCreate.cshtml" />
     <Content Include="Views\CongViec\PVDetails.cshtml" />
